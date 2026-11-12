@@ -1,0 +1,17 @@
+*
+!Dockerfile
+!pyproject.toml
+!requirements.docker.lock
+!scripts/
+!scripts/__init__.py
+!scripts/migrate_postgres.py
+!app/
+!app/**
+!ui/
+!ui/**
+!rules/
+!rules/coding_rules.md
+!.streamlit/
+!.streamlit/config.toml
+**/__pycache__
+**/*.pyc

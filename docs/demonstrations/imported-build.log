@@ -1,0 +1,4 @@
+SYNTHETIC imported build log; no build was executed.
+src/diagnostics.cpp:29: warning: count may be used uninitialized in uninitializedCounter
+Build policy: warnings are errors. Compile step failed with exit code 1.
+Link and tests were not run.

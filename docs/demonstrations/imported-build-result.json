@@ -1,0 +1,77 @@
+{
+  "status": "passed",
+  "demonstration_only": true,
+  "fixed_evaluation_unchanged": true,
+  "pipeline_triggered": false,
+  "build_commands_executed": false,
+  "run_id": "ded88ff8-1181-4f65-a4bd-f2dc352bc192",
+  "snapshot": "4489ceef577d88d9b56d83b98f7bd986f7baad4b11c81b65c1705c9c7c50b104",
+  "endpoint": "POST /diagnostics/interpret",
+  "origin": "synthetic local CI/build capability demonstration; no execution",
+  "log_artifact": "docs/demonstrations/imported-build.log",
+  "log_sha256": "eae5342a3e99e6b862dd0f38bb75bdfc73889785163ef915ba4000360610a8fa",
+  "outcome": "ANSWERED",
+  "claims": [
+    {
+      "text": "The compiler warning indicates that the variable `count` may be used uninitialized in the function `uninitializedCounter` when the parameter `enabled` is `false`.",
+      "kind": "hypothesis",
+      "evidence": [
+        {
+          "id": "D78532f4d04ad6626",
+          "start_line": 2,
+          "end_line": 2,
+          "quote": "src/diagnostics.cpp:29: warning: count may be used uninitialized in uninitializedCounter"
+        }
+      ]
+    },
+    {
+      "text": "The build policy is set to treat warnings as errors, causing the compile step to fail with an exit code of 1.",
+      "kind": "hypothesis",
+      "evidence": [
+        {
+          "id": "D78532f4d04ad6626",
+          "start_line": 3,
+          "end_line": 3,
+          "quote": "Build policy: warnings are errors. Compile step failed with exit code 1."
+        }
+      ]
+    }
+  ],
+  "imported_diagnostics": [
+    {
+      "id": "D78532f4d04ad6626",
+      "kind": "diagnostic",
+      "repository": "demo_ecu",
+      "snapshot": "4489ceef577d88d9b56d83b98f7bd986f7baad4b11c81b65c1705c9c7c50b104",
+      "start_line": 1,
+      "end_line": 4,
+      "text": "SYNTHETIC imported build log; no build was executed.\nsrc/diagnostics.cpp:29: warning: count may be used uninitialized in uninitializedCounter\nBuild policy: warnings are errors. Compile step failed with exit code 1.\nLink and tests were not run.",
+      "origin": "synthetic local CI/build capability demonstration; no execution",
+      "tool": "synthetic-gcc",
+      "tool_version": "not a real compiler invocation",
+      "observed_at": "2026-10-03T16:00:26.655024+00:00",
+      "imported_at": "2026-10-03T16:00:26.729656+00:00",
+      "association_verified": false
+    }
+  ],
+  "limitations": [
+    "Explanation/diagnostic task; static analysis was not requested",
+    "Diagnostic origin and snapshot association are user-declared, not independently verified",
+    "Model-reported limitations are unverified interpretations; see model_limitations",
+    "Citation validity establishes provenance; human review must assess diagnosis and remediation"
+  ],
+  "model": "qwen2.5-coder:7b",
+  "prompt_version": "case4-v14",
+  "seconds": 6.486,
+  "model_attempts": 1,
+  "deterministic_validation": "PASSED: retrieved IDs, line ranges, exact source/log quotes, selected snapshot and qualified diagnostic claims",
+  "persistence": "Structured report retrieved with the same run contents",
+  "checks": {
+    "cited_answer": true,
+    "imported_log_cited": true,
+    "all_claims_qualified": true,
+    "exact_evidence_valid": true,
+    "persisted_run_matches": true,
+    "baseline_corpus_rules_unchanged": true
+  }
+}

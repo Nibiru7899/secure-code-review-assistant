@@ -1,0 +1,22 @@
+[
+  {"query":"calculatePressure implementation", "symbol":"calculatePressure", "expect_symbol":"calculatePressure"},
+  {"query":"readSensor implementation", "symbol":"readSensor", "expect_symbol":"readSensor"},
+  {"query":"safePressure implementation", "symbol":"safePressure", "expect_symbol":"safePressure"},
+  {"query":"clampPressure implementation", "symbol":"clampPressure", "expect_symbol":"clampPressure"},
+  {"query":"safeDiagnostic implementation", "symbol":"safeDiagnostic", "expect_symbol":"safeDiagnostic"},
+  {"query":"safeRead implementation", "symbol":"safeRead", "expect_symbol":"safeRead"},
+  {"query":"uninitializedCounter implementation", "symbol":"uninitializedCounter", "expect_symbol":"uninitializedCounter"},
+  {"query":"leakingSessionFile implementation", "symbol":"leakingSessionFile", "expect_symbol":"leakingSessionFile"},
+  {"query":"activateSession implementation", "symbol":"activateSession", "expect_symbol":"activateSession"},
+  {"query":"safeBoundaryRead implementation", "symbol":"safeBoundaryRead", "expect_symbol":"safeBoundaryRead"},
+  {"query":"missing_function", "symbol":"missing_function", "expect_status":"not_found"},
+  {"query":"read a nullable sensor value safely", "expect_symbol":"safeSensorValue"},
+  {"query":"copy a diagnostic string checking destination capacity", "expect_symbol":"safeDiagnostic"},
+  {"query":"close a file after reading a session resource", "expect_symbol":"safeSessionFile"},
+  {"query":"avoid reading past the end of a samples array", "expect_symbol":"safeBoundaryRead"},
+  {"query":"change an open session to active", "expect_symbol":"safeActivateSession"},
+  {"query":"validate nullable pointers before dereference", "expect_rule":"PTR-001"},
+  {"query":"check array index boundary and string copy capacity", "expect_rule":"BND-001"},
+  {"query":"release file resources on every exit path", "expect_rule":"RES-001"},
+  {"query":"initialize local values on every path before returning", "expect_rule":"INIT-001"}
+]

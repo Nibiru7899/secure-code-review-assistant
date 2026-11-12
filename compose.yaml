@@ -1,0 +1,65 @@
+name: tatatech-case4
+services:
+  postgres:
+    image: postgres:16.13-bookworm@sha256:472efd9a66f2b2f1a5aeb18b28de74332e6ef88c2b93a1a5d812fb6db67a5f60
+    environment:
+      POSTGRES_DB: review
+      POSTGRES_USER: review
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+    secrets: [postgres_password]
+    volumes: [postgres_data:/var/lib/postgresql/data]
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U review -d review"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+  api:
+    build: .
+    image: tatatech-case4:local
+    environment:
+      LOCAL_DATA_DIR: /data
+      ACCESS_CONFIG: /run/secrets/access_config
+      DATABASE_URL_FILE: /run/secrets/database_url
+      CPPCHECK_EXE: /usr/bin/cppcheck
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
+      CONTAINER_LOCAL_NETWORK: "1"
+      ANALYSIS_QUALITY: ${ANALYSIS_QUALITY:-baseline}
+      AST_GUARD_POLICY: ${AST_GUARD_POLICY:-annotation}
+    secrets: [access_config, database_url]
+    volumes:
+      - app_data:/data
+      - ./.local/models:/data/models:ro
+      - ./demo_ecu:/repositories/demo_ecu:ro
+    ports: ["127.0.0.1:8000:8000"]
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    depends_on:
+      postgres: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+  ui:
+    image: tatatech-case4:local
+    environment:
+      REVIEW_API_URL: http://api:8000
+      CONTAINER_LOCAL_NETWORK: "1"
+    command: [python, -m, streamlit, run, ui/streamlit_app.py, --server.address=0.0.0.0, --server.port=8501, --browser.gatherUsageStats=false]
+    ports: ["127.0.0.1:8501:8501"]
+    depends_on:
+      api: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8501/_stcore/health', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+secrets:
+  access_config: {file: ./.local/docker/access.json}
+  database_url: {file: ./.local/docker/database-url.txt}
+  postgres_password: {file: ./.local/docker/postgres-password.txt}
+volumes:
+  app_data:
+  postgres_data:

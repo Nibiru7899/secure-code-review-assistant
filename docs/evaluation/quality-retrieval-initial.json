@@ -1,0 +1,1387 @@
+{
+  "fixed_questions_unchanged": true,
+  "configurations": [
+    {
+      "mode": "VECTOR_RELATED",
+      "ranking": null,
+      "cases": [
+        {
+          "query": "calculatePressure implementation",
+          "symbol": "calculatePressure",
+          "expect_symbol": "calculatePressure",
+          "passed": true,
+          "seconds": 0.08640270002069883,
+          "symbols": [
+            "calculatePressure",
+            "readActivePressure",
+            "safePressure"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "readSensor implementation",
+          "symbol": "readSensor",
+          "expect_symbol": "readSensor",
+          "passed": true,
+          "seconds": 0.044014799990691245,
+          "symbols": [
+            "readSensor",
+            "readSensorValue",
+            "readActivePressure"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "safePressure implementation",
+          "symbol": "safePressure",
+          "expect_symbol": "safePressure",
+          "passed": true,
+          "seconds": 0.04468670001369901,
+          "symbols": [
+            "safePressure",
+            "readActivePressure",
+            "clampPressure"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "clampPressure implementation",
+          "symbol": "clampPressure",
+          "expect_symbol": "clampPressure",
+          "passed": true,
+          "seconds": 0.044036899984348565,
+          "symbols": [
+            "clampPressure",
+            "safePressure",
+            ""
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "safeDiagnostic implementation",
+          "symbol": "safeDiagnostic",
+          "expect_symbol": "safeDiagnostic",
+          "passed": true,
+          "seconds": 0.0494753000093624,
+          "symbols": [
+            "safeDiagnostic",
+            "copyDiagnostic",
+            "injectedNull"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "safeRead implementation",
+          "symbol": "safeRead",
+          "expect_symbol": "safeRead",
+          "passed": true,
+          "seconds": 0.05531820000032894,
+          "symbols": [
+            "safeRead",
+            "uncheckedRead",
+            "safeBoundaryRead"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "uninitializedCounter implementation",
+          "symbol": "uninitializedCounter",
+          "expect_symbol": "uninitializedCounter",
+          "passed": true,
+          "seconds": 0.058857600000919774,
+          "symbols": [
+            "uninitializedCounter",
+            "safeCounter",
+            "uninitializedVoltage"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "leakingSessionFile implementation",
+          "symbol": "leakingSessionFile",
+          "expect_symbol": "leakingSessionFile",
+          "passed": true,
+          "seconds": 0.05814519998966716,
+          "symbols": [
+            "leakingSessionFile",
+            "safeSessionFile",
+            ""
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "activateSession implementation",
+          "symbol": "activateSession",
+          "expect_symbol": "activateSession",
+          "passed": true,
+          "seconds": 0.06983160000527278,
+          "symbols": [
+            "activateSession",
+            "safeActivateSession",
+            ""
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "safeBoundaryRead implementation",
+          "symbol": "safeBoundaryRead",
+          "expect_symbol": "safeBoundaryRead",
+          "passed": true,
+          "seconds": 0.06140629999572411,
+          "symbols": [
+            "safeBoundaryRead",
+            "fixedBoundaryRead",
+            "boundaryRead"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "missing_function",
+          "symbol": "missing_function",
+          "expect_status": "not_found",
+          "passed": true,
+          "seconds": 0.0018974999838974327,
+          "symbols": [],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "read a nullable sensor value safely",
+          "expect_symbol": "safeSensorValue",
+          "passed": true,
+          "seconds": 0.06919249999918975,
+          "symbols": [
+            "safeSensorValue",
+            "readSensorValue",
+            "definiteNull"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "copy a diagnostic string checking destination capacity",
+          "expect_symbol": "safeDiagnostic",
+          "passed": true,
+          "seconds": 0.06776270002592355,
+          "symbols": [
+            "safeDiagnostic",
+            "copyDiagnostic",
+            "copySmallBuffer"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "close a file after reading a session resource",
+          "expect_symbol": "safeSessionFile",
+          "passed": true,
+          "seconds": 0.0637898999848403,
+          "symbols": [
+            "leakingSessionFile",
+            "safeSessionFile",
+            ""
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "avoid reading past the end of a samples array",
+          "expect_symbol": "safeBoundaryRead",
+          "passed": true,
+          "seconds": 0.07382220000727102,
+          "symbols": [
+            "safeBoundaryRead",
+            "boundaryRead",
+            "fixedBoundaryRead"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "change an open session to active",
+          "expect_symbol": "safeActivateSession",
+          "passed": true,
+          "seconds": 0.06538620000355877,
+          "symbols": [
+            "activateSession",
+            "safeActivateSession",
+            ""
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "validate nullable pointers before dereference",
+          "expect_rule": "PTR-001",
+          "passed": true,
+          "seconds": 0.05908010000712238,
+          "symbols": [
+            "definiteNull",
+            "injectedNull",
+            "safeSensorValue"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "check array index boundary and string copy capacity",
+          "expect_rule": "BND-001",
+          "passed": true,
+          "seconds": 0.05726069997763261,
+          "symbols": [
+            "safeDiagnostic",
+            "copySmallBuffer",
+            "safeBoundaryRead"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "release file resources on every exit path",
+          "expect_rule": "RES-001",
+          "passed": true,
+          "seconds": 0.057070599985308945,
+          "symbols": [
+            "leakingSessionFile",
+            "doubleFreeSample",
+            "safeSessionFile"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "initialize local values on every path before returning",
+          "expect_rule": "INIT-001",
+          "passed": true,
+          "seconds": 0.07629669999005273,
+          "symbols": [
+            "uninitializedVoltage",
+            "leakingSessionFile",
+            ""
+          ],
+          "duplicates": 0,
+          "stale": 0
+        }
+      ],
+      "symbol_context_cases": [
+        {
+          "file": "src/brake_control.cpp",
+          "function": "readActivePressure",
+          "expected_calls": [
+            "calculatePressure",
+            "readSensor"
+          ],
+          "found": [
+            "readSensorValue",
+            "calculatePressure"
+          ],
+          "hits": 1,
+          "total": 2
+        }
+      ],
+      "exact_target_recall": 1.0,
+      "relevant_top_k": 1.0,
+      "deterministic_symbol_context_recall": 0.5,
+      "mean_retrieval_seconds": 0.05818671999877552,
+      "duplicates": 0,
+      "stale": 0
+    },
+    {
+      "mode": "HYBRID_1_1",
+      "ranking": {
+        "lexical_weight": 1,
+        "vector_weight": 1,
+        "rrf_constant": 20
+      },
+      "cases": [
+        {
+          "query": "calculatePressure implementation",
+          "symbol": "calculatePressure",
+          "expect_symbol": "calculatePressure",
+          "passed": true,
+          "seconds": 0.09514270001091063,
+          "symbols": [
+            "calculatePressure",
+            "",
+            "",
+            "safePressure"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "readSensor implementation",
+          "symbol": "readSensor",
+          "expect_symbol": "readSensor",
+          "passed": true,
+          "seconds": 0.08122250001179054,
+          "symbols": [
+            "readSensor",
+            "",
+            "",
+            "sensorConnected"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "safePressure implementation",
+          "symbol": "safePressure",
+          "expect_symbol": "safePressure",
+          "passed": true,
+          "seconds": 0.08092810001107864,
+          "symbols": [
+            "safePressure",
+            "",
+            "",
+            "calculatePressure"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "clampPressure implementation",
+          "symbol": "clampPressure",
+          "expect_symbol": "clampPressure",
+          "passed": true,
+          "seconds": 0.07828790001804009,
+          "symbols": [
+            "clampPressure",
+            "",
+            "safePressure",
+            "calculatePressure"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "safeDiagnostic implementation",
+          "symbol": "safeDiagnostic",
+          "expect_symbol": "safeDiagnostic",
+          "passed": true,
+          "seconds": 0.09338499998557381,
+          "symbols": [
+            "safeDiagnostic",
+            "copyDiagnostic",
+            "copySmallBuffer",
+            ""
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "safeRead implementation",
+          "symbol": "safeRead",
+          "expect_symbol": "safeRead",
+          "passed": true,
+          "seconds": 0.08888589998241514,
+          "symbols": [
+            "safeRead",
+            "uncheckedRead",
+            "safeSessionFile",
+            "leakingSessionFile"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "uninitializedCounter implementation",
+          "symbol": "uninitializedCounter",
+          "expect_symbol": "uninitializedCounter",
+          "passed": true,
+          "seconds": 0.08020460000261664,
+          "symbols": [
+            "uninitializedCounter",
+            "safeCounter",
+            "boundaryRead",
+            "safeBoundaryRead"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "leakingSessionFile implementation",
+          "symbol": "leakingSessionFile",
+          "expect_symbol": "leakingSessionFile",
+          "passed": true,
+          "seconds": 0.09748840000247583,
+          "symbols": [
+            "leakingSessionFile",
+            "safeSessionFile",
+            "uncheckedRead",
+            "safeRead"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "activateSession implementation",
+          "symbol": "activateSession",
+          "expect_symbol": "activateSession",
+          "passed": true,
+          "seconds": 0.07760459999553859,
+          "symbols": [
+            "activateSession",
+            "",
+            "safeActivateSession",
+            "safeSessionFile"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "safeBoundaryRead implementation",
+          "symbol": "safeBoundaryRead",
+          "expect_symbol": "safeBoundaryRead",
+          "passed": true,
+          "seconds": 0.0922707999998238,
+          "symbols": [
+            "safeBoundaryRead",
+            "boundaryRead",
+            "fixedBoundaryRead",
+            "uninitializedCounter"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "missing_function",
+          "symbol": "missing_function",
+          "expect_status": "not_found",
+          "passed": true,
+          "seconds": 0.001362200011499226,
+          "symbols": [],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "read a nullable sensor value safely",
+          "expect_symbol": "safeSensorValue",
+          "passed": true,
+          "seconds": 0.06185060000279918,
+          "symbols": [
+            "",
+            "safeSensorValue",
+            "readSensorValue"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "copy a diagnostic string checking destination capacity",
+          "expect_symbol": "safeDiagnostic",
+          "passed": true,
+          "seconds": 0.06168499999330379,
+          "symbols": [
+            "copyDiagnostic",
+            "safeDiagnostic",
+            "copySmallBuffer"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "close a file after reading a session resource",
+          "expect_symbol": "safeSessionFile",
+          "passed": false,
+          "seconds": 0.060404299991205335,
+          "symbols": [
+            "uncheckedRead",
+            "leakingSessionFile",
+            "safeRead"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "avoid reading past the end of a samples array",
+          "expect_symbol": "safeBoundaryRead",
+          "passed": true,
+          "seconds": 0.06461009997292422,
+          "symbols": [
+            "fixedBoundaryRead",
+            "boundaryRead",
+            "safeBoundaryRead"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "change an open session to active",
+          "expect_symbol": "safeActivateSession",
+          "passed": true,
+          "seconds": 0.061464899976272136,
+          "symbols": [
+            "activateSession",
+            "safeActivateSession",
+            ""
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "validate nullable pointers before dereference",
+          "expect_rule": "PTR-001",
+          "passed": true,
+          "seconds": 0.0627634999982547,
+          "symbols": [
+            "definiteNull",
+            "injectedNull",
+            "safeSensorValue"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "check array index boundary and string copy capacity",
+          "expect_rule": "BND-001",
+          "passed": true,
+          "seconds": 0.07043150000390597,
+          "symbols": [
+            "safeDiagnostic",
+            "safeBoundaryRead",
+            "copySmallBuffer"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "release file resources on every exit path",
+          "expect_rule": "RES-001",
+          "passed": true,
+          "seconds": 0.06525700000929646,
+          "symbols": [
+            "leakingSessionFile",
+            "safeSessionFile",
+            "uncheckedRead"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "initialize local values on every path before returning",
+          "expect_rule": "INIT-001",
+          "passed": true,
+          "seconds": 0.07231240000692196,
+          "symbols": [
+            "leakingSessionFile",
+            "uninitializedVoltage",
+            "safeSessionFile"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        }
+      ],
+      "symbol_context_cases": [
+        {
+          "file": "src/brake_control.cpp",
+          "function": "readActivePressure",
+          "expected_calls": [
+            "calculatePressure",
+            "readSensor"
+          ],
+          "found": [
+            "calculatePressure",
+            "",
+            "readSensor"
+          ],
+          "hits": 2,
+          "total": 2
+        }
+      ],
+      "exact_target_recall": 1.0,
+      "relevant_top_k": 0.8888888888888888,
+      "deterministic_symbol_context_recall": 1.0,
+      "mean_retrieval_seconds": 0.07237809999933234,
+      "duplicates": 0,
+      "stale": 0
+    },
+    {
+      "mode": "HYBRID_2_1",
+      "ranking": {
+        "lexical_weight": 2,
+        "vector_weight": 1,
+        "rrf_constant": 20
+      },
+      "cases": [
+        {
+          "query": "calculatePressure implementation",
+          "symbol": "calculatePressure",
+          "expect_symbol": "calculatePressure",
+          "passed": true,
+          "seconds": 0.08345470001222566,
+          "symbols": [
+            "calculatePressure",
+            "",
+            "",
+            "safePressure"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "readSensor implementation",
+          "symbol": "readSensor",
+          "expect_symbol": "readSensor",
+          "passed": true,
+          "seconds": 0.08325649998732843,
+          "symbols": [
+            "readSensor",
+            "",
+            "",
+            "sensorConnected"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "safePressure implementation",
+          "symbol": "safePressure",
+          "expect_symbol": "safePressure",
+          "passed": true,
+          "seconds": 0.07956459998968057,
+          "symbols": [
+            "safePressure",
+            "",
+            "",
+            "calculatePressure"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "clampPressure implementation",
+          "symbol": "clampPressure",
+          "expect_symbol": "clampPressure",
+          "passed": true,
+          "seconds": 0.07414620000054128,
+          "symbols": [
+            "clampPressure",
+            "",
+            "safePressure",
+            "calculatePressure"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "safeDiagnostic implementation",
+          "symbol": "safeDiagnostic",
+          "expect_symbol": "safeDiagnostic",
+          "passed": true,
+          "seconds": 0.10373029997572303,
+          "symbols": [
+            "safeDiagnostic",
+            "copyDiagnostic",
+            "copySmallBuffer",
+            ""
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "safeRead implementation",
+          "symbol": "safeRead",
+          "expect_symbol": "safeRead",
+          "passed": true,
+          "seconds": 0.09129330000723712,
+          "symbols": [
+            "safeRead",
+            "uncheckedRead",
+            "leakingSessionFile",
+            "safeSessionFile"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "uninitializedCounter implementation",
+          "symbol": "uninitializedCounter",
+          "expect_symbol": "uninitializedCounter",
+          "passed": true,
+          "seconds": 0.07533469999907538,
+          "symbols": [
+            "uninitializedCounter",
+            "safeCounter",
+            "boundaryRead",
+            "safeBoundaryRead"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "leakingSessionFile implementation",
+          "symbol": "leakingSessionFile",
+          "expect_symbol": "leakingSessionFile",
+          "passed": true,
+          "seconds": 0.09842910000588745,
+          "symbols": [
+            "leakingSessionFile",
+            "safeSessionFile",
+            "uncheckedRead",
+            "safeRead"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "activateSession implementation",
+          "symbol": "activateSession",
+          "expect_symbol": "activateSession",
+          "passed": true,
+          "seconds": 0.07919659998151474,
+          "symbols": [
+            "activateSession",
+            "",
+            "safeActivateSession",
+            "safeSessionFile"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "safeBoundaryRead implementation",
+          "symbol": "safeBoundaryRead",
+          "expect_symbol": "safeBoundaryRead",
+          "passed": true,
+          "seconds": 0.10535569998319261,
+          "symbols": [
+            "safeBoundaryRead",
+            "boundaryRead",
+            "fixedBoundaryRead",
+            "uninitializedCounter"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "missing_function",
+          "symbol": "missing_function",
+          "expect_status": "not_found",
+          "passed": true,
+          "seconds": 0.0021773999906145036,
+          "symbols": [],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "read a nullable sensor value safely",
+          "expect_symbol": "safeSensorValue",
+          "passed": true,
+          "seconds": 0.07123209998826496,
+          "symbols": [
+            "",
+            "safeSensorValue",
+            "readSensorValue"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "copy a diagnostic string checking destination capacity",
+          "expect_symbol": "safeDiagnostic",
+          "passed": true,
+          "seconds": 0.061426299973390996,
+          "symbols": [
+            "safeDiagnostic",
+            "copyDiagnostic",
+            "copySmallBuffer"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "close a file after reading a session resource",
+          "expect_symbol": "safeSessionFile",
+          "passed": false,
+          "seconds": 0.0663936999917496,
+          "symbols": [
+            "uncheckedRead",
+            "safeRead",
+            "leakingSessionFile"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "avoid reading past the end of a samples array",
+          "expect_symbol": "safeBoundaryRead",
+          "passed": true,
+          "seconds": 0.07180229999357834,
+          "symbols": [
+            "fixedBoundaryRead",
+            "boundaryRead",
+            "safeBoundaryRead"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "change an open session to active",
+          "expect_symbol": "safeActivateSession",
+          "passed": true,
+          "seconds": 0.060202699998626485,
+          "symbols": [
+            "activateSession",
+            "safeActivateSession",
+            ""
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "validate nullable pointers before dereference",
+          "expect_rule": "PTR-001",
+          "passed": true,
+          "seconds": 0.05771749999257736,
+          "symbols": [
+            "definiteNull",
+            "injectedNull",
+            "safeSensorValue"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "check array index boundary and string copy capacity",
+          "expect_rule": "BND-001",
+          "passed": true,
+          "seconds": 0.06887059999280609,
+          "symbols": [
+            "safeDiagnostic",
+            "safeBoundaryRead",
+            "copySmallBuffer"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "release file resources on every exit path",
+          "expect_rule": "RES-001",
+          "passed": true,
+          "seconds": 0.07057670000358485,
+          "symbols": [
+            "leakingSessionFile",
+            "safeSessionFile",
+            "uncheckedRead"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "initialize local values on every path before returning",
+          "expect_rule": "INIT-001",
+          "passed": true,
+          "seconds": 0.07454599998891354,
+          "symbols": [
+            "leakingSessionFile",
+            "safeSessionFile",
+            "uninitializedVoltage"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        }
+      ],
+      "symbol_context_cases": [
+        {
+          "file": "src/brake_control.cpp",
+          "function": "readActivePressure",
+          "expected_calls": [
+            "calculatePressure",
+            "readSensor"
+          ],
+          "found": [
+            "calculatePressure",
+            "readSensor",
+            ""
+          ],
+          "hits": 2,
+          "total": 2
+        }
+      ],
+      "exact_target_recall": 1.0,
+      "relevant_top_k": 0.8888888888888888,
+      "deterministic_symbol_context_recall": 1.0,
+      "mean_retrieval_seconds": 0.07393534999282565,
+      "duplicates": 0,
+      "stale": 0
+    },
+    {
+      "mode": "HYBRID_3_1",
+      "ranking": {
+        "lexical_weight": 3,
+        "vector_weight": 1,
+        "rrf_constant": 20
+      },
+      "cases": [
+        {
+          "query": "calculatePressure implementation",
+          "symbol": "calculatePressure",
+          "expect_symbol": "calculatePressure",
+          "passed": true,
+          "seconds": 0.07714100001612678,
+          "symbols": [
+            "calculatePressure",
+            "",
+            "",
+            "safePressure"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "readSensor implementation",
+          "symbol": "readSensor",
+          "expect_symbol": "readSensor",
+          "passed": true,
+          "seconds": 0.0928317999932915,
+          "symbols": [
+            "readSensor",
+            "",
+            "",
+            "sensorConnected"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "safePressure implementation",
+          "symbol": "safePressure",
+          "expect_symbol": "safePressure",
+          "passed": true,
+          "seconds": 0.10061349999159575,
+          "symbols": [
+            "safePressure",
+            "",
+            "",
+            "calculatePressure"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "clampPressure implementation",
+          "symbol": "clampPressure",
+          "expect_symbol": "clampPressure",
+          "passed": true,
+          "seconds": 0.08282010001130402,
+          "symbols": [
+            "clampPressure",
+            "",
+            "calculatePressure",
+            "safePressure"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "safeDiagnostic implementation",
+          "symbol": "safeDiagnostic",
+          "expect_symbol": "safeDiagnostic",
+          "passed": true,
+          "seconds": 0.08960860001388937,
+          "symbols": [
+            "safeDiagnostic",
+            "copyDiagnostic",
+            "copySmallBuffer",
+            ""
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "safeRead implementation",
+          "symbol": "safeRead",
+          "expect_symbol": "safeRead",
+          "passed": true,
+          "seconds": 0.08248780001304112,
+          "symbols": [
+            "safeRead",
+            "uncheckedRead",
+            "leakingSessionFile",
+            "safeSessionFile"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "uninitializedCounter implementation",
+          "symbol": "uninitializedCounter",
+          "expect_symbol": "uninitializedCounter",
+          "passed": true,
+          "seconds": 0.07438510001520626,
+          "symbols": [
+            "uninitializedCounter",
+            "safeCounter",
+            "boundaryRead",
+            "safeBoundaryRead"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "leakingSessionFile implementation",
+          "symbol": "leakingSessionFile",
+          "expect_symbol": "leakingSessionFile",
+          "passed": true,
+          "seconds": 0.08580860000802204,
+          "symbols": [
+            "leakingSessionFile",
+            "safeSessionFile",
+            "uncheckedRead",
+            "safeRead"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "activateSession implementation",
+          "symbol": "activateSession",
+          "expect_symbol": "activateSession",
+          "passed": true,
+          "seconds": 0.06919969999580644,
+          "symbols": [
+            "activateSession",
+            "",
+            "safeActivateSession",
+            "safeSessionFile"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "safeBoundaryRead implementation",
+          "symbol": "safeBoundaryRead",
+          "expect_symbol": "safeBoundaryRead",
+          "passed": true,
+          "seconds": 0.08607250000932254,
+          "symbols": [
+            "safeBoundaryRead",
+            "boundaryRead",
+            "fixedBoundaryRead",
+            "uninitializedCounter"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "missing_function",
+          "symbol": "missing_function",
+          "expect_status": "not_found",
+          "passed": true,
+          "seconds": 0.0016836000140756369,
+          "symbols": [],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "read a nullable sensor value safely",
+          "expect_symbol": "safeSensorValue",
+          "passed": false,
+          "seconds": 0.05489159998251125,
+          "symbols": [
+            "",
+            "safePressure",
+            "readSensorValue"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "copy a diagnostic string checking destination capacity",
+          "expect_symbol": "safeDiagnostic",
+          "passed": true,
+          "seconds": 0.05875180001021363,
+          "symbols": [
+            "safeDiagnostic",
+            "copyDiagnostic",
+            "copySmallBuffer"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "close a file after reading a session resource",
+          "expect_symbol": "safeSessionFile",
+          "passed": false,
+          "seconds": 0.07744779999484308,
+          "symbols": [
+            "uncheckedRead",
+            "safeRead",
+            "leakingSessionFile"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "avoid reading past the end of a samples array",
+          "expect_symbol": "safeBoundaryRead",
+          "passed": false,
+          "seconds": 0.08601820000330918,
+          "symbols": [
+            "fixedBoundaryRead",
+            "boundaryRead",
+            "injectedNull"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "change an open session to active",
+          "expect_symbol": "safeActivateSession",
+          "passed": true,
+          "seconds": 0.07674279998173006,
+          "symbols": [
+            "activateSession",
+            "safeActivateSession",
+            ""
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "validate nullable pointers before dereference",
+          "expect_rule": "PTR-001",
+          "passed": true,
+          "seconds": 0.07361610000953078,
+          "symbols": [
+            "definiteNull",
+            "injectedNull",
+            "safeSensorValue"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "check array index boundary and string copy capacity",
+          "expect_rule": "BND-001",
+          "passed": true,
+          "seconds": 0.07455670001218095,
+          "symbols": [
+            "safeDiagnostic",
+            "safeBoundaryRead",
+            "copySmallBuffer"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "release file resources on every exit path",
+          "expect_rule": "RES-001",
+          "passed": true,
+          "seconds": 0.06620890001067892,
+          "symbols": [
+            "leakingSessionFile",
+            "safeSessionFile",
+            "uncheckedRead"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        },
+        {
+          "query": "initialize local values on every path before returning",
+          "expect_rule": "INIT-001",
+          "passed": true,
+          "seconds": 0.06182629999238998,
+          "symbols": [
+            "leakingSessionFile",
+            "safeSessionFile",
+            "uninitializedVoltage"
+          ],
+          "duplicates": 0,
+          "stale": 0
+        }
+      ],
+      "symbol_context_cases": [
+        {
+          "file": "src/brake_control.cpp",
+          "function": "readActivePressure",
+          "expected_calls": [
+            "calculatePressure",
+            "readSensor"
+          ],
+          "found": [
+            "calculatePressure",
+            "readSensor",
+            ""
+          ],
+          "hits": 2,
+          "total": 2
+        }
+      ],
+      "exact_target_recall": 1.0,
+      "relevant_top_k": 0.6666666666666666,
+      "deterministic_symbol_context_recall": 1.0,
+      "mean_retrieval_seconds": 0.07363562500395346,
+      "duplicates": 0,
+      "stale": 0
+    }
+  ],
+  "indexing": {
+    "cold": {
+      "repository": "repo",
+      "root": "D:\\TataTech\\.local\\code-retrieval-73km41vw\\repo",
+      "files_discovered": 8,
+      "files_accepted": 7,
+      "files_skipped": 1,
+      "skipped": [
+        {
+          "file": "README.md",
+          "reason": "unsupported_or_secret_extension"
+        }
+      ],
+      "failures": [],
+      "scanner_status": "ok",
+      "snapshot": "d99078ee5a5f6811033e081500c0dd39b5995598dc78e17dd82fd08c18f6c3c2",
+      "chunks": 38,
+      "parser_status": {
+        "include/brake_control.h": "ok",
+        "include/sensor.h": "ok",
+        "src/brake_control.cpp": "ok",
+        "src/diagnostics.cpp": "ok",
+        "src/review_cases.cpp": "ok",
+        "src/sensor.cpp": "ok",
+        "src/session_manager.cpp": "ok"
+      },
+      "indexed_at": "2026-10-04T11:30:34.242609+00:00",
+      "scan_seconds": 0.015,
+      "index_seconds": 8.601,
+      "index_status": "ok",
+      "warnings": [],
+      "ast_seconds": 0.0106,
+      "embedding_stats": {
+        "computed": 44,
+        "reused": 0,
+        "seconds": 8.1127
+      }
+    },
+    "unchanged": {
+      "repository": "repo",
+      "root": "D:\\TataTech\\.local\\code-retrieval-73km41vw\\repo",
+      "files_discovered": 8,
+      "files_accepted": 7,
+      "files_skipped": 1,
+      "skipped": [
+        {
+          "file": "README.md",
+          "reason": "unsupported_or_secret_extension"
+        }
+      ],
+      "failures": [],
+      "scanner_status": "ok",
+      "snapshot": "d99078ee5a5f6811033e081500c0dd39b5995598dc78e17dd82fd08c18f6c3c2",
+      "chunks": 38,
+      "index_status": "unchanged",
+      "parser_status": {
+        "include/brake_control.h": "ok",
+        "include/sensor.h": "ok",
+        "src/brake_control.cpp": "ok",
+        "src/diagnostics.cpp": "ok",
+        "src/review_cases.cpp": "ok",
+        "src/sensor.cpp": "ok",
+        "src/session_manager.cpp": "ok"
+      },
+      "indexed_at": "2026-10-04T11:30:34.259524+00:00",
+      "scan_seconds": 0.007,
+      "index_seconds": 0.009,
+      "embedding_stats": {
+        "computed": 0,
+        "reused": 44,
+        "seconds": 0
+      },
+      "ast_seconds": 0
+    },
+    "changed": {
+      "repository": "repo",
+      "root": "D:\\TataTech\\.local\\code-retrieval-73km41vw\\repo",
+      "files_discovered": 8,
+      "files_accepted": 7,
+      "files_skipped": 1,
+      "skipped": [
+        {
+          "file": "README.md",
+          "reason": "unsupported_or_secret_extension"
+        }
+      ],
+      "failures": [],
+      "scanner_status": "ok",
+      "snapshot": "866faf20f381f0cbb0cb3369c2b85fc87dec7c7bd0f3f45cf9253e115677b3f1",
+      "chunks": 38,
+      "parser_status": {
+        "include/brake_control.h": "ok",
+        "include/sensor.h": "ok",
+        "src/brake_control.cpp": "ok",
+        "src/diagnostics.cpp": "ok",
+        "src/review_cases.cpp": "ok",
+        "src/sensor.cpp": "ok",
+        "src/session_manager.cpp": "ok"
+      },
+      "indexed_at": "2026-10-04T11:30:40.516728+00:00",
+      "scan_seconds": 0.012,
+      "index_seconds": 0.496,
+      "index_status": "ok",
+      "warnings": [],
+      "ast_seconds": 0.0044,
+      "embedding_stats": {
+        "computed": 5,
+        "reused": 39,
+        "seconds": 0.313
+      }
+    },
+    "deleted": {
+      "repository": "repo",
+      "root": "D:\\TataTech\\.local\\code-retrieval-73km41vw\\repo",
+      "files_discovered": 7,
+      "files_accepted": 6,
+      "files_skipped": 1,
+      "skipped": [
+        {
+          "file": "README.md",
+          "reason": "unsupported_or_secret_extension"
+        }
+      ],
+      "failures": [],
+      "scanner_status": "ok",
+      "snapshot": "165b603f7c40e837d716bcd779b669feb2552879edc0af95fcf7590b54e69bf7",
+      "chunks": 31,
+      "parser_status": {
+        "include/brake_control.h": "ok",
+        "include/sensor.h": "ok",
+        "src/brake_control.cpp": "ok",
+        "src/review_cases.cpp": "ok",
+        "src/sensor.cpp": "ok",
+        "src/session_manager.cpp": "ok"
+      },
+      "indexed_at": "2026-10-04T11:30:40.716251+00:00",
+      "scan_seconds": 0.01,
+      "index_seconds": 0.172,
+      "index_status": "ok",
+      "warnings": [],
+      "ast_seconds": 0.0033,
+      "embedding_stats": {
+        "computed": 0,
+        "reused": 37,
+        "seconds": 0.0155
+      }
+    }
+  },
+  "limitations": [
+    "Vector-related control retains exact target selection, as required; it is not vector-only target selection.",
+    "Syntactic direct-call tests do not prove overload binding or whole-program resolution."
+  ],
+  "selected_ranking": {
+    "lexical_weight": 2,
+    "vector_weight": 1,
+    "rrf_constant": 20
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "recorded_at": "2026-10-04T07:28:50.330565+00:00",
+  "regression": {
+    "command": ".venv/Scripts/python.exe -m unittest discover -s tests -v",
+    "tests": 106,
+    "seconds": 24.812,
+    "status": "PASSED",
+    "mocked_analysis_separate_from_live_demonstrations": true
+  },
+  "authenticated_ui": {
+    "signed_in": true,
+    "Overview": true,
+    "Repository Review": true,
+    "Analyze Source": true,
+    "Diagnostics": true,
+    "Findings": true,
+    "History & Reports": true,
+    "sign_out_clears_auth": true
+  },
+  "deployment": {
+    "captured_preview": true,
+    "repository_report_persisted_after_restart": true,
+    "summary_loaded": true,
+    "operational_decisions_unchanged": true,
+    "preview_invalid_credential_denied": true,
+    "qa_persisted_after_restart": true,
+    "diagnostics_persisted_after_restart": true,
+    "export_credential_absent": true
+  },
+  "live_capabilities": {
+    "qa": {
+      "run_id": "3da9969d-ebbd-4d4f-bedf-eaebda99774d",
+      "outcome": "ANSWERED",
+      "claims": 2,
+      "seconds": 4.766,
+      "persisted_report": true
+    },
+    "diagnostics": {
+      "run_id": "e704349b-fb04-4692-82ad-8dcfada2cdaa",
+      "outcome": "ANSWERED",
+      "claims": 3,
+      "seconds": 8.616,
+      "persisted_report": true
+    },
+    "repository_html_generated": true
+  },
+  "repository_demonstration": "docs/evaluation/polish-live-results.json",
+  "preserved_sha256_checks": {
+    "app/llm/prompts.py": true,
+    "app/llm/context.py": true,
+    "rules/coding_rules.md": true,
+    "tests/fixtures/expected_defects.json": true,
+    "demo_ecu/README.md": true,
+    "demo_ecu/include/brake_control.h": true,
+    "demo_ecu/include/sensor.h": true,
+    "demo_ecu/src/brake_control.cpp": true,
+    "demo_ecu/src/diagnostics.cpp": true,
+    "demo_ecu/src/review_cases.cpp": true,
+    "demo_ecu/src/sensor.cpp": true,
+    "demo_ecu/src/session_manager.cpp": true,
+    "docs/evaluation/case-study4-alignment-verification.json": true,
+    "docs/evaluation/checkpoint2-baseline.json": true,
+    "docs/evaluation/checkpoint3-results.json": true,
+    "docs/evaluation/repository-alignment-results.json": true,
+    "docs/evaluation/repository-alignment-v15.json": true
+  },
+  "visual_inspection": {
+    "desktop": "1280x720",
+    "narrow": "760x900",
+    "application_screenshots": "Controlled visual fixture using synthetic captured demo data, disconnected from operational writes; actual authenticated API verified separately with AppTest.",
+    "inspected": [
+      "navigation",
+      "overview",
+      "captured source",
+      "completed repository coverage",
+      "finding detail",
+      "readable editor",
+      "local log upload",
+      "printable HTML"
+    ],
+    "running_progress_verified_by": "Streamlit AppTest with controlled running-job response",
+    "physical_print_not_tested": true,
+    "viewport_override_reset": true,
+    "screenshots": [
+      "docs/screenshots/polish-diagnostics.jpg",
+      "docs/screenshots/polish-finding-edit.jpg",
+      "docs/screenshots/polish-narrow.jpg",
+      "docs/screenshots/polish-overview.jpg",
+      "docs/screenshots/polish-report.jpg",
+      "docs/screenshots/polish-repository-review.jpg",
+      "docs/screenshots/polish-source.jpg"
+    ],
+    "screenshot_refinements": "Import/source captures predate final help caption and hidden short-preview pager; documented in polish-results.md.",
+    "temporary_preview_servers_stopped": true
+  },
+  "changed_files": [
+    "app/main.py",
+    "ui/client.py",
+    "ui/streamlit_app.py",
+    "scripts/demo_repository_review.py",
+    "tests/test_delivery.py",
+    "tests/test_repository_review.py",
+    "README.md",
+    "PROJECT_PLAN.md",
+    "docs/case-study4-presentation.md"
+  ],
+  "added_files": [
+    "ui/components.py",
+    "ui/presentation.py",
+    "ui/reports.py",
+    "tests/test_polish.py",
+    "docs/evaluation/polish-live-results.json",
+    "docs/demonstrations/polish-qa-result.json",
+    "docs/demonstrations/polish-diagnostics-result.json",
+    "docs/evaluation/polish-verification.json",
+    "docs/polish-results.md",
+    "docs/screenshots/polish-diagnostics.jpg",
+    "docs/screenshots/polish-finding-edit.jpg",
+    "docs/screenshots/polish-narrow.jpg",
+    "docs/screenshots/polish-overview.jpg",
+    "docs/screenshots/polish-report.jpg",
+    "docs/screenshots/polish-repository-review.jpg",
+    "docs/screenshots/polish-source.jpg"
+  ],
+  "limitations": [
+    "Fixed synthetic corpus results are not universal model accuracy.",
+    "calculatePressure, readActivePressure, activateSession, useFreedSample and doubleFreeSample remain misses; readSensor remains a safe-function false positive.",
+    "Cppcheck missingIncludeSystem degraded coverage persists.",
+    "Diagnostic schema has cited claims but no separate structured remediation field; no new model/schema behavior added.",
+    "History/candidate lists remain bounded to latest 100; summaries are NOT_CHECKED until full report validation.",
+    "Unsaved reviewer form drafts are not retained when pages/editor modes change.",
+    "Browser print pagination depends on the browser; physical printing not performed."
+  ],
+  "scope_preserved": true,
+  "models_prompts_context_rules_labels_source_unchanged": true,
+  "operational_human_decisions_submitted": 0
+}

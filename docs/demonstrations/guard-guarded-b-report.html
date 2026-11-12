@@ -1,0 +1,238 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'"><title>Secure code review report</title><style>body{font:15px system-ui,sans-serif;max-width:1050px;margin:30px auto;padding:0 20px;color:#17202a}h1,h2,h3{color:#163c66}table{border-collapse:collapse;width:100%;margin:12px 0}th,td{border:1px solid #c9d2dc;padding:8px;text-align:left;vertical-align:top;overflow-wrap:anywhere}th{width:28%;background:#edf2f7}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f4f8;padding:12px}article,section{border-top:2px solid #c9d2dc;margin-top:25px;padding-top:12px}@media print{body{margin:0;max-width:none;font-size:11px}h2,h3,h4{break-after:avoid}tr{break-inside:avoid}}</style></head><body><h1>Secure Code Debugging &amp; Review</h1><p>Local/private report. Candidate findings require human review. Evidence support is not a probability of correctness. Citation checks establish provenance, not diagnosis correctness.</p><p>Original/demo engineering guidance only; no formal MISRA compliance. Performance observations are static/source-level, not runtime profiling.</p><p>This review demonstrates MISRA-oriented and internal coding-standard assistance. Formal MISRA compliance requires approved/licensed standards, qualified tools, and engineering review.</p><p>This report describes its recorded source snapshot, which may be historical. Compare it with the active index before applying conclusions to current source.</p><section><h2>Candidates need review</h2><table><tr><th>Repository</th><td>demo_ecu</td></tr><tr><th>Snapshot</th><td>8f781c9f82d1bc827b7aff6b2d327d307d01d2ffd248fcbefcc1a4569c0d3a04</td></tr><tr><th>Mode</th><td>review_function</td></tr><tr><th>Model</th><td>qwen2.5-coder:7b</td></tr><tr><th>Model digest</th><td>dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364</td></tr><tr><th>Prompt version</th><td>case4-v16</td></tr><tr><th>Id</th><td>a66fc965-89fc-442b-8d6d-e38868138fac</td></tr></table><table><tr><th>Review time</th><td>04 Oct 2026 · 18:46 IST</td></tr><tr><th>Duration (seconds)</th><td>7.134</td></tr><tr><th>Analyzer</th><td>degraded</td></tr><tr><th>Analyzer version</th><td>Cppcheck 2.22.0</td></tr></table><h3>Coverage</h3><pre>{
+  &quot;selected_source_ranges&quot;: [
+    {
+      &quot;file&quot;: &quot;src/session_manager.cpp&quot;,
+      &quot;function&quot;: &quot;leakingSessionFile&quot;,
+      &quot;start_line&quot;: 5,
+      &quot;end_line&quot;: 9
+    }
+  ],
+  &quot;required_target_included&quot;: true
+}</pre><h3>Limitations</h3><p>No build configuration supplied; default C++17/C11 analysis</p><p>Analyzer finding lacks source location</p><p>Model-reported limitations are unverified interpretations; see model_limitations</p><p>Citation validity establishes provenance; human review must assess diagnosis and remediation</p><h3>Deterministic code checks</h3><p>Local syntax observations only. Original candidates and effective states are preserved; human review remains required.</p><pre>[
+  {
+    &quot;original_candidate&quot;: {
+      &quot;category&quot;: &quot;resource&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;file&quot;: &quot;src/session_manager.cpp&quot;,
+      &quot;function&quot;: &quot;leakingSessionFile&quot;,
+      &quot;start_line&quot;: 6,
+      &quot;end_line&quot;: 9,
+      &quot;issue&quot;: &quot;Resource leak&quot;,
+      &quot;explanation&quot;: &quot;The function `leakingSessionFile` opens a file but does not close it before returning. This leads to a resource leak.&quot;,
+      &quot;evidence&quot;: [
+        {
+          &quot;id&quot;: &quot;S1&quot;,
+          &quot;start_line&quot;: 6,
+          &quot;end_line&quot;: 6,
+          &quot;quote&quot;: &quot;    std::FILE* file = std::fopen(path, \&quot;r\&quot;);&quot;
+        },
+        {
+          &quot;id&quot;: &quot;S1&quot;,
+          &quot;start_line&quot;: 7,
+          &quot;end_line&quot;: 7,
+          &quot;quote&quot;: &quot;    if (!file) return;&quot;
+        },
+        {
+          &quot;id&quot;: &quot;S1&quot;,
+          &quot;start_line&quot;: 8,
+          &quot;end_line&quot;: 8,
+          &quot;quote&quot;: &quot;    std::fgetc(file);&quot;
+        },
+        {
+          &quot;id&quot;: &quot;A58253d0144f516b7&quot;,
+          &quot;start_line&quot;: 9,
+          &quot;end_line&quot;: 9,
+          &quot;quote&quot;: &quot;Resource leak: file&quot;
+        }
+      ],
+      &quot;applicable_rules&quot;: [
+        &quot;RES-001&quot;
+      ],
+      &quot;suggested_fix&quot;: &quot;Add `std::fclose(file);` before the function returns.&quot;,
+      &quot;root_cause&quot;: &quot;&quot;,
+      &quot;security_implication&quot;: &quot;&quot;,
+      &quot;status&quot;: &quot;candidate&quot;
+    },
+    &quot;ast_guard_result&quot;: {
+      &quot;version&quot;: &quot;local-ast-guard-v1&quot;,
+      &quot;repository&quot;: &quot;demo_ecu&quot;,
+      &quot;snapshot&quot;: &quot;8f781c9f82d1bc827b7aff6b2d327d307d01d2ffd248fcbefcc1a4569c0d3a04&quot;,
+      &quot;file&quot;: &quot;src/session_manager.cpp&quot;,
+      &quot;function&quot;: &quot;leakingSessionFile&quot;,
+      &quot;guard_status&quot;: &quot;NOT_APPLICABLE&quot;,
+      &quot;checks&quot;: [],
+      &quot;signature&quot;: &quot;void leakingSessionFile(const char* path)&quot;,
+      &quot;parser_version&quot;: &quot;0.25.2&quot;,
+      &quot;schema_version&quot;: &quot;tree-sitter-facts-v1&quot;,
+      &quot;seconds&quot;: 0.002883
+    },
+    &quot;effective_candidate&quot;: {
+      &quot;category&quot;: &quot;resource&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;file&quot;: &quot;src/session_manager.cpp&quot;,
+      &quot;function&quot;: &quot;leakingSessionFile&quot;,
+      &quot;start_line&quot;: 6,
+      &quot;end_line&quot;: 9,
+      &quot;issue&quot;: &quot;Resource leak&quot;,
+      &quot;explanation&quot;: &quot;The function `leakingSessionFile` opens a file but does not close it before returning. This leads to a resource leak.&quot;,
+      &quot;evidence&quot;: [
+        {
+          &quot;id&quot;: &quot;S1&quot;,
+          &quot;start_line&quot;: 6,
+          &quot;end_line&quot;: 6,
+          &quot;quote&quot;: &quot;    std::FILE* file = std::fopen(path, \&quot;r\&quot;);&quot;
+        },
+        {
+          &quot;id&quot;: &quot;S1&quot;,
+          &quot;start_line&quot;: 7,
+          &quot;end_line&quot;: 7,
+          &quot;quote&quot;: &quot;    if (!file) return;&quot;
+        },
+        {
+          &quot;id&quot;: &quot;S1&quot;,
+          &quot;start_line&quot;: 8,
+          &quot;end_line&quot;: 8,
+          &quot;quote&quot;: &quot;    std::fgetc(file);&quot;
+        },
+        {
+          &quot;id&quot;: &quot;A58253d0144f516b7&quot;,
+          &quot;start_line&quot;: 9,
+          &quot;end_line&quot;: 9,
+          &quot;quote&quot;: &quot;Resource leak: file&quot;
+        }
+      ],
+      &quot;applicable_rules&quot;: [
+        &quot;RES-001&quot;
+      ],
+      &quot;suggested_fix&quot;: &quot;Add `std::fclose(file);` before the function returns.&quot;,
+      &quot;root_cause&quot;: &quot;&quot;,
+      &quot;security_implication&quot;: &quot;&quot;,
+      &quot;status&quot;: &quot;candidate&quot;
+    },
+    &quot;effective_status&quot;: &quot;RETAINED_CANDIDATE&quot;,
+    &quot;policy&quot;: &quot;strict&quot;
+  },
+  {
+    &quot;original_candidate&quot;: {
+      &quot;category&quot;: &quot;null-pointer&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;file&quot;: &quot;src/session_manager.cpp&quot;,
+      &quot;function&quot;: &quot;leakingSessionFile&quot;,
+      &quot;start_line&quot;: 8,
+      &quot;end_line&quot;: 8,
+      &quot;issue&quot;: &quot;Potential null pointer dereference&quot;,
+      &quot;explanation&quot;: &quot;The function `leakingSessionFile` does not check if `file` is `nullptr` before dereferencing it with `std::fgetc(file);`. This could lead to undefined behavior if `file` is `nullptr`.&quot;,
+      &quot;evidence&quot;: [
+        {
+          &quot;id&quot;: &quot;S1&quot;,
+          &quot;start_line&quot;: 8,
+          &quot;end_line&quot;: 8,
+          &quot;quote&quot;: &quot;    std::fgetc(file);&quot;
+        }
+      ],
+      &quot;applicable_rules&quot;: [
+        &quot;PTR-001&quot;
+      ],
+      &quot;suggested_fix&quot;: &quot;Add a check for `if (file) { std::fgetc(file); }` before dereferencing `file`.&quot;,
+      &quot;root_cause&quot;: &quot;&quot;,
+      &quot;security_implication&quot;: &quot;&quot;,
+      &quot;status&quot;: &quot;candidate&quot;
+    },
+    &quot;ast_guard_result&quot;: {
+      &quot;version&quot;: &quot;local-ast-guard-v1&quot;,
+      &quot;repository&quot;: &quot;demo_ecu&quot;,
+      &quot;snapshot&quot;: &quot;8f781c9f82d1bc827b7aff6b2d327d307d01d2ffd248fcbefcc1a4569c0d3a04&quot;,
+      &quot;file&quot;: &quot;src/session_manager.cpp&quot;,
+      &quot;function&quot;: &quot;leakingSessionFile&quot;,
+      &quot;guard_status&quot;: &quot;POTENTIAL_CONTRADICTION&quot;,
+      &quot;checks&quot;: [
+        {
+          &quot;check_type&quot;: &quot;VISIBLE_CONDITION&quot;,
+          &quot;symbol&quot;: &quot;file&quot;,
+          &quot;source_lines&quot;: [
+            {
+              &quot;start_line&quot;: 7,
+              &quot;end_line&quot;: 7,
+              &quot;quote&quot;: &quot;(!file)&quot;
+            }
+          ],
+          &quot;observation&quot;: &quot;An explicit local condition contains the exact referenced expression.&quot;,
+          &quot;relation_to_candidate&quot;: &quot;POTENTIAL_CONTRADICTION&quot;,
+          &quot;confidence&quot;: &quot;DETERMINISTIC_PATTERN&quot;,
+          &quot;strict_eligible&quot;: false,
+          &quot;suggested_category_family&quot;: null
+        },
+        {
+          &quot;check_type&quot;: &quot;VISIBLE_CONDITION&quot;,
+          &quot;symbol&quot;: &quot;file&quot;,
+          &quot;source_lines&quot;: [
+            {
+              &quot;start_line&quot;: 7,
+              &quot;end_line&quot;: 7,
+              &quot;quote&quot;: &quot;(!file)&quot;
+            }
+          ],
+          &quot;observation&quot;: &quot;An explicit local condition contains the exact referenced expression.&quot;,
+          &quot;relation_to_candidate&quot;: &quot;POTENTIAL_CONTRADICTION&quot;,
+          &quot;confidence&quot;: &quot;DETERMINISTIC_PATTERN&quot;,
+          &quot;strict_eligible&quot;: false,
+          &quot;suggested_category_family&quot;: null
+        }
+      ],
+      &quot;signature&quot;: &quot;void leakingSessionFile(const char* path)&quot;,
+      &quot;parser_version&quot;: &quot;0.25.2&quot;,
+      &quot;schema_version&quot;: &quot;tree-sitter-facts-v1&quot;,
+      &quot;seconds&quot;: 0.001566
+    },
+    &quot;effective_candidate&quot;: {
+      &quot;category&quot;: &quot;null-pointer&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;file&quot;: &quot;src/session_manager.cpp&quot;,
+      &quot;function&quot;: &quot;leakingSessionFile&quot;,
+      &quot;start_line&quot;: 8,
+      &quot;end_line&quot;: 8,
+      &quot;issue&quot;: &quot;Potential null pointer dereference&quot;,
+      &quot;explanation&quot;: &quot;The function `leakingSessionFile` does not check if `file` is `nullptr` before dereferencing it with `std::fgetc(file);`. This could lead to undefined behavior if `file` is `nullptr`.&quot;,
+      &quot;evidence&quot;: [
+        {
+          &quot;id&quot;: &quot;S1&quot;,
+          &quot;start_line&quot;: 8,
+          &quot;end_line&quot;: 8,
+          &quot;quote&quot;: &quot;    std::fgetc(file);&quot;
+        }
+      ],
+      &quot;applicable_rules&quot;: [
+        &quot;PTR-001&quot;
+      ],
+      &quot;suggested_fix&quot;: &quot;Add a check for `if (file) { std::fgetc(file); }` before dereferencing `file`.&quot;,
+      &quot;root_cause&quot;: &quot;&quot;,
+      &quot;security_implication&quot;: &quot;&quot;,
+      &quot;status&quot;: &quot;candidate&quot;
+    },
+    &quot;effective_status&quot;: &quot;RETAINED_CANDIDATE&quot;,
+    &quot;policy&quot;: &quot;strict&quot;
+  }
+]</pre><p>Model interpretation, unverified: No build configuration supplied; default C++17/C11 analysis</p><p>Model interpretation, unverified: Analyzer finding lacks source location</p><article><h3>Resource leak</h3><table><tr><th>Category</th><td>resource</td></tr><tr><th>Severity</th><td>high</td></tr><tr><th>File</th><td>src/session_manager.cpp</td></tr><tr><th>Function</th><td>leakingSessionFile</td></tr><tr><th>Start line</th><td>6</td></tr><tr><th>End line</th><td>9</td></tr></table><table><tr><th>Reviewer decision</th><td>PENDING</td></tr><tr><th>Revision</th><td>0</td></tr><tr><th>Evidence support</th><td>STRONG</td></tr><tr><th>Provenance check</th><td>VALID_PROVENANCE</td></tr><tr><th>Finding ID</th><td>0d64907d-ccc7-4efc-b6d4-b1c196958ed8</td></tr></table><h4>Explanation</h4><p>The function `leakingSessionFile` opens a file but does not close it before returning. This leads to a resource leak.</p><h4>Suggested remediation</h4><p>Add `std::fclose(file);` before the function returns.</p><h4>Applicable original/demo rules</h4><p>RES-001</p><h4>Citations</h4><p>S1 · lines 6–6</p><pre>    std::FILE* file = std::fopen(path, &quot;r&quot;);</pre><p>S1 · lines 7–7</p><pre>    if (!file) return;</pre><p>S1 · lines 8–8</p><pre>    std::fgetc(file);</pre><p>A58253d0144f516b7 · lines 9–9</p><pre>Resource leak: file</pre></article><article><h3>Potential null pointer dereference</h3><table><tr><th>Category</th><td>null-pointer</td></tr><tr><th>Severity</th><td>medium</td></tr><tr><th>File</th><td>src/session_manager.cpp</td></tr><tr><th>Function</th><td>leakingSessionFile</td></tr><tr><th>Start line</th><td>8</td></tr><tr><th>End line</th><td>8</td></tr></table><table><tr><th>Reviewer decision</th><td>PENDING</td></tr><tr><th>Revision</th><td>0</td></tr><tr><th>Evidence support</th><td>SUPPORTED</td></tr><tr><th>Provenance check</th><td>VALID_PROVENANCE</td></tr><tr><th>Finding ID</th><td>e2f6a82f-e54e-437c-bf65-28e82c4e3283</td></tr></table><h4>Explanation</h4><p>The function `leakingSessionFile` does not check if `file` is `nullptr` before dereferencing it with `std::fgetc(file);`. This could lead to undefined behavior if `file` is `nullptr`.</p><h4>Suggested remediation</h4><p>Add a check for `if (file) { std::fgetc(file); }` before dereferencing `file`.</p><h4>Applicable original/demo rules</h4><p>PTR-001</p><h4>Citations</h4><p>S1 · lines 8–8</p><pre>    std::fgetc(file);</pre></article><h3>Captured evidence</h3><h4>source · S1</h4><table><tr><th>File</th><td>src/session_manager.cpp</td></tr><tr><th>Function</th><td>leakingSessionFile</td></tr><tr><th>Start line</th><td>5</td></tr><tr><th>End line</th><td>9</td></tr><tr><th>Snapshot</th><td>8f781c9f82d1bc827b7aff6b2d327d307d01d2ffd248fcbefcc1a4569c0d3a04</td></tr></table><pre>void leakingSessionFile(const char* path) {
+    std::FILE* file = std::fopen(path, &quot;r&quot;);
+    if (!file) return;
+    std::fgetc(file);
+}</pre><h4>analyzer · A58253d0144f516b7</h4><table><tr><th>File</th><td>src/session_manager.cpp</td></tr><tr><th>Start line</th><td>9</td></tr><tr><th>End line</th><td>9</td></tr><tr><th>Snapshot</th><td>8f781c9f82d1bc827b7aff6b2d327d307d01d2ffd248fcbefcc1a4569c0d3a04</td></tr></table><pre>Resource leak: file</pre><h4>rule · PTR-001</h4><table><tr><th>Start line</th><td>6</td></tr><tr><th>End line</th><td>9</td></tr><tr><th>Snapshot</th><td>8f781c9f82d1bc827b7aff6b2d327d307d01d2ffd248fcbefcc1a4569c0d3a04</td></tr></table><pre>RULE PTR-001
+Title: Validate nullable pointers
+Category: null-pointer
+Check externally supplied or nullable pointers before dereferencing them.</pre><h4>rule · BND-001</h4><table><tr><th>Start line</th><td>11</td></tr><tr><th>End line</th><td>15</td></tr><tr><th>Snapshot</th><td>8f781c9f82d1bc827b7aff6b2d327d307d01d2ffd248fcbefcc1a4569c0d3a04</td></tr></table><pre>RULE BND-001
+Title: Validate array boundaries
+Category: boundary
+Read arrays only at nonnegative indices strictly below their element count.
+Ensure string copies fit the destination including the terminating byte.</pre><h4>rule · RET-001</h4><table><tr><th>Start line</th><td>17</td></tr><tr><th>End line</th><td>20</td></tr><tr><th>Snapshot</th><td>8f781c9f82d1bc827b7aff6b2d327d307d01d2ffd248fcbefcc1a4569c0d3a04</td></tr></table><pre>RULE RET-001
+Title: Check operation results
+Category: unchecked-return
+Check file and I/O return values before using data or treating an operation as successful.</pre><h4>rule · INIT-001</h4><table><tr><th>Start line</th><td>22</td></tr><tr><th>End line</th><td>25</td></tr><tr><th>Snapshot</th><td>8f781c9f82d1bc827b7aff6b2d327d307d01d2ffd248fcbefcc1a4569c0d3a04</td></tr></table><pre>RULE INIT-001
+Title: Initialize values before use
+Category: initialization
+Initialize local values on every path before reading or returning them.</pre><h4>rule · RES-001</h4><table><tr><th>Start line</th><td>27</td></tr><tr><th>End line</th><td>30</td></tr><tr><th>Snapshot</th><td>8f781c9f82d1bc827b7aff6b2d327d307d01d2ffd248fcbefcc1a4569c0d3a04</td></tr></table><pre>RULE RES-001
+Title: Release owned resources
+Category: resource
+Release an acquired file or other resource on every exit path where ownership is held.</pre><h4>rule · STATE-001</h4><table><tr><th>Start line</th><td>32</td></tr><tr><th>End line</th><td>35</td></tr><tr><th>Snapshot</th><td>8f781c9f82d1bc827b7aff6b2d327d307d01d2ffd248fcbefcc1a4569c0d3a04</td></tr></table><pre>RULE STATE-001
+Title: Validate state transitions
+Category: state
+Activate a session only after it has entered the open state.</pre></section></body></html>

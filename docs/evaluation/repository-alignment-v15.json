@@ -1,0 +1,606 @@
+{
+  "created": "2026-10-03T18:54:16.625176+00:00",
+  "repository_run_id": "4a8288fa-c0a2-4469-8e13-e72d89dd38ad",
+  "snapshot": "4489ceef577d88d9b56d83b98f7bd986f7baad4b11c81b65c1705c9c7c50b104",
+  "status": "COMPLETED",
+  "summary": {
+    "files_scanned": 8,
+    "files_indexed": 7,
+    "functions_discovered": 31,
+    "functions_reviewed": 31,
+    "candidate_findings": 20,
+    "functions_with_candidates": 17,
+    "severity": {
+      "critical": 0,
+      "high": 17,
+      "medium": 3,
+      "low": 0,
+      "information": 0
+    },
+    "category": {
+      "null-pointer": 11,
+      "boundary": 4,
+      "resource": 0,
+      "state": 0,
+      "initialization": 2,
+      "unchecked-return": 2,
+      "security": 1,
+      "performance": 0,
+      "control-flow": 0
+    },
+    "outcomes": {
+      "CANDIDATES": 17,
+      "NO_SUPPORTED_FINDING": 13,
+      "INSUFFICIENT_EVIDENCE": 0,
+      "FAILED": 1
+    },
+    "analyzer_supported": 6,
+    "ai_only_candidates": 14,
+    "evidence_support": {
+      "SUPPORTED": 13,
+      "STRONG": 6,
+      "AI-ONLY CANDIDATE": 1
+    },
+    "reviewer_dispositions": {
+      "PENDING": 20
+    },
+    "total_seconds": 151.961,
+    "mean_function_seconds": 4.872129032258065,
+    "functions_per_minute": 12.239982627121432,
+    "insufficient_evidence_rate": 0.0,
+    "failed_review_rate": 0.03225806451612903,
+    "processed_inside_approved_scope_percent": 100,
+    "debug_resolution_time": "NOT MEASURED",
+    "defect_leakage": "NOT MEASURED"
+  },
+  "coverage": {
+    "reviewed": 31,
+    "unreviewed": 0,
+    "parser_failures": []
+  },
+  "scan_seconds": 0.068,
+  "index_seconds": 0.307,
+  "source_files": [
+    "include/brake_control.h",
+    "include/sensor.h",
+    "src/brake_control.cpp",
+    "src/diagnostics.cpp",
+    "src/review_cases.cpp",
+    "src/sensor.cpp",
+    "src/session_manager.cpp"
+  ],
+  "analyzer_status": "degraded",
+  "analyzer_version": "Cppcheck 2.10",
+  "model": "qwen2.5-coder:7b",
+  "prompt_version": "case4-v15",
+  "fixed_fixture_comparison": {
+    "defective_functions": 20,
+    "safe_functions": 10,
+    "true_positives": 12,
+    "false_negatives": 8,
+    "false_positives": 1,
+    "precision_per_labeled_function": 0.9230769230769231,
+    "recall": 0.6,
+    "safe_false_positive_rate": 0.1,
+    "remaining_misses": [
+      "calculatePressure",
+      "readActivePressure",
+      "leakingSessionFile",
+      "activateSession",
+      "allocateWithoutRelease",
+      "useFreedSample",
+      "doubleFreeSample",
+      "forbiddenStateTransition"
+    ],
+    "safe_false_positives": [
+      "readSensor"
+    ]
+  },
+  "cases": [
+    {
+      "function": "readSensor",
+      "expected": {
+        "expected_defect": null,
+        "expected_file": "src/sensor.cpp",
+        "expected_range": [
+          5,
+          7
+        ],
+        "cppcheck_supported": false
+      },
+      "outcome": "CANDIDATES",
+      "correct_defect_found": false,
+      "false_positive": true
+    },
+    {
+      "function": "readSensorValue",
+      "expected": {
+        "expected_defect": "null-pointer",
+        "rule": "PTR-001",
+        "expected_file": "src/sensor.cpp",
+        "expected_range": [
+          9,
+          11
+        ],
+        "cppcheck_supported": false
+      },
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false
+    },
+    {
+      "function": "safeSensorValue",
+      "expected": {
+        "expected_defect": null,
+        "expected_file": "src/sensor.cpp",
+        "expected_range": [
+          13,
+          15
+        ],
+        "cppcheck_supported": false
+      },
+      "outcome": "NO_SUPPORTED_FINDING",
+      "correct_defect_found": false,
+      "false_positive": false
+    },
+    {
+      "function": "sensorConnected",
+      "expected": {
+        "expected_defect": null
+      },
+      "outcome": "NO_SUPPORTED_FINDING",
+      "correct_defect_found": false,
+      "false_positive": false
+    },
+    {
+      "function": "calculatePressure",
+      "expected": {
+        "expected_defect": "null-pointer",
+        "rule": "PTR-001",
+        "expected_file": "src/brake_control.cpp",
+        "expected_range": [
+          3,
+          5
+        ],
+        "cppcheck_supported": false
+      },
+      "outcome": "NO_SUPPORTED_FINDING",
+      "correct_defect_found": false,
+      "false_positive": false
+    },
+    {
+      "function": "safePressure",
+      "expected": {
+        "expected_defect": null,
+        "assumption": "sensor readings are within configured ECU pressure range",
+        "expected_file": "src/brake_control.cpp",
+        "expected_range": [
+          7,
+          10
+        ],
+        "cppcheck_supported": false
+      },
+      "outcome": "NO_SUPPORTED_FINDING",
+      "correct_defect_found": false,
+      "false_positive": false
+    },
+    {
+      "function": "clampPressure",
+      "expected": {
+        "expected_defect": null,
+        "expected_file": "src/brake_control.cpp",
+        "expected_range": [
+          12,
+          14
+        ],
+        "cppcheck_supported": false
+      },
+      "outcome": "NO_SUPPORTED_FINDING",
+      "correct_defect_found": false,
+      "false_positive": false
+    },
+    {
+      "function": "readActivePressure",
+      "expected": {
+        "expected_defect": "null-pointer",
+        "rule": "PTR-001",
+        "expected_file": "src/brake_control.cpp",
+        "expected_range": [
+          16,
+          18
+        ],
+        "cppcheck_supported": false
+      },
+      "outcome": "NO_SUPPORTED_FINDING",
+      "correct_defect_found": false,
+      "false_positive": false
+    },
+    {
+      "function": "copyDiagnostic",
+      "expected": {
+        "expected_defect": "boundary",
+        "rule": "BND-001",
+        "expected_file": "src/diagnostics.cpp",
+        "expected_range": [
+          4,
+          6
+        ],
+        "cppcheck_supported": false
+      },
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false
+    },
+    {
+      "function": "safeDiagnostic",
+      "expected": {
+        "expected_defect": null,
+        "assumption": "message is terminated, capacity is accurate, and buffers do not overlap",
+        "expected_file": "src/diagnostics.cpp",
+        "expected_range": [
+          8,
+          13
+        ],
+        "cppcheck_supported": false
+      },
+      "outcome": "NO_SUPPORTED_FINDING",
+      "correct_defect_found": false,
+      "false_positive": false
+    },
+    {
+      "function": "uncheckedRead",
+      "expected": {
+        "expected_defect": "unchecked-return",
+        "rule": "RET-001",
+        "assumption": "file is a valid open stream",
+        "expected_file": "src/diagnostics.cpp",
+        "expected_range": [
+          15,
+          19
+        ],
+        "cppcheck_supported": false
+      },
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false
+    },
+    {
+      "function": "safeRead",
+      "expected": {
+        "expected_defect": null,
+        "expected_file": "src/diagnostics.cpp",
+        "expected_range": [
+          21,
+          24
+        ],
+        "cppcheck_supported": false
+      },
+      "outcome": "NO_SUPPORTED_FINDING",
+      "correct_defect_found": false,
+      "false_positive": false
+    },
+    {
+      "function": "uninitializedCounter",
+      "expected": {
+        "expected_defect": "initialization",
+        "rule": "INIT-001",
+        "expected_file": "src/diagnostics.cpp",
+        "expected_range": [
+          26,
+          30
+        ],
+        "cppcheck_supported": true
+      },
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false
+    },
+    {
+      "function": "safeCounter",
+      "expected": {
+        "expected_defect": null,
+        "expected_file": "src/diagnostics.cpp",
+        "expected_range": [
+          32,
+          36
+        ],
+        "cppcheck_supported": false
+      },
+      "outcome": "NO_SUPPORTED_FINDING",
+      "correct_defect_found": false,
+      "false_positive": false
+    },
+    {
+      "function": "leakingSessionFile",
+      "expected": {
+        "expected_defect": "resource",
+        "rule": "RES-001",
+        "assumption": "path is non-null and terminated",
+        "expected_file": "src/session_manager.cpp",
+        "expected_range": [
+          5,
+          9
+        ],
+        "cppcheck_supported": true
+      },
+      "outcome": "CANDIDATES",
+      "correct_defect_found": false,
+      "false_positive": false
+    },
+    {
+      "function": "safeSessionFile",
+      "expected": {
+        "expected_defect": null,
+        "expected_file": "src/session_manager.cpp",
+        "expected_range": [
+          11,
+          17
+        ],
+        "cppcheck_supported": false
+      },
+      "outcome": "NO_SUPPORTED_FINDING",
+      "correct_defect_found": false,
+      "false_positive": false
+    },
+    {
+      "function": "activateSession",
+      "expected": {
+        "expected_defect": "state",
+        "rule": "STATE-001",
+        "expected_file": "src/session_manager.cpp",
+        "expected_range": [
+          19,
+          21
+        ],
+        "cppcheck_supported": false
+      },
+      "outcome": "NO_SUPPORTED_FINDING",
+      "correct_defect_found": false,
+      "false_positive": false
+    },
+    {
+      "function": "safeActivateSession",
+      "expected": {
+        "expected_defect": null,
+        "expected_file": "src/session_manager.cpp",
+        "expected_range": [
+          23,
+          25
+        ],
+        "cppcheck_supported": false
+      },
+      "outcome": "NO_SUPPORTED_FINDING",
+      "correct_defect_found": false,
+      "false_positive": false
+    },
+    {
+      "function": "boundaryRead",
+      "expected": {
+        "expected_defect": "boundary",
+        "rule": "BND-001",
+        "expected_file": "src/session_manager.cpp",
+        "expected_range": [
+          27,
+          29
+        ],
+        "cppcheck_supported": false
+      },
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false
+    },
+    {
+      "function": "safeBoundaryRead",
+      "expected": {
+        "expected_defect": null,
+        "assumption": "count matches allocated elements",
+        "expected_file": "src/session_manager.cpp",
+        "expected_range": [
+          31,
+          34
+        ],
+        "cppcheck_supported": false
+      },
+      "outcome": "NO_SUPPORTED_FINDING",
+      "correct_defect_found": false,
+      "false_positive": false
+    },
+    {
+      "function": "definiteNull",
+      "expected": {
+        "expected_defect": "null-pointer",
+        "rule": "PTR-001",
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          5,
+          8
+        ],
+        "cppcheck_supported": true
+      },
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false
+    },
+    {
+      "function": "fixedBoundaryRead",
+      "expected": {
+        "expected_defect": "boundary",
+        "rule": "BND-001",
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          10,
+          13
+        ],
+        "cppcheck_supported": true
+      },
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false
+    },
+    {
+      "function": "copySmallBuffer",
+      "expected": {
+        "expected_defect": "boundary",
+        "rule": "BND-001",
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          15,
+          19
+        ],
+        "cppcheck_supported": true
+      },
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false
+    },
+    {
+      "function": "allocateWithoutRelease",
+      "expected": {
+        "expected_defect": "resource",
+        "rule": "RES-001",
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          21,
+          26
+        ],
+        "cppcheck_supported": true
+      },
+      "outcome": "CANDIDATES",
+      "correct_defect_found": false,
+      "false_positive": false
+    },
+    {
+      "function": "useFreedSample",
+      "expected": {
+        "expected_defect": "resource",
+        "rule": "RES-001",
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          28,
+          34
+        ],
+        "cppcheck_supported": true
+      },
+      "outcome": "CANDIDATES",
+      "correct_defect_found": false,
+      "false_positive": false
+    },
+    {
+      "function": "doubleFreeSample",
+      "expected": {
+        "expected_defect": "resource",
+        "rule": "RES-001",
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          36,
+          41
+        ],
+        "cppcheck_supported": true
+      },
+      "outcome": "CANDIDATES",
+      "correct_defect_found": false,
+      "false_positive": false
+    },
+    {
+      "function": "forbiddenStateTransition",
+      "expected": {
+        "expected_defect": "state",
+        "rule": "STATE-001",
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          43,
+          46
+        ],
+        "cppcheck_supported": false
+      },
+      "outcome": "FAILED",
+      "correct_defect_found": false,
+      "false_positive": false
+    },
+    {
+      "function": "uninitializedVoltage",
+      "expected": {
+        "expected_defect": "initialization",
+        "rule": "INIT-001",
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          48,
+          52
+        ],
+        "cppcheck_supported": true
+      },
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false
+    },
+    {
+      "function": "uncheckedInput",
+      "expected": {
+        "expected_defect": "unchecked-return",
+        "rule": "RET-001",
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          54,
+          58
+        ],
+        "cppcheck_supported": false
+      },
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false
+    },
+    {
+      "function": "insecureFormat",
+      "expected": {
+        "expected_defect": "security",
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          60,
+          63
+        ],
+        "cppcheck_supported": false
+      },
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false
+    },
+    {
+      "function": "injectedNull",
+      "expected": {
+        "expected_defect": "null-pointer",
+        "rule": "PTR-001",
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          65,
+          70
+        ],
+        "cppcheck_supported": true
+      },
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false
+    }
+  ],
+  "preserved_artifact_hashes": {
+    "D:\\TataTech\\tests\\fixtures\\expected_defects.json": "45326c76ef47c59314761498096d4d553953cabc65b9dfbaf2643c01ade24df4",
+    "D:\\TataTech\\rules\\coding_rules.md": "2675b8fa41cf2c693e4b9c64e403d4593daffd2ef17e84fb790657b8b7077a56",
+    "D:\\TataTech\\.local\\review-evaluation.json": "ce18932b5d53da8b3b1c61f3fbec4953063e5958566aa0186c54be9560ce0ada",
+    "D:\\TataTech\\.local\\final-evaluation.json": "ff1454096c87569072a06480f398eaee3390a5ff1860d51d83cdc1951af41a83"
+  },
+  "historical_evidence_used": 0,
+  "limitations": [
+    "Function coverage only; declarations/global initialization and parser-fallback files are not reviewed as functions.",
+    "No complete call graph, runtime profiling, compliance certification or exhaustive defect detection.",
+    "Current source takes priority over optional untrusted approved historical precedent.",
+    "No build configuration supplied; default C++17/C11 analysis",
+    "Cppcheck reported missingIncludeSystem; analysis coverage is incomplete",
+    "Related code/rules/analyzer evidence omitted to fit input budget; supplied evidence only",
+    "Model-reported limitations are unverified interpretations; see model_limitations",
+    "Citation validity establishes provenance; human review must assess diagnosis and remediation",
+    "Optional evidence omitted to fit bounded correction; selected source retained",
+    "Model output rejected by schema/evidence validation; no validated findings",
+    "This new Docker repository run does not replace the original native fixed evaluations. Precision is per labeled function; extra allegations on defective functions are not exhaustively adjudicated."
+  ],
+  "private_report": ".local\\repository-live.json",
+  "scope": "Local/private captured source; no CI/build execution, code writes or model training"
+}

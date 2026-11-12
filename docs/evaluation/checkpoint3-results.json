@@ -1,0 +1,1227 @@
+{
+  "checkpoint": 3,
+  "approval": "CONDITIONALLY_APPROVED; REQUESTED_DEMONSTRATION_COMPLETE; FINAL_USER_SIGN_OFF_PENDING",
+  "evaluation_created": "2026-10-03T13:53:03.267101+00:00",
+  "scope": "Frozen Case Study 4: human review, history, reports, PostgreSQL, Docker and final evaluation",
+  "baseline": {
+    "sha256": "ce18932b5d53da8b3b1c61f3fbec4953063e5958566aa0186c54be9560ce0ada",
+    "prompt_version": "case4-v13",
+    "metrics": {
+      "defect_cases": 20,
+      "safe_cases": 10,
+      "true_positives": 16,
+      "false_positives": 1,
+      "false_negatives": 4,
+      "precision_on_labeled_functions": 0.9411764705882353,
+      "known_defect_recall": 0.8,
+      "safe_function_false_positive_rate": 0.1,
+      "validation_rejection_runs": 2,
+      "runs_with_rejected_attempts": 2,
+      "failed_runs": 1,
+      "mean_review_seconds": 4.133233333333333,
+      "analyzer_supported_correct_findings": 9,
+      "ai_only_correct_findings": 7,
+      "malformed_output_runs": 0,
+      "analyzer_failed_runs": 0
+    },
+    "recorded_misses": [
+      "calculatePressure",
+      "readActivePressure",
+      "activateSession",
+      "doubleFreeSample"
+    ],
+    "safe_false_positives": [
+      "readSensor"
+    ],
+    "limitation": "94.12% precision and 80% recall apply only to this fixed synthetic corpus; not universal model accuracy"
+  },
+  "fixed_corpus": {
+    "corpus": "demo_ecu-checkpoint2",
+    "snapshot": "8f781c9f82d1bc827b7aff6b2d327d307d01d2ffd248fcbefcc1a4569c0d3a04",
+    "prompt_version": "case4-v14",
+    "metrics": {
+      "defect_cases": 20,
+      "safe_cases": 10,
+      "true_positives": 17,
+      "false_positives": 1,
+      "false_negatives": 3,
+      "precision_on_labeled_functions": 0.9444444444444444,
+      "known_defect_recall": 0.85,
+      "safe_function_false_positive_rate": 0.1,
+      "validation_rejection_runs": 2,
+      "runs_with_rejected_attempts": 2,
+      "failed_runs": 0,
+      "mean_review_seconds": 5.0458,
+      "analyzer_supported_correct_findings": 10,
+      "ai_only_correct_findings": 7,
+      "malformed_output_runs": 0,
+      "analyzer_failed_runs": 0,
+      "model_failed_runs": 0,
+      "analyzer_degraded_runs": 30,
+      "validated_candidate_count": 22,
+      "model_failure_rate": 0.0,
+      "malformed_output_rate": 0.0,
+      "analyzer_failure_rate": 0.0
+    },
+    "cases": [
+      {
+        "function": "readSensor",
+        "expected": {
+          "expected_defect": null,
+          "expected_file": "src/sensor.cpp",
+          "expected_range": [
+            5,
+            7
+          ],
+          "cppcheck_supported": false
+        },
+        "expected_file": "src/sensor.cpp",
+        "expected_range": [
+          5,
+          7
+        ],
+        "cppcheck_supported": false,
+        "outcome": "CANDIDATES",
+        "correct_defect_found": false,
+        "false_positive": true,
+        "categories": [
+          "null-pointer"
+        ],
+        "seconds": 16.692,
+        "validation_rejections": 0
+      },
+      {
+        "function": "readSensorValue",
+        "expected": {
+          "expected_defect": "null-pointer",
+          "rule": "PTR-001",
+          "expected_file": "src/sensor.cpp",
+          "expected_range": [
+            9,
+            11
+          ],
+          "cppcheck_supported": false
+        },
+        "expected_file": "src/sensor.cpp",
+        "expected_range": [
+          9,
+          11
+        ],
+        "cppcheck_supported": false,
+        "outcome": "CANDIDATES",
+        "correct_defect_found": true,
+        "false_positive": false,
+        "categories": [
+          "null-pointer"
+        ],
+        "seconds": 4.799,
+        "validation_rejections": 0
+      },
+      {
+        "function": "safeSensorValue",
+        "expected": {
+          "expected_defect": null,
+          "expected_file": "src/sensor.cpp",
+          "expected_range": [
+            13,
+            15
+          ],
+          "cppcheck_supported": false
+        },
+        "expected_file": "src/sensor.cpp",
+        "expected_range": [
+          13,
+          15
+        ],
+        "cppcheck_supported": false,
+        "outcome": "NO_SUPPORTED_FINDING",
+        "correct_defect_found": false,
+        "false_positive": false,
+        "categories": [],
+        "seconds": 1.713,
+        "validation_rejections": 0
+      },
+      {
+        "function": "calculatePressure",
+        "expected": {
+          "expected_defect": "null-pointer",
+          "rule": "PTR-001",
+          "expected_file": "src/brake_control.cpp",
+          "expected_range": [
+            3,
+            5
+          ],
+          "cppcheck_supported": false
+        },
+        "expected_file": "src/brake_control.cpp",
+        "expected_range": [
+          3,
+          5
+        ],
+        "cppcheck_supported": false,
+        "outcome": "NO_SUPPORTED_FINDING",
+        "correct_defect_found": false,
+        "false_positive": false,
+        "categories": [],
+        "seconds": 1.702,
+        "validation_rejections": 0
+      },
+      {
+        "function": "safePressure",
+        "expected": {
+          "expected_defect": null,
+          "assumption": "sensor readings are within configured ECU pressure range",
+          "expected_file": "src/brake_control.cpp",
+          "expected_range": [
+            7,
+            10
+          ],
+          "cppcheck_supported": false
+        },
+        "expected_file": "src/brake_control.cpp",
+        "expected_range": [
+          7,
+          10
+        ],
+        "cppcheck_supported": false,
+        "outcome": "NO_SUPPORTED_FINDING",
+        "correct_defect_found": false,
+        "false_positive": false,
+        "categories": [],
+        "seconds": 1.706,
+        "validation_rejections": 0
+      },
+      {
+        "function": "clampPressure",
+        "expected": {
+          "expected_defect": null,
+          "expected_file": "src/brake_control.cpp",
+          "expected_range": [
+            12,
+            14
+          ],
+          "cppcheck_supported": false
+        },
+        "expected_file": "src/brake_control.cpp",
+        "expected_range": [
+          12,
+          14
+        ],
+        "cppcheck_supported": false,
+        "outcome": "NO_SUPPORTED_FINDING",
+        "correct_defect_found": false,
+        "false_positive": false,
+        "categories": [],
+        "seconds": 1.814,
+        "validation_rejections": 0
+      },
+      {
+        "function": "readActivePressure",
+        "expected": {
+          "expected_defect": "null-pointer",
+          "rule": "PTR-001",
+          "expected_file": "src/brake_control.cpp",
+          "expected_range": [
+            16,
+            18
+          ],
+          "cppcheck_supported": false
+        },
+        "expected_file": "src/brake_control.cpp",
+        "expected_range": [
+          16,
+          18
+        ],
+        "cppcheck_supported": false,
+        "outcome": "NO_SUPPORTED_FINDING",
+        "correct_defect_found": false,
+        "false_positive": false,
+        "categories": [],
+        "seconds": 2.125,
+        "validation_rejections": 0
+      },
+      {
+        "function": "copyDiagnostic",
+        "expected": {
+          "expected_defect": "boundary",
+          "rule": "BND-001",
+          "expected_file": "src/diagnostics.cpp",
+          "expected_range": [
+            4,
+            6
+          ],
+          "cppcheck_supported": false
+        },
+        "expected_file": "src/diagnostics.cpp",
+        "expected_range": [
+          4,
+          6
+        ],
+        "cppcheck_supported": false,
+        "outcome": "CANDIDATES",
+        "correct_defect_found": true,
+        "false_positive": false,
+        "categories": [
+          "null-pointer",
+          "boundary"
+        ],
+        "seconds": 7.906,
+        "validation_rejections": 0
+      },
+      {
+        "function": "safeDiagnostic",
+        "expected": {
+          "expected_defect": null,
+          "assumption": "message is terminated, capacity is accurate, and buffers do not overlap",
+          "expected_file": "src/diagnostics.cpp",
+          "expected_range": [
+            8,
+            13
+          ],
+          "cppcheck_supported": false
+        },
+        "expected_file": "src/diagnostics.cpp",
+        "expected_range": [
+          8,
+          13
+        ],
+        "cppcheck_supported": false,
+        "outcome": "NO_SUPPORTED_FINDING",
+        "correct_defect_found": false,
+        "false_positive": false,
+        "categories": [],
+        "seconds": 1.814,
+        "validation_rejections": 0
+      },
+      {
+        "function": "uncheckedRead",
+        "expected": {
+          "expected_defect": "unchecked-return",
+          "rule": "RET-001",
+          "assumption": "file is a valid open stream",
+          "expected_file": "src/diagnostics.cpp",
+          "expected_range": [
+            15,
+            19
+          ],
+          "cppcheck_supported": false
+        },
+        "expected_file": "src/diagnostics.cpp",
+        "expected_range": [
+          15,
+          19
+        ],
+        "cppcheck_supported": false,
+        "outcome": "CANDIDATES",
+        "correct_defect_found": true,
+        "false_positive": false,
+        "categories": [
+          "null-pointer",
+          "unchecked-return"
+        ],
+        "seconds": 7.671,
+        "validation_rejections": 0
+      },
+      {
+        "function": "safeRead",
+        "expected": {
+          "expected_defect": null,
+          "expected_file": "src/diagnostics.cpp",
+          "expected_range": [
+            21,
+            24
+          ],
+          "cppcheck_supported": false
+        },
+        "expected_file": "src/diagnostics.cpp",
+        "expected_range": [
+          21,
+          24
+        ],
+        "cppcheck_supported": false,
+        "outcome": "NO_SUPPORTED_FINDING",
+        "correct_defect_found": false,
+        "false_positive": false,
+        "categories": [],
+        "seconds": 1.771,
+        "validation_rejections": 0
+      },
+      {
+        "function": "uninitializedCounter",
+        "expected": {
+          "expected_defect": "initialization",
+          "rule": "INIT-001",
+          "expected_file": "src/diagnostics.cpp",
+          "expected_range": [
+            26,
+            30
+          ],
+          "cppcheck_supported": true
+        },
+        "expected_file": "src/diagnostics.cpp",
+        "expected_range": [
+          26,
+          30
+        ],
+        "cppcheck_supported": true,
+        "outcome": "CANDIDATES",
+        "correct_defect_found": true,
+        "false_positive": false,
+        "categories": [
+          "initialization"
+        ],
+        "seconds": 4.928,
+        "validation_rejections": 0
+      },
+      {
+        "function": "safeCounter",
+        "expected": {
+          "expected_defect": null,
+          "expected_file": "src/diagnostics.cpp",
+          "expected_range": [
+            32,
+            36
+          ],
+          "cppcheck_supported": false
+        },
+        "expected_file": "src/diagnostics.cpp",
+        "expected_range": [
+          32,
+          36
+        ],
+        "cppcheck_supported": false,
+        "outcome": "NO_SUPPORTED_FINDING",
+        "correct_defect_found": false,
+        "false_positive": false,
+        "categories": [],
+        "seconds": 1.786,
+        "validation_rejections": 0
+      },
+      {
+        "function": "leakingSessionFile",
+        "expected": {
+          "expected_defect": "resource",
+          "rule": "RES-001",
+          "assumption": "path is non-null and terminated",
+          "expected_file": "src/session_manager.cpp",
+          "expected_range": [
+            5,
+            9
+          ],
+          "cppcheck_supported": true
+        },
+        "expected_file": "src/session_manager.cpp",
+        "expected_range": [
+          5,
+          9
+        ],
+        "cppcheck_supported": true,
+        "outcome": "CANDIDATES",
+        "correct_defect_found": true,
+        "false_positive": false,
+        "categories": [
+          "resource",
+          "null-pointer"
+        ],
+        "seconds": 9.283,
+        "validation_rejections": 0
+      },
+      {
+        "function": "safeSessionFile",
+        "expected": {
+          "expected_defect": null,
+          "expected_file": "src/session_manager.cpp",
+          "expected_range": [
+            11,
+            17
+          ],
+          "cppcheck_supported": false
+        },
+        "expected_file": "src/session_manager.cpp",
+        "expected_range": [
+          11,
+          17
+        ],
+        "cppcheck_supported": false,
+        "outcome": "NO_SUPPORTED_FINDING",
+        "correct_defect_found": false,
+        "false_positive": false,
+        "categories": [],
+        "seconds": 2.012,
+        "validation_rejections": 0
+      },
+      {
+        "function": "activateSession",
+        "expected": {
+          "expected_defect": "state",
+          "rule": "STATE-001",
+          "expected_file": "src/session_manager.cpp",
+          "expected_range": [
+            19,
+            21
+          ],
+          "cppcheck_supported": false
+        },
+        "expected_file": "src/session_manager.cpp",
+        "expected_range": [
+          19,
+          21
+        ],
+        "cppcheck_supported": false,
+        "outcome": "NO_SUPPORTED_FINDING",
+        "correct_defect_found": false,
+        "false_positive": false,
+        "categories": [],
+        "seconds": 1.833,
+        "validation_rejections": 0
+      },
+      {
+        "function": "safeActivateSession",
+        "expected": {
+          "expected_defect": null,
+          "expected_file": "src/session_manager.cpp",
+          "expected_range": [
+            23,
+            25
+          ],
+          "cppcheck_supported": false
+        },
+        "expected_file": "src/session_manager.cpp",
+        "expected_range": [
+          23,
+          25
+        ],
+        "cppcheck_supported": false,
+        "outcome": "NO_SUPPORTED_FINDING",
+        "correct_defect_found": false,
+        "false_positive": false,
+        "categories": [],
+        "seconds": 1.798,
+        "validation_rejections": 0
+      },
+      {
+        "function": "boundaryRead",
+        "expected": {
+          "expected_defect": "boundary",
+          "rule": "BND-001",
+          "expected_file": "src/session_manager.cpp",
+          "expected_range": [
+            27,
+            29
+          ],
+          "cppcheck_supported": false
+        },
+        "expected_file": "src/session_manager.cpp",
+        "expected_range": [
+          27,
+          29
+        ],
+        "cppcheck_supported": false,
+        "outcome": "CANDIDATES",
+        "correct_defect_found": true,
+        "false_positive": false,
+        "categories": [
+          "boundary",
+          "null-pointer"
+        ],
+        "seconds": 8.069,
+        "validation_rejections": 0
+      },
+      {
+        "function": "safeBoundaryRead",
+        "expected": {
+          "expected_defect": null,
+          "assumption": "count matches allocated elements",
+          "expected_file": "src/session_manager.cpp",
+          "expected_range": [
+            31,
+            34
+          ],
+          "cppcheck_supported": false
+        },
+        "expected_file": "src/session_manager.cpp",
+        "expected_range": [
+          31,
+          34
+        ],
+        "cppcheck_supported": false,
+        "outcome": "NO_SUPPORTED_FINDING",
+        "correct_defect_found": false,
+        "false_positive": false,
+        "categories": [],
+        "seconds": 1.798,
+        "validation_rejections": 0
+      },
+      {
+        "function": "definiteNull",
+        "expected": {
+          "expected_defect": "null-pointer",
+          "rule": "PTR-001",
+          "expected_file": "src/review_cases.cpp",
+          "expected_range": [
+            5,
+            8
+          ],
+          "cppcheck_supported": true
+        },
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          5,
+          8
+        ],
+        "cppcheck_supported": true,
+        "outcome": "CANDIDATES",
+        "correct_defect_found": true,
+        "false_positive": false,
+        "categories": [
+          "null-pointer"
+        ],
+        "seconds": 5.182,
+        "validation_rejections": 0
+      },
+      {
+        "function": "fixedBoundaryRead",
+        "expected": {
+          "expected_defect": "boundary",
+          "rule": "BND-001",
+          "expected_file": "src/review_cases.cpp",
+          "expected_range": [
+            10,
+            13
+          ],
+          "cppcheck_supported": true
+        },
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          10,
+          13
+        ],
+        "cppcheck_supported": true,
+        "outcome": "CANDIDATES",
+        "correct_defect_found": true,
+        "false_positive": false,
+        "categories": [
+          "boundary"
+        ],
+        "seconds": 5.653,
+        "validation_rejections": 0
+      },
+      {
+        "function": "copySmallBuffer",
+        "expected": {
+          "expected_defect": "boundary",
+          "rule": "BND-001",
+          "expected_file": "src/review_cases.cpp",
+          "expected_range": [
+            15,
+            19
+          ],
+          "cppcheck_supported": true
+        },
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          15,
+          19
+        ],
+        "cppcheck_supported": true,
+        "outcome": "CANDIDATES",
+        "correct_defect_found": true,
+        "false_positive": false,
+        "categories": [
+          "boundary"
+        ],
+        "seconds": 5.929,
+        "validation_rejections": 0
+      },
+      {
+        "function": "allocateWithoutRelease",
+        "expected": {
+          "expected_defect": "resource",
+          "rule": "RES-001",
+          "expected_file": "src/review_cases.cpp",
+          "expected_range": [
+            21,
+            26
+          ],
+          "cppcheck_supported": true
+        },
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          21,
+          26
+        ],
+        "cppcheck_supported": true,
+        "outcome": "CANDIDATES",
+        "correct_defect_found": true,
+        "false_positive": false,
+        "categories": [
+          "resource"
+        ],
+        "seconds": 5.399,
+        "validation_rejections": 0
+      },
+      {
+        "function": "useFreedSample",
+        "expected": {
+          "expected_defect": "resource",
+          "rule": "RES-001",
+          "expected_file": "src/review_cases.cpp",
+          "expected_range": [
+            28,
+            34
+          ],
+          "cppcheck_supported": true
+        },
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          28,
+          34
+        ],
+        "cppcheck_supported": true,
+        "outcome": "CANDIDATES",
+        "correct_defect_found": true,
+        "false_positive": false,
+        "categories": [
+          "resource"
+        ],
+        "seconds": 5.889,
+        "validation_rejections": 0
+      },
+      {
+        "function": "doubleFreeSample",
+        "expected": {
+          "expected_defect": "resource",
+          "rule": "RES-001",
+          "expected_file": "src/review_cases.cpp",
+          "expected_range": [
+            36,
+            41
+          ],
+          "cppcheck_supported": true
+        },
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          36,
+          41
+        ],
+        "cppcheck_supported": true,
+        "outcome": "CANDIDATES",
+        "correct_defect_found": true,
+        "false_positive": false,
+        "categories": [
+          "resource"
+        ],
+        "seconds": 10.075,
+        "validation_rejections": 1
+      },
+      {
+        "function": "forbiddenStateTransition",
+        "expected": {
+          "expected_defect": "state",
+          "rule": "STATE-001",
+          "expected_file": "src/review_cases.cpp",
+          "expected_range": [
+            43,
+            46
+          ],
+          "cppcheck_supported": false
+        },
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          43,
+          46
+        ],
+        "cppcheck_supported": false,
+        "outcome": "CANDIDATES",
+        "correct_defect_found": true,
+        "false_positive": false,
+        "categories": [
+          "state"
+        ],
+        "seconds": 4.7,
+        "validation_rejections": 0
+      },
+      {
+        "function": "uninitializedVoltage",
+        "expected": {
+          "expected_defect": "initialization",
+          "rule": "INIT-001",
+          "expected_file": "src/review_cases.cpp",
+          "expected_range": [
+            48,
+            52
+          ],
+          "cppcheck_supported": true
+        },
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          48,
+          52
+        ],
+        "cppcheck_supported": true,
+        "outcome": "CANDIDATES",
+        "correct_defect_found": true,
+        "false_positive": false,
+        "categories": [
+          "initialization"
+        ],
+        "seconds": 5.815,
+        "validation_rejections": 0
+      },
+      {
+        "function": "uncheckedInput",
+        "expected": {
+          "expected_defect": "unchecked-return",
+          "rule": "RET-001",
+          "expected_file": "src/review_cases.cpp",
+          "expected_range": [
+            54,
+            58
+          ],
+          "cppcheck_supported": false
+        },
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          54,
+          58
+        ],
+        "cppcheck_supported": false,
+        "outcome": "CANDIDATES",
+        "correct_defect_found": true,
+        "false_positive": false,
+        "categories": [
+          "unchecked-return"
+        ],
+        "seconds": 4.826,
+        "validation_rejections": 0
+      },
+      {
+        "function": "insecureFormat",
+        "expected": {
+          "expected_defect": "security",
+          "expected_file": "src/review_cases.cpp",
+          "expected_range": [
+            60,
+            63
+          ],
+          "cppcheck_supported": false
+        },
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          60,
+          63
+        ],
+        "cppcheck_supported": false,
+        "outcome": "CANDIDATES",
+        "correct_defect_found": true,
+        "false_positive": false,
+        "categories": [
+          "security"
+        ],
+        "seconds": 10.325,
+        "validation_rejections": 1
+      },
+      {
+        "function": "injectedNull",
+        "expected": {
+          "expected_defect": "null-pointer",
+          "rule": "PTR-001",
+          "expected_file": "src/review_cases.cpp",
+          "expected_range": [
+            65,
+            70
+          ],
+          "cppcheck_supported": true
+        },
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          65,
+          70
+        ],
+        "cppcheck_supported": true,
+        "outcome": "CANDIDATES",
+        "correct_defect_found": true,
+        "false_positive": false,
+        "categories": [
+          "null-pointer"
+        ],
+        "seconds": 6.361,
+        "validation_rejections": 0
+      }
+    ],
+    "capabilities": [
+      {
+        "mode": "explain_function",
+        "question": "Explain the function and its visible control flow",
+        "outcome": "INSUFFICIENT_EVIDENCE",
+        "seconds": 1.105
+      },
+      {
+        "mode": "explain_module",
+        "question": "Summarize this source module and visible dependencies; state what is unknown",
+        "outcome": "ANSWERED",
+        "seconds": 8.136
+      },
+      {
+        "mode": "qa",
+        "question": "Which calls are visible here? What possible root cause is supported?",
+        "outcome": "INSUFFICIENT_EVIDENCE",
+        "seconds": 1.127
+      },
+      {
+        "mode": "diagnostics",
+        "question": "Interpret this compiler warning and suggest remediation",
+        "outcome": "ANSWERED",
+        "seconds": 4.009
+      },
+      {
+        "mode": "diagnostics",
+        "question": "Interpret this runtime log; distinguish hypotheses from proven causes",
+        "outcome": "ANSWERED",
+        "seconds": 7.306
+      },
+      {
+        "mode": "diagnostics",
+        "question": "Interpret this imported CI/build log without executing commands",
+        "outcome": "INSUFFICIENT_EVIDENCE",
+        "seconds": 1.64
+      }
+    ],
+    "remaining_misses": [
+      "calculatePressure",
+      "readActivePressure",
+      "activateSession"
+    ],
+    "safe_false_positives": [
+      "readSensor"
+    ],
+    "corpus_integrity": {
+      "labels_sha256": "45326c76ef47c59314761498096d4d553953cabc65b9dfbaf2643c01ade24df4",
+      "source_sha256": {
+        "include/brake_control.h": "e62001653e3fcab84d026a182d0950dca68bc28fbc27aadb08ad9db96d284296",
+        "include/sensor.h": "ec502ec9d9cc37427e316a21ead0edb00c131479d3fd8bbc8f0dde2703cdf2a8",
+        "README.md": "62d795f3630ee5409fa77ccf9c4b902234b098385e6bba60fc3a9a57352056a1",
+        "src/brake_control.cpp": "089d48559357e940532af65d942ef20020221718691da9f4b42a2333ed230dcc",
+        "src/diagnostics.cpp": "dfea76344625741f53ab08e4f47076c8fe360076891c4f6015c8babfbcb7e92c",
+        "src/review_cases.cpp": "b0d708fb6d53ac6d3af3a6740a9b163f4df984d5e94e1583443a1df8d39fb4b1",
+        "src/sensor.cpp": "05d71e4c34400a1034ba3182a57b0e7aa4fc3d30d809f4a184f3cf5a519aaf2a",
+        "src/session_manager.cpp": "4d133b3a8da978711ab5d5841c76128c1d6c459be501eb3e21ec3f86012cf083"
+      },
+      "demo_rules_sha256": "2675b8fa41cf2c693e4b9c64e403d4593daffd2ef17e84fb790657b8b7077a56"
+    },
+    "settings": {
+      "context": 8192,
+      "input_budget": 6144,
+      "output_reserve": 1536,
+      "uncertainty_reserve": 512,
+      "temperature": 0,
+      "cpu_embeddings": true,
+      "cppcheck": "Cppcheck 2.22.0"
+    },
+    "productivity": {
+      "selected_defect_resolution_time": "NOT_MEASURED",
+      "review_throughput": "NOT_MEASURED",
+      "downstream_defect_leakage": "NOT_MEASURED"
+    },
+    "metric_limitations": [
+      "Precision is per labeled function, not an exhaustively adjudicated finding-level measure.",
+      "Additional diagnoses on already defective functions are not fully labeled.",
+      "Citation validity establishes provenance, not semantic correctness or automotive safety certification.",
+      "All reviews use demo source without the real project build configuration; analyzer limitations remain visible."
+    ]
+  },
+  "verification": {
+    "regressions": {
+      "passed": 75,
+      "seconds": 15.964,
+      "artifact": ".local/checkpoint3-tests-final.txt"
+    },
+    "retrieval": {
+      "embedding": "jina-code/516f4baf13dec4ddddda8631e019b5737c8bc250/3baf9e3ac750e76e8edd3019170176884695fb94/mean-normalized-cpu-v1",
+      "top_k": 3,
+      "status": "passed",
+      "checks": {
+        "idempotency": true,
+        "changed_source_replaced": true,
+        "deleted_source_removed": true,
+        "persistence_reopen": true,
+        "unauthorized_denied": true,
+        "offline_runtime": true
+      },
+      "index_seconds": 6.308,
+      "duplicate_rate": 0.0,
+      "stale_active_chunk_rate": 0.0,
+      "exact_lookup_accuracy": 1.0,
+      "relevant_top_k": 1.0
+    },
+    "provenance": {
+      "status": "passed",
+      "findings_validated": 22,
+      "claims_validated": 8,
+      "references_validated": 56,
+      "invalid_validated_citations": 0,
+      "evidence_provenance_validity_rate": 1.0,
+      "limitation": "Deterministic provenance recheck on this unchanged synthetic corpus; does not prove diagnosis correctness.",
+      "selected_prompts": 10,
+      "selected_findings": 10,
+      "double_free": {
+        "outcome": "CANDIDATES",
+        "model_attempts": 2,
+        "corrective_input_estimate": 6018,
+        "input_tokens": 1563,
+        "validation_errors": [
+          "Applicable demo rule category does not match finding"
+        ]
+      }
+    },
+    "local_model": {
+      "status": "passed",
+      "model": "qwen2.5-coder:7b",
+      "requested_context": 8192,
+      "ollama_version": "0.35.1",
+      "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+      "quantization": "Q4_K_M",
+      "limitation": "Synthetic smoke test; not review-quality evaluation"
+    },
+    "local_model_checks": [
+      {
+        "name": "cold_or_existing",
+        "seconds": 8.007,
+        "input_tokens": 62,
+        "output_tokens": 30,
+        "size_vram": 5133943438,
+        "context_length": 8192
+      },
+      {
+        "name": "warm_repeat",
+        "seconds": 0.665,
+        "input_tokens": 62,
+        "output_tokens": 30,
+        "size_vram": 5133943438,
+        "context_length": 8192
+      },
+      {
+        "name": "working_context",
+        "seconds": 3.516,
+        "input_tokens": 4874,
+        "output_tokens": 49,
+        "size_vram": 5133943438,
+        "context_length": 8192
+      }
+    ],
+    "postgres": {
+      "created": "2026-10-03T14:57:23.804590+00:00",
+      "checks": {
+        "copy_exact_all_tables": true,
+        "representative_queries_equal": true,
+        "sqlite_retained_for_rollback": true,
+        "postgres_restart_persistence": true,
+        "nonempty_target_refused": true,
+        "interrupted_copy_rolled_back": true,
+        "rejected_revision_removed_from_approved": true,
+        "revision_conflict_refused": true,
+        "originals_immutable": true
+      },
+      "server_version": "PostgreSQL 16.13 (Debian 16.13-1.pgdg12+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+      "counts": {
+        "repositories": 1,
+        "users": 1,
+        "repository_permissions": 1,
+        "snapshots": 1,
+        "active": 1,
+        "analysis_runs": 1,
+        "findings": 1,
+        "reviews": 1
+      },
+      "status": "passed"
+    },
+    "native_delivery": {
+      "origin": "http://127.0.0.1:8001",
+      "checks": {
+        "health": true,
+        "authorized_repositories": true,
+        "index_and_status": true,
+        "live_review_and_provenance": true,
+        "report_originals": true,
+        "report_citations": true,
+        "persisted_reviewer_decisions": true,
+        "immutable_originals": true
+      },
+      "run_id": "bb1872e7-0b09-4815-93c1-2fd52635530c",
+      "snapshot": "8f781c9f82d1bc827b7aff6b2d327d307d01d2ffd248fcbefcc1a4569c0d3a04",
+      "model_attempts": 2,
+      "status": "passed"
+    },
+    "docker_delivery": {
+      "origin": "http://127.0.0.1:8000",
+      "checks": {
+        "health": true,
+        "authorized_repositories": true,
+        "index_and_status": true,
+        "live_review_and_provenance": true,
+        "report_originals": true,
+        "report_citations": true,
+        "persisted_reviewer_decisions": true,
+        "immutable_originals": true
+      },
+      "run_id": "cbe2c9b7-e5f4-483d-8266-112a02fa688f",
+      "snapshot": "4489ceef577d88d9b56d83b98f7bd986f7baad4b11c81b65c1705c9c7c50b104",
+      "model_attempts": 1,
+      "status": "passed"
+    },
+    "deployment": {
+      "checks": {
+        "read_only_source_and_model_mounts": true,
+        "application_data_writable_mount": true,
+        "unprivileged_api": true,
+        "loopback_api_port": true,
+        "database_down_explicit_failure": true,
+        "denied_request_before_database": true,
+        "snapshot_survives_restart": true,
+        "run_report_survives_restart": true,
+        "credentials_absent_from_logs": true,
+        "source_body_absent_from_logs": true,
+        "schema_and_dependencies_consistent": true
+      },
+      "analyzer_version": "Cppcheck 2.10",
+      "snapshot": "4489ceef577d88d9b56d83b98f7bd986f7baad4b11c81b65c1705c9c7c50b104",
+      "run_id": "cbe2c9b7-e5f4-483d-8266-112a02fa688f",
+      "status": "passed"
+    },
+    "failure_checks": {
+      "status": "passed",
+      "checks": {
+        "unknown_identity_denied_before_storage": true,
+        "analyzer_missing_not_clean": true,
+        "model_failure_visible": true,
+        "overflow_before_model": true
+      }
+    },
+    "native_history_migration": {
+      "status": "verified",
+      "counts": {
+        "repositories": 1,
+        "users": 1,
+        "repository_permissions": 1,
+        "snapshots": 3,
+        "active": 1,
+        "analysis_runs": 59,
+        "findings": 5,
+        "reviews": 0
+      },
+      "content_sha256": "13d1aca6350d3871d5e995cd89608aefa909fcd109da7f7c194f53b48113adaa",
+      "sqlite_backup": "/data/native-migration-backup.sqlite3",
+      "rollback": "Stop API and restore the SQLite configuration; the original SQLite was never modified. Decisions made after cutover need a separate reverse migration."
+    }
+  },
+  "supplemental_ui_qa": {
+    "endpoint": "/explain/function",
+    "function": "clampPressure",
+    "outcome": "ANSWERED",
+    "validated_claim_count": 1,
+    "limitation": "Supplemental demonstration; does not replace the unsuccessful fixed Q&A case"
+  },
+  "additional_semantic_limitations": [
+    "leakingSessionFile has an extra null-pointer allegation overlooking its guard; outside the safe-function false-positive metric.",
+    "copyDiagnostic strncpy remediation requires termination/capacity review.",
+    "Deterministic citations establish provenance; human reviewers assess diagnosis and remediation."
+  ],
+  "deployment": {
+    "ui": "http://127.0.0.1:8501",
+    "api": "http://127.0.0.1:8000",
+    "historical_originals": "Preserved; operational findings remain pending",
+    "fresh_physical_machine": "NOT_TESTED",
+    "guidance": "Original/demo rules only; no MISRA text or compliance claim"
+  },
+  "private_artifacts": "Source, prompts, model responses and credentials are excluded from this summary; protect private local artifacts.",
+  "supplemental_imported_build": {
+    "status": "passed",
+    "demonstration_only": true,
+    "fixed_evaluation_unchanged": true,
+    "pipeline_triggered": false,
+    "build_commands_executed": false,
+    "run_id": "ded88ff8-1181-4f65-a4bd-f2dc352bc192",
+    "snapshot": "4489ceef577d88d9b56d83b98f7bd986f7baad4b11c81b65c1705c9c7c50b104",
+    "endpoint": "POST /diagnostics/interpret",
+    "origin": "synthetic local CI/build capability demonstration; no execution",
+    "log_artifact": "docs/demonstrations/imported-build.log",
+    "log_sha256": "eae5342a3e99e6b862dd0f38bb75bdfc73889785163ef915ba4000360610a8fa",
+    "outcome": "ANSWERED",
+    "claims": [
+      {
+        "text": "The compiler warning indicates that the variable `count` may be used uninitialized in the function `uninitializedCounter` when the parameter `enabled` is `false`.",
+        "kind": "hypothesis",
+        "evidence": [
+          {
+            "id": "D78532f4d04ad6626",
+            "start_line": 2,
+            "end_line": 2,
+            "quote": "src/diagnostics.cpp:29: warning: count may be used uninitialized in uninitializedCounter"
+          }
+        ]
+      },
+      {
+        "text": "The build policy is set to treat warnings as errors, causing the compile step to fail with an exit code of 1.",
+        "kind": "hypothesis",
+        "evidence": [
+          {
+            "id": "D78532f4d04ad6626",
+            "start_line": 3,
+            "end_line": 3,
+            "quote": "Build policy: warnings are errors. Compile step failed with exit code 1."
+          }
+        ]
+      }
+    ],
+    "imported_diagnostics": [
+      {
+        "id": "D78532f4d04ad6626",
+        "kind": "diagnostic",
+        "repository": "demo_ecu",
+        "snapshot": "4489ceef577d88d9b56d83b98f7bd986f7baad4b11c81b65c1705c9c7c50b104",
+        "start_line": 1,
+        "end_line": 4,
+        "text": "SYNTHETIC imported build log; no build was executed.\nsrc/diagnostics.cpp:29: warning: count may be used uninitialized in uninitializedCounter\nBuild policy: warnings are errors. Compile step failed with exit code 1.\nLink and tests were not run.",
+        "origin": "synthetic local CI/build capability demonstration; no execution",
+        "tool": "synthetic-gcc",
+        "tool_version": "not a real compiler invocation",
+        "observed_at": "2026-10-03T16:00:26.655024+00:00",
+        "imported_at": "2026-10-03T16:00:26.729656+00:00",
+        "association_verified": false
+      }
+    ],
+    "limitations": [
+      "Explanation/diagnostic task; static analysis was not requested",
+      "Diagnostic origin and snapshot association are user-declared, not independently verified",
+      "Model-reported limitations are unverified interpretations; see model_limitations",
+      "Citation validity establishes provenance; human review must assess diagnosis and remediation"
+    ],
+    "model": "qwen2.5-coder:7b",
+    "prompt_version": "case4-v14",
+    "seconds": 6.486,
+    "model_attempts": 1,
+    "deterministic_validation": "PASSED: retrieved IDs, line ranges, exact source/log quotes, selected snapshot and qualified diagnostic claims",
+    "persistence": "Structured report retrieved with the same run contents",
+    "checks": {
+      "cited_answer": true,
+      "imported_log_cited": true,
+      "all_claims_qualified": true,
+      "exact_evidence_valid": true,
+      "persisted_run_matches": true,
+      "baseline_corpus_rules_unchanged": true
+    },
+    "earlier_supplemental_attempts": [
+      {
+        "run_id": "a928b207-99c2-41fb-b1b6-5db817a38e11",
+        "outcome": "INSUFFICIENT_EVIDENCE",
+        "validation_rejections": 1
+      },
+      {
+        "run_id": "fbdda4ba-388f-4c0e-839e-e786c8d54f41",
+        "outcome": "INSUFFICIENT_EVIDENCE",
+        "validation_rejections": 0
+      }
+    ],
+    "limitation": "Supplemental capability demonstration only; unsuccessful fixed CI/build case and all original quality metrics remain unchanged."
+  }
+}

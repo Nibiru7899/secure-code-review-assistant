@@ -1,0 +1,299 @@
+{
+  "readSensor": {
+    "expected_defect": null,
+    "expected_file": "src/sensor.cpp",
+    "expected_range": [
+      5,
+      7
+    ],
+    "cppcheck_supported": false
+  },
+  "readSensorValue": {
+    "expected_defect": "null-pointer",
+    "rule": "PTR-001",
+    "expected_file": "src/sensor.cpp",
+    "expected_range": [
+      9,
+      11
+    ],
+    "cppcheck_supported": false
+  },
+  "safeSensorValue": {
+    "expected_defect": null,
+    "expected_file": "src/sensor.cpp",
+    "expected_range": [
+      13,
+      15
+    ],
+    "cppcheck_supported": false
+  },
+  "sensorConnected": {
+    "expected_defect": null
+  },
+  "calculatePressure": {
+    "expected_defect": "null-pointer",
+    "rule": "PTR-001",
+    "expected_file": "src/brake_control.cpp",
+    "expected_range": [
+      3,
+      5
+    ],
+    "cppcheck_supported": false
+  },
+  "safePressure": {
+    "expected_defect": null,
+    "assumption": "sensor readings are within configured ECU pressure range",
+    "expected_file": "src/brake_control.cpp",
+    "expected_range": [
+      7,
+      10
+    ],
+    "cppcheck_supported": false
+  },
+  "clampPressure": {
+    "expected_defect": null,
+    "expected_file": "src/brake_control.cpp",
+    "expected_range": [
+      12,
+      14
+    ],
+    "cppcheck_supported": false
+  },
+  "readActivePressure": {
+    "expected_defect": "null-pointer",
+    "rule": "PTR-001",
+    "expected_file": "src/brake_control.cpp",
+    "expected_range": [
+      16,
+      18
+    ],
+    "cppcheck_supported": false
+  },
+  "copyDiagnostic": {
+    "expected_defect": "boundary",
+    "rule": "BND-001",
+    "expected_file": "src/diagnostics.cpp",
+    "expected_range": [
+      4,
+      6
+    ],
+    "cppcheck_supported": false
+  },
+  "safeDiagnostic": {
+    "expected_defect": null,
+    "assumption": "message is terminated, capacity is accurate, and buffers do not overlap",
+    "expected_file": "src/diagnostics.cpp",
+    "expected_range": [
+      8,
+      13
+    ],
+    "cppcheck_supported": false
+  },
+  "uncheckedRead": {
+    "expected_defect": "unchecked-return",
+    "rule": "RET-001",
+    "assumption": "file is a valid open stream",
+    "expected_file": "src/diagnostics.cpp",
+    "expected_range": [
+      15,
+      19
+    ],
+    "cppcheck_supported": false
+  },
+  "safeRead": {
+    "expected_defect": null,
+    "expected_file": "src/diagnostics.cpp",
+    "expected_range": [
+      21,
+      24
+    ],
+    "cppcheck_supported": false
+  },
+  "uninitializedCounter": {
+    "expected_defect": "initialization",
+    "rule": "INIT-001",
+    "expected_file": "src/diagnostics.cpp",
+    "expected_range": [
+      26,
+      30
+    ],
+    "cppcheck_supported": true
+  },
+  "safeCounter": {
+    "expected_defect": null,
+    "expected_file": "src/diagnostics.cpp",
+    "expected_range": [
+      32,
+      36
+    ],
+    "cppcheck_supported": false
+  },
+  "leakingSessionFile": {
+    "expected_defect": "resource",
+    "rule": "RES-001",
+    "assumption": "path is non-null and terminated",
+    "expected_file": "src/session_manager.cpp",
+    "expected_range": [
+      5,
+      9
+    ],
+    "cppcheck_supported": true
+  },
+  "safeSessionFile": {
+    "expected_defect": null,
+    "expected_file": "src/session_manager.cpp",
+    "expected_range": [
+      11,
+      17
+    ],
+    "cppcheck_supported": false
+  },
+  "activateSession": {
+    "expected_defect": "state",
+    "rule": "STATE-001",
+    "expected_file": "src/session_manager.cpp",
+    "expected_range": [
+      19,
+      21
+    ],
+    "cppcheck_supported": false
+  },
+  "safeActivateSession": {
+    "expected_defect": null,
+    "expected_file": "src/session_manager.cpp",
+    "expected_range": [
+      23,
+      25
+    ],
+    "cppcheck_supported": false
+  },
+  "boundaryRead": {
+    "expected_defect": "boundary",
+    "rule": "BND-001",
+    "expected_file": "src/session_manager.cpp",
+    "expected_range": [
+      27,
+      29
+    ],
+    "cppcheck_supported": false
+  },
+  "safeBoundaryRead": {
+    "expected_defect": null,
+    "assumption": "count matches allocated elements",
+    "expected_file": "src/session_manager.cpp",
+    "expected_range": [
+      31,
+      34
+    ],
+    "cppcheck_supported": false
+  },
+  "definiteNull": {
+    "expected_defect": "null-pointer",
+    "rule": "PTR-001",
+    "expected_file": "src/review_cases.cpp",
+    "expected_range": [
+      5,
+      8
+    ],
+    "cppcheck_supported": true
+  },
+  "fixedBoundaryRead": {
+    "expected_defect": "boundary",
+    "rule": "BND-001",
+    "expected_file": "src/review_cases.cpp",
+    "expected_range": [
+      10,
+      13
+    ],
+    "cppcheck_supported": true
+  },
+  "copySmallBuffer": {
+    "expected_defect": "boundary",
+    "rule": "BND-001",
+    "expected_file": "src/review_cases.cpp",
+    "expected_range": [
+      15,
+      19
+    ],
+    "cppcheck_supported": true
+  },
+  "allocateWithoutRelease": {
+    "expected_defect": "resource",
+    "rule": "RES-001",
+    "expected_file": "src/review_cases.cpp",
+    "expected_range": [
+      21,
+      26
+    ],
+    "cppcheck_supported": true
+  },
+  "useFreedSample": {
+    "expected_defect": "resource",
+    "rule": "RES-001",
+    "expected_file": "src/review_cases.cpp",
+    "expected_range": [
+      28,
+      34
+    ],
+    "cppcheck_supported": true
+  },
+  "doubleFreeSample": {
+    "expected_defect": "resource",
+    "rule": "RES-001",
+    "expected_file": "src/review_cases.cpp",
+    "expected_range": [
+      36,
+      41
+    ],
+    "cppcheck_supported": true
+  },
+  "forbiddenStateTransition": {
+    "expected_defect": "state",
+    "rule": "STATE-001",
+    "expected_file": "src/review_cases.cpp",
+    "expected_range": [
+      43,
+      46
+    ],
+    "cppcheck_supported": false
+  },
+  "uninitializedVoltage": {
+    "expected_defect": "initialization",
+    "rule": "INIT-001",
+    "expected_file": "src/review_cases.cpp",
+    "expected_range": [
+      48,
+      52
+    ],
+    "cppcheck_supported": true
+  },
+  "uncheckedInput": {
+    "expected_defect": "unchecked-return",
+    "rule": "RET-001",
+    "expected_file": "src/review_cases.cpp",
+    "expected_range": [
+      54,
+      58
+    ],
+    "cppcheck_supported": false
+  },
+  "insecureFormat": {
+    "expected_defect": "security",
+    "expected_file": "src/review_cases.cpp",
+    "expected_range": [
+      60,
+      63
+    ],
+    "cppcheck_supported": false
+  },
+  "injectedNull": {
+    "expected_defect": "null-pointer",
+    "rule": "PTR-001",
+    "expected_file": "src/review_cases.cpp",
+    "expected_range": [
+      65,
+      70
+    ],
+    "cppcheck_supported": true
+  }
+}

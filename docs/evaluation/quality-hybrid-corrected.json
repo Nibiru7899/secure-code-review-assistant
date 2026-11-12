@@ -1,0 +1,1264 @@
+{
+  "mode": "hybrid",
+  "created": "2026-10-04T11:42:04.420130+00:00",
+  "metrics": {
+    "defect_cases": 20,
+    "safe_cases": 10,
+    "true_positives": 18,
+    "false_positives": 4,
+    "false_negatives": 2,
+    "precision_on_labeled_functions": 0.8181818181818182,
+    "known_defect_recall": 0.9,
+    "safe_function_false_positive_rate": 0.4,
+    "validation_rejection_runs": 1,
+    "runs_with_rejected_attempts": 1,
+    "failed_runs": 0,
+    "mean_review_seconds": 5.781833333333334,
+    "analyzer_supported_correct_findings": 10,
+    "ai_only_correct_findings": 8,
+    "malformed_output_runs": 0,
+    "analyzer_failed_runs": 0
+  },
+  "cases": [
+    {
+      "function": "readSensor",
+      "expected": {
+        "expected_defect": null,
+        "expected_file": "src/sensor.cpp",
+        "expected_range": [
+          5,
+          7
+        ],
+        "cppcheck_supported": false
+      },
+      "expected_file": "src/sensor.cpp",
+      "expected_range": [
+        5,
+        7
+      ],
+      "cppcheck_supported": false,
+      "outcome": "CANDIDATES",
+      "correct_defect_found": false,
+      "false_positive": true,
+      "categories": [
+        "null-pointer"
+      ],
+      "seconds": 5.394,
+      "validation_rejections": 0,
+      "findings": [
+        {
+          "category": "null-pointer",
+          "issue": "Potential null pointer dereference",
+          "explanation": "The function `readSensor` returns a pointer to a `Sensor` object, which may be `nullptr` if `activeSensor.connected` is `false`. Dereferencing this pointer without checking for `nullptr` could lead to undefined behavior.",
+          "start_line": 6,
+          "end_line": 6
+        }
+      ],
+      "verifications": [],
+      "failure_type": "FALSE_POSITIVE",
+      "support": [
+        "AI-ONLY CANDIDATE"
+      ]
+    },
+    {
+      "function": "readSensorValue",
+      "expected": {
+        "expected_defect": "null-pointer",
+        "rule": "PTR-001",
+        "expected_file": "src/sensor.cpp",
+        "expected_range": [
+          9,
+          11
+        ],
+        "cppcheck_supported": false
+      },
+      "expected_file": "src/sensor.cpp",
+      "expected_range": [
+        9,
+        11
+      ],
+      "cppcheck_supported": false,
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false,
+      "categories": [
+        "null-pointer"
+      ],
+      "seconds": 5.429,
+      "validation_rejections": 0,
+      "findings": [
+        {
+          "category": "null-pointer",
+          "issue": "Dereference of potentially null pointer",
+          "explanation": "The function `readSensorValue` dereferences the `sensor` pointer without checking if it is null. This can lead to undefined behavior if `sensor` is null.",
+          "start_line": 10,
+          "end_line": 10
+        }
+      ],
+      "verifications": [],
+      "failure_type": "MATCHED",
+      "support": [
+        "AI-ONLY CANDIDATE"
+      ]
+    },
+    {
+      "function": "safeSensorValue",
+      "expected": {
+        "expected_defect": null,
+        "expected_file": "src/sensor.cpp",
+        "expected_range": [
+          13,
+          15
+        ],
+        "cppcheck_supported": false
+      },
+      "expected_file": "src/sensor.cpp",
+      "expected_range": [
+        13,
+        15
+      ],
+      "cppcheck_supported": false,
+      "outcome": "CANDIDATES",
+      "correct_defect_found": false,
+      "false_positive": true,
+      "categories": [
+        "null-pointer"
+      ],
+      "seconds": 5.917,
+      "validation_rejections": 0,
+      "findings": [
+        {
+          "category": "null-pointer",
+          "issue": "Potential null pointer dereference",
+          "explanation": "The function `safeSensorValue` dereferences the `sensor` pointer without checking if it is `nullptr`. According to rule PTR-001, this should be validated before dereferencing.",
+          "start_line": 14,
+          "end_line": 14
+        }
+      ],
+      "verifications": [],
+      "failure_type": "FALSE_POSITIVE",
+      "support": [
+        "AI-ONLY CANDIDATE"
+      ]
+    },
+    {
+      "function": "calculatePressure",
+      "expected": {
+        "expected_defect": "null-pointer",
+        "rule": "PTR-001",
+        "expected_file": "src/brake_control.cpp",
+        "expected_range": [
+          3,
+          5
+        ],
+        "cppcheck_supported": false
+      },
+      "expected_file": "src/brake_control.cpp",
+      "expected_range": [
+        3,
+        5
+      ],
+      "cppcheck_supported": false,
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false,
+      "categories": [
+        "null-pointer"
+      ],
+      "seconds": 5.751,
+      "validation_rejections": 0,
+      "findings": [
+        {
+          "category": "null-pointer",
+          "issue": "Dereference of potentially null pointer",
+          "explanation": "The function `calculatePressure` dereferences the `sensor` pointer without checking if it is null. According to rule PTR-001, this is a potential null-pointer dereference.",
+          "start_line": 4,
+          "end_line": 4
+        }
+      ],
+      "verifications": [],
+      "failure_type": "MATCHED",
+      "support": [
+        "AI-ONLY CANDIDATE"
+      ]
+    },
+    {
+      "function": "safePressure",
+      "expected": {
+        "expected_defect": null,
+        "assumption": "sensor readings are within configured ECU pressure range",
+        "expected_file": "src/brake_control.cpp",
+        "expected_range": [
+          7,
+          10
+        ],
+        "cppcheck_supported": false
+      },
+      "expected_file": "src/brake_control.cpp",
+      "expected_range": [
+        7,
+        10
+      ],
+      "cppcheck_supported": false,
+      "outcome": "NO_SUPPORTED_FINDING",
+      "correct_defect_found": false,
+      "false_positive": false,
+      "categories": [],
+      "seconds": 2.852,
+      "validation_rejections": 0,
+      "findings": [],
+      "verifications": [],
+      "failure_type": "SAFE_NO_SUPPORTED_FINDING",
+      "support": []
+    },
+    {
+      "function": "clampPressure",
+      "expected": {
+        "expected_defect": null,
+        "expected_file": "src/brake_control.cpp",
+        "expected_range": [
+          12,
+          14
+        ],
+        "cppcheck_supported": false
+      },
+      "expected_file": "src/brake_control.cpp",
+      "expected_range": [
+        12,
+        14
+      ],
+      "cppcheck_supported": false,
+      "outcome": "NO_SUPPORTED_FINDING",
+      "correct_defect_found": false,
+      "false_positive": false,
+      "categories": [],
+      "seconds": 2.642,
+      "validation_rejections": 0,
+      "findings": [],
+      "verifications": [],
+      "failure_type": "SAFE_NO_SUPPORTED_FINDING",
+      "support": []
+    },
+    {
+      "function": "readActivePressure",
+      "expected": {
+        "expected_defect": "null-pointer",
+        "rule": "PTR-001",
+        "expected_file": "src/brake_control.cpp",
+        "expected_range": [
+          16,
+          18
+        ],
+        "cppcheck_supported": false
+      },
+      "expected_file": "src/brake_control.cpp",
+      "expected_range": [
+        16,
+        18
+      ],
+      "cppcheck_supported": false,
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false,
+      "categories": [
+        "null-pointer"
+      ],
+      "seconds": 6.011,
+      "validation_rejections": 0,
+      "findings": [
+        {
+          "category": "null-pointer",
+          "issue": "Potential null pointer dereference",
+          "explanation": "The function `readSensor()` can return `nullptr`, and this value is passed to `calculatePressure()`. If `readSensor()` returns `nullptr`, dereferencing it in `calculatePressure()` will lead to undefined behavior.",
+          "start_line": 17,
+          "end_line": 18
+        }
+      ],
+      "verifications": [],
+      "failure_type": "MATCHED",
+      "support": [
+        "AI-ONLY CANDIDATE"
+      ]
+    },
+    {
+      "function": "copyDiagnostic",
+      "expected": {
+        "expected_defect": "boundary",
+        "rule": "BND-001",
+        "expected_file": "src/diagnostics.cpp",
+        "expected_range": [
+          4,
+          6
+        ],
+        "cppcheck_supported": false
+      },
+      "expected_file": "src/diagnostics.cpp",
+      "expected_range": [
+        4,
+        6
+      ],
+      "cppcheck_supported": false,
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false,
+      "categories": [
+        "null-pointer",
+        "boundary"
+      ],
+      "seconds": 8.355,
+      "validation_rejections": 0,
+      "findings": [
+        {
+          "category": "null-pointer",
+          "issue": "Potential null pointer dereference",
+          "explanation": "The function `copyDiagnostic` does not check if the `destination` or `message` pointers are null before dereferencing them. Dereferencing a null pointer leads to undefined behavior.",
+          "start_line": 5,
+          "end_line": 5
+        },
+        {
+          "category": "boundary",
+          "issue": "Potential buffer overflow",
+          "explanation": "The function `copyDiagnostic` uses `std::strcpy` without checking if the `destination` buffer is large enough to hold the `message`. This can lead to a buffer overflow if the `message` is longer than the `destination` buffer.",
+          "start_line": 5,
+          "end_line": 5
+        }
+      ],
+      "verifications": [],
+      "failure_type": "MATCHED",
+      "support": [
+        "AI-ONLY CANDIDATE",
+        "AI-ONLY CANDIDATE"
+      ]
+    },
+    {
+      "function": "safeDiagnostic",
+      "expected": {
+        "expected_defect": null,
+        "assumption": "message is terminated, capacity is accurate, and buffers do not overlap",
+        "expected_file": "src/diagnostics.cpp",
+        "expected_range": [
+          8,
+          13
+        ],
+        "cppcheck_supported": false
+      },
+      "expected_file": "src/diagnostics.cpp",
+      "expected_range": [
+        8,
+        13
+      ],
+      "cppcheck_supported": false,
+      "outcome": "NO_SUPPORTED_FINDING",
+      "correct_defect_found": false,
+      "false_positive": false,
+      "categories": [],
+      "seconds": 2.53,
+      "validation_rejections": 0,
+      "findings": [],
+      "verifications": [],
+      "failure_type": "SAFE_NO_SUPPORTED_FINDING",
+      "support": []
+    },
+    {
+      "function": "uncheckedRead",
+      "expected": {
+        "expected_defect": "unchecked-return",
+        "rule": "RET-001",
+        "assumption": "file is a valid open stream",
+        "expected_file": "src/diagnostics.cpp",
+        "expected_range": [
+          15,
+          19
+        ],
+        "cppcheck_supported": false
+      },
+      "expected_file": "src/diagnostics.cpp",
+      "expected_range": [
+        15,
+        19
+      ],
+      "cppcheck_supported": false,
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false,
+      "categories": [
+        "unchecked-return",
+        "null-pointer"
+      ],
+      "seconds": 9.304,
+      "validation_rejections": 0,
+      "findings": [
+        {
+          "category": "unchecked-return",
+          "issue": "The function does not check the return value of `std::fread` before using the read value.",
+          "explanation": "The return value of `std::fread` is not checked. If `std::fread` fails to read the expected number of bytes, the returned value will be 0, which could lead to incorrect or undefined behavior.",
+          "start_line": 17,
+          "end_line": 17
+        },
+        {
+          "category": "null-pointer",
+          "issue": "The function does not check if the `file` pointer is `nullptr` before dereferencing it.",
+          "explanation": "The function dereferences the `file` pointer without checking if it is `nullptr`. If `file` is `nullptr`, dereferencing it will lead to undefined behavior.",
+          "start_line": 17,
+          "end_line": 17
+        }
+      ],
+      "verifications": [],
+      "failure_type": "MATCHED",
+      "support": [
+        "AI-ONLY CANDIDATE",
+        "AI-ONLY CANDIDATE"
+      ]
+    },
+    {
+      "function": "safeRead",
+      "expected": {
+        "expected_defect": null,
+        "expected_file": "src/diagnostics.cpp",
+        "expected_range": [
+          21,
+          24
+        ],
+        "cppcheck_supported": false
+      },
+      "expected_file": "src/diagnostics.cpp",
+      "expected_range": [
+        21,
+        24
+      ],
+      "cppcheck_supported": false,
+      "outcome": "CANDIDATES",
+      "correct_defect_found": false,
+      "false_positive": true,
+      "categories": [
+        "null-pointer",
+        "unchecked-return"
+      ],
+      "seconds": 9.595,
+      "validation_rejections": 0,
+      "findings": [
+        {
+          "category": "null-pointer",
+          "issue": "Potential null pointer dereference",
+          "explanation": "The function `safeRead` does not check if `file` or `value` are null before dereferencing them. If either is null, the function will attempt to dereference it, leading to undefined behavior.",
+          "start_line": 23,
+          "end_line": 24
+        },
+        {
+          "category": "unchecked-return",
+          "issue": "Unchecked return value from `std::fread`",
+          "explanation": "The function `safeRead` does not check the return value of `std::fread`. If `std::fread` fails to read the expected number of bytes, the function will return `true` without indicating an error, which could lead to incorrect data being processed.",
+          "start_line": 23,
+          "end_line": 23
+        }
+      ],
+      "verifications": [],
+      "failure_type": "FALSE_POSITIVE",
+      "support": [
+        "AI-ONLY CANDIDATE",
+        "AI-ONLY CANDIDATE"
+      ]
+    },
+    {
+      "function": "uninitializedCounter",
+      "expected": {
+        "expected_defect": "initialization",
+        "rule": "INIT-001",
+        "expected_file": "src/diagnostics.cpp",
+        "expected_range": [
+          26,
+          30
+        ],
+        "cppcheck_supported": true
+      },
+      "expected_file": "src/diagnostics.cpp",
+      "expected_range": [
+        26,
+        30
+      ],
+      "cppcheck_supported": true,
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false,
+      "categories": [
+        "initialization"
+      ],
+      "seconds": 5.926,
+      "validation_rejections": 0,
+      "findings": [
+        {
+          "category": "initialization",
+          "issue": "Uninitialized variable: count",
+          "explanation": "The variable 'count' is declared but not initialized before use. If 'enabled' is false, 'count' will be used without being set, leading to undefined behavior.",
+          "start_line": 27,
+          "end_line": 29
+        }
+      ],
+      "verifications": [],
+      "failure_type": "MATCHED",
+      "support": [
+        "ANALYZER-SUPPORTED"
+      ]
+    },
+    {
+      "function": "safeCounter",
+      "expected": {
+        "expected_defect": null,
+        "expected_file": "src/diagnostics.cpp",
+        "expected_range": [
+          32,
+          36
+        ],
+        "cppcheck_supported": false
+      },
+      "expected_file": "src/diagnostics.cpp",
+      "expected_range": [
+        32,
+        36
+      ],
+      "cppcheck_supported": false,
+      "outcome": "NO_SUPPORTED_FINDING",
+      "correct_defect_found": false,
+      "false_positive": false,
+      "categories": [],
+      "seconds": 2.711,
+      "validation_rejections": 0,
+      "findings": [],
+      "verifications": [],
+      "failure_type": "SAFE_NO_SUPPORTED_FINDING",
+      "support": []
+    },
+    {
+      "function": "leakingSessionFile",
+      "expected": {
+        "expected_defect": "resource",
+        "rule": "RES-001",
+        "assumption": "path is non-null and terminated",
+        "expected_file": "src/session_manager.cpp",
+        "expected_range": [
+          5,
+          9
+        ],
+        "cppcheck_supported": true
+      },
+      "expected_file": "src/session_manager.cpp",
+      "expected_range": [
+        5,
+        9
+      ],
+      "cppcheck_supported": true,
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false,
+      "categories": [
+        "resource",
+        "unchecked-return"
+      ],
+      "seconds": 9.3,
+      "validation_rejections": 0,
+      "findings": [
+        {
+          "category": "resource",
+          "issue": "Resource leak",
+          "explanation": "The function does not close the file if it fails to open it. The file is opened with `std::fopen` but not closed with `std::fclose` if `std::fopen` returns `nullptr`. This leads to a resource leak.",
+          "start_line": 6,
+          "end_line": 9
+        },
+        {
+          "category": "unchecked-return",
+          "issue": "Unchecked return value",
+          "explanation": "The function does not check the return value of `std::fgetc`. If `std::fgetc` fails, it may lead to undefined behavior.",
+          "start_line": 8,
+          "end_line": 8
+        }
+      ],
+      "verifications": [],
+      "failure_type": "MATCHED",
+      "support": [
+        "ANALYZER-SUPPORTED",
+        "AI-ONLY CANDIDATE"
+      ]
+    },
+    {
+      "function": "safeSessionFile",
+      "expected": {
+        "expected_defect": null,
+        "expected_file": "src/session_manager.cpp",
+        "expected_range": [
+          11,
+          17
+        ],
+        "cppcheck_supported": false
+      },
+      "expected_file": "src/session_manager.cpp",
+      "expected_range": [
+        11,
+        17
+      ],
+      "cppcheck_supported": false,
+      "outcome": "CANDIDATES",
+      "correct_defect_found": false,
+      "false_positive": true,
+      "categories": [
+        "unchecked-return",
+        "resource"
+      ],
+      "seconds": 9.673,
+      "validation_rejections": 0,
+      "findings": [
+        {
+          "category": "unchecked-return",
+          "issue": "Potential unchecked return of file operation result",
+          "explanation": "The function does not check the result of the file operation before returning. The return value of `std::fopen` is not checked, which could lead to undefined behavior if the file cannot be opened.",
+          "start_line": 13,
+          "end_line": 15
+        },
+        {
+          "category": "resource",
+          "issue": "Potential resource leak",
+          "explanation": "The function does not check the result of the file operation before attempting to close the file. If `std::fopen` fails, `std::fclose` will be called on a null pointer, leading to a resource leak.",
+          "start_line": 15,
+          "end_line": 15
+        }
+      ],
+      "verifications": [],
+      "failure_type": "FALSE_POSITIVE",
+      "support": [
+        "AI-ONLY CANDIDATE",
+        "AI-ONLY CANDIDATE"
+      ]
+    },
+    {
+      "function": "activateSession",
+      "expected": {
+        "expected_defect": "state",
+        "rule": "STATE-001",
+        "expected_file": "src/session_manager.cpp",
+        "expected_range": [
+          19,
+          21
+        ],
+        "cppcheck_supported": false
+      },
+      "expected_file": "src/session_manager.cpp",
+      "expected_range": [
+        19,
+        21
+      ],
+      "cppcheck_supported": false,
+      "outcome": "NO_SUPPORTED_FINDING",
+      "correct_defect_found": false,
+      "false_positive": false,
+      "categories": [],
+      "seconds": 2.598,
+      "validation_rejections": 0,
+      "findings": [],
+      "verifications": [],
+      "failure_type": "COMPLETE_MISS",
+      "support": []
+    },
+    {
+      "function": "safeActivateSession",
+      "expected": {
+        "expected_defect": null,
+        "expected_file": "src/session_manager.cpp",
+        "expected_range": [
+          23,
+          25
+        ],
+        "cppcheck_supported": false
+      },
+      "expected_file": "src/session_manager.cpp",
+      "expected_range": [
+        23,
+        25
+      ],
+      "cppcheck_supported": false,
+      "outcome": "NO_SUPPORTED_FINDING",
+      "correct_defect_found": false,
+      "false_positive": false,
+      "categories": [],
+      "seconds": 2.672,
+      "validation_rejections": 0,
+      "findings": [],
+      "verifications": [],
+      "failure_type": "SAFE_NO_SUPPORTED_FINDING",
+      "support": []
+    },
+    {
+      "function": "boundaryRead",
+      "expected": {
+        "expected_defect": "boundary",
+        "rule": "BND-001",
+        "expected_file": "src/session_manager.cpp",
+        "expected_range": [
+          27,
+          29
+        ],
+        "cppcheck_supported": false
+      },
+      "expected_file": "src/session_manager.cpp",
+      "expected_range": [
+        27,
+        29
+      ],
+      "cppcheck_supported": false,
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false,
+      "categories": [
+        "boundary",
+        "null-pointer"
+      ],
+      "seconds": 8.957,
+      "validation_rejections": 0,
+      "findings": [
+        {
+          "category": "boundary",
+          "issue": "Potential out-of-bounds access",
+          "explanation": "The function `boundaryRead` returns `samples[count]`, which can lead to an out-of-bounds access if `count` is greater than or equal to the number of elements in the `samples` array. This violates rule BND-001.",
+          "start_line": 28,
+          "end_line": 28
+        },
+        {
+          "category": "null-pointer",
+          "issue": "Potential null pointer dereference",
+          "explanation": "The function `boundaryRead` takes a pointer `samples` as a parameter, but there is no check to ensure that `samples` is not null before dereferencing it. This violates rule PTR-001.",
+          "start_line": 28,
+          "end_line": 28
+        }
+      ],
+      "verifications": [],
+      "failure_type": "MATCHED",
+      "support": [
+        "AI-ONLY CANDIDATE",
+        "AI-ONLY CANDIDATE"
+      ]
+    },
+    {
+      "function": "safeBoundaryRead",
+      "expected": {
+        "expected_defect": null,
+        "assumption": "count matches allocated elements",
+        "expected_file": "src/session_manager.cpp",
+        "expected_range": [
+          31,
+          34
+        ],
+        "cppcheck_supported": false
+      },
+      "expected_file": "src/session_manager.cpp",
+      "expected_range": [
+        31,
+        34
+      ],
+      "cppcheck_supported": false,
+      "outcome": "NO_SUPPORTED_FINDING",
+      "correct_defect_found": false,
+      "false_positive": false,
+      "categories": [],
+      "seconds": 2.15,
+      "validation_rejections": 0,
+      "findings": [],
+      "verifications": [],
+      "failure_type": "SAFE_NO_SUPPORTED_FINDING",
+      "support": []
+    },
+    {
+      "function": "definiteNull",
+      "expected": {
+        "expected_defect": "null-pointer",
+        "rule": "PTR-001",
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          5,
+          8
+        ],
+        "cppcheck_supported": true
+      },
+      "expected_file": "src/review_cases.cpp",
+      "expected_range": [
+        5,
+        8
+      ],
+      "cppcheck_supported": true,
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false,
+      "categories": [
+        "null-pointer"
+      ],
+      "seconds": 5.247,
+      "validation_rejections": 0,
+      "findings": [
+        {
+          "category": "null-pointer",
+          "issue": "Null pointer dereference",
+          "explanation": "The function `definiteNull` returns the value pointed to by `reading`, which is `nullptr`. Dereferencing a null pointer leads to undefined behavior.",
+          "start_line": 7,
+          "end_line": 7
+        }
+      ],
+      "verifications": [],
+      "failure_type": "MATCHED",
+      "support": [
+        "ANALYZER-SUPPORTED"
+      ]
+    },
+    {
+      "function": "fixedBoundaryRead",
+      "expected": {
+        "expected_defect": "boundary",
+        "rule": "BND-001",
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          10,
+          13
+        ],
+        "cppcheck_supported": true
+      },
+      "expected_file": "src/review_cases.cpp",
+      "expected_range": [
+        10,
+        13
+      ],
+      "cppcheck_supported": true,
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false,
+      "categories": [
+        "boundary"
+      ],
+      "seconds": 6.11,
+      "validation_rejections": 0,
+      "findings": [
+        {
+          "category": "boundary",
+          "issue": "Array 'samples' accessed at index 3, which is out of bounds.",
+          "explanation": "The array 'samples' has a size of 3, but the code attempts to access the element at index 3. This is an out-of-bounds access, which can lead to undefined behavior.",
+          "start_line": 11,
+          "end_line": 12
+        }
+      ],
+      "verifications": [],
+      "failure_type": "MATCHED",
+      "support": [
+        "ANALYZER-SUPPORTED"
+      ]
+    },
+    {
+      "function": "copySmallBuffer",
+      "expected": {
+        "expected_defect": "boundary",
+        "rule": "BND-001",
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          15,
+          19
+        ],
+        "cppcheck_supported": true
+      },
+      "expected_file": "src/review_cases.cpp",
+      "expected_range": [
+        15,
+        19
+      ],
+      "cppcheck_supported": true,
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false,
+      "categories": [
+        "boundary"
+      ],
+      "seconds": 6.182,
+      "validation_rejections": 0,
+      "findings": [
+        {
+          "category": "boundary",
+          "issue": "Buffer is accessed out of bounds: destination",
+          "explanation": "The destination buffer has a size of 4 bytes, but the string \"BRAKE_FAULT\" has a length of 11 characters (including the null terminator). This will cause a buffer overflow.",
+          "start_line": 17,
+          "end_line": 17
+        }
+      ],
+      "verifications": [],
+      "failure_type": "MATCHED",
+      "support": [
+        "ANALYZER-SUPPORTED"
+      ]
+    },
+    {
+      "function": "allocateWithoutRelease",
+      "expected": {
+        "expected_defect": "resource",
+        "rule": "RES-001",
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          21,
+          26
+        ],
+        "cppcheck_supported": true
+      },
+      "expected_file": "src/review_cases.cpp",
+      "expected_range": [
+        21,
+        26
+      ],
+      "cppcheck_supported": true,
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false,
+      "categories": [
+        "resource"
+      ],
+      "seconds": 5.935,
+      "validation_rejections": 0,
+      "findings": [
+        {
+          "category": "resource",
+          "issue": "Memory leak",
+          "explanation": "The function allocates memory using `std::malloc` but does not release it before returning. This results in a memory leak.",
+          "start_line": 22,
+          "end_line": 26
+        }
+      ],
+      "verifications": [],
+      "failure_type": "MATCHED",
+      "support": [
+        "ANALYZER-SUPPORTED"
+      ]
+    },
+    {
+      "function": "useFreedSample",
+      "expected": {
+        "expected_defect": "resource",
+        "rule": "RES-001",
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          28,
+          34
+        ],
+        "cppcheck_supported": true
+      },
+      "expected_file": "src/review_cases.cpp",
+      "expected_range": [
+        28,
+        34
+      ],
+      "cppcheck_supported": true,
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false,
+      "categories": [
+        "resource"
+      ],
+      "seconds": 5.933,
+      "validation_rejections": 0,
+      "findings": [
+        {
+          "category": "resource",
+          "issue": "Returning/dereferencing 'sample' after it is deallocated / released",
+          "explanation": "The function 'useFreedSample' returns the value pointed to by 'sample' after freeing it. This leads to undefined behavior as the memory is no longer valid.",
+          "start_line": 33,
+          "end_line": 33
+        }
+      ],
+      "verifications": [],
+      "failure_type": "MATCHED",
+      "support": [
+        "ANALYZER-SUPPORTED"
+      ]
+    },
+    {
+      "function": "doubleFreeSample",
+      "expected": {
+        "expected_defect": "resource",
+        "rule": "RES-001",
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          36,
+          41
+        ],
+        "cppcheck_supported": true
+      },
+      "expected_file": "src/review_cases.cpp",
+      "expected_range": [
+        36,
+        41
+      ],
+      "cppcheck_supported": true,
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false,
+      "categories": [
+        "resource"
+      ],
+      "seconds": 5.681,
+      "validation_rejections": 0,
+      "findings": [
+        {
+          "category": "resource",
+          "issue": "Double free of resource",
+          "explanation": "The function 'doubleFreeSample' attempts to free the same memory twice. This is a violation of the 'Release owned resources' rule (RES-001). The first free is on line 39, and the second is on line 40.",
+          "start_line": 40,
+          "end_line": 40
+        }
+      ],
+      "verifications": [],
+      "failure_type": "MATCHED",
+      "support": [
+        "ANALYZER-SUPPORTED"
+      ]
+    },
+    {
+      "function": "forbiddenStateTransition",
+      "expected": {
+        "expected_defect": "state",
+        "rule": "STATE-001",
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          43,
+          46
+        ],
+        "cppcheck_supported": false
+      },
+      "expected_file": "src/review_cases.cpp",
+      "expected_range": [
+        43,
+        46
+      ],
+      "cppcheck_supported": false,
+      "outcome": "NO_SUPPORTED_FINDING",
+      "correct_defect_found": false,
+      "false_positive": false,
+      "categories": [],
+      "seconds": 2.073,
+      "validation_rejections": 0,
+      "findings": [],
+      "verifications": [],
+      "failure_type": "COMPLETE_MISS",
+      "support": []
+    },
+    {
+      "function": "uninitializedVoltage",
+      "expected": {
+        "expected_defect": "initialization",
+        "rule": "INIT-001",
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          48,
+          52
+        ],
+        "cppcheck_supported": true
+      },
+      "expected_file": "src/review_cases.cpp",
+      "expected_range": [
+        48,
+        52
+      ],
+      "cppcheck_supported": true,
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false,
+      "categories": [
+        "initialization"
+      ],
+      "seconds": 5.508,
+      "validation_rejections": 0,
+      "findings": [
+        {
+          "category": "initialization",
+          "issue": "Uninitialized variable: voltage",
+          "explanation": "The variable 'voltage' is declared but not initialized before use. If 'connected' is false, 'voltage' will have an indeterminate value.",
+          "start_line": 49,
+          "end_line": 51
+        }
+      ],
+      "verifications": [],
+      "failure_type": "MATCHED",
+      "support": [
+        "ANALYZER-SUPPORTED"
+      ]
+    },
+    {
+      "function": "uncheckedInput",
+      "expected": {
+        "expected_defect": "unchecked-return",
+        "rule": "RET-001",
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          54,
+          58
+        ],
+        "cppcheck_supported": false
+      },
+      "expected_file": "src/review_cases.cpp",
+      "expected_range": [
+        54,
+        58
+      ],
+      "cppcheck_supported": false,
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false,
+      "categories": [
+        "unchecked-return"
+      ],
+      "seconds": 6.361,
+      "validation_rejections": 0,
+      "findings": [
+        {
+          "category": "unchecked-return",
+          "issue": "Potential use of uninitialized value",
+          "explanation": "The function `uncheckedInput` reads an integer from the standard input using `std::scanf`, but it does not check the return value of `std::scanf` to ensure that the input was successfully read. If `std::scanf` fails to read an integer (e.g., due to invalid input), the variable `voltage` will be uninitialized. This can lead to undefined behavior when `voltage` is returned.",
+          "start_line": 56,
+          "end_line": 56
+        }
+      ],
+      "verifications": [],
+      "failure_type": "MATCHED",
+      "support": [
+        "AI-ONLY CANDIDATE"
+      ]
+    },
+    {
+      "function": "insecureFormat",
+      "expected": {
+        "expected_defect": "security",
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          60,
+          63
+        ],
+        "cppcheck_supported": false
+      },
+      "expected_file": "src/review_cases.cpp",
+      "expected_range": [
+        60,
+        63
+      ],
+      "cppcheck_supported": false,
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false,
+      "categories": [
+        "security"
+      ],
+      "seconds": 11.003,
+      "validation_rejections": 1,
+      "findings": [
+        {
+          "category": "security",
+          "issue": "Format string vulnerability",
+          "explanation": "The function `insecureFormat` uses `std::printf` with a user-supplied format string (`userText`). This can lead to a format string vulnerability if `userText` contains malicious format specifiers.",
+          "start_line": 62,
+          "end_line": 62
+        }
+      ],
+      "verifications": [],
+      "failure_type": "MATCHED",
+      "support": [
+        "AI-ONLY CANDIDATE"
+      ]
+    },
+    {
+      "function": "injectedNull",
+      "expected": {
+        "expected_defect": "null-pointer",
+        "rule": "PTR-001",
+        "expected_file": "src/review_cases.cpp",
+        "expected_range": [
+          65,
+          70
+        ],
+        "cppcheck_supported": true
+      },
+      "expected_file": "src/review_cases.cpp",
+      "expected_range": [
+        65,
+        70
+      ],
+      "cppcheck_supported": true,
+      "outcome": "CANDIDATES",
+      "correct_defect_found": true,
+      "false_positive": false,
+      "categories": [
+        "null-pointer"
+      ],
+      "seconds": 5.655,
+      "validation_rejections": 0,
+      "findings": [
+        {
+          "category": "null-pointer",
+          "issue": "Null pointer dereference",
+          "explanation": "The variable 'reading' is declared as a pointer to an integer and initialized to nullptr. The function then attempts to dereference this pointer, which leads to a null pointer dereference.",
+          "start_line": 68,
+          "end_line": 69
+        }
+      ],
+      "verifications": [],
+      "failure_type": "MATCHED",
+      "support": [
+        "ANALYZER-SUPPORTED"
+      ]
+    }
+  ],
+  "capabilities": [
+    {
+      "mode": "explain_function",
+      "question": "Explain the function and its visible control flow",
+      "outcome": "ANSWERED",
+      "seconds": 4.906
+    },
+    {
+      "mode": "explain_module",
+      "question": "Summarize this source module and visible dependencies; state what is unknown",
+      "outcome": "ANSWERED",
+      "seconds": 7.99
+    },
+    {
+      "mode": "qa",
+      "question": "Which calls are visible here? What possible root cause is supported?",
+      "outcome": "ANSWERED",
+      "seconds": 2.935
+    },
+    {
+      "mode": "diagnostics",
+      "question": "Interpret this compiler warning and suggest remediation",
+      "outcome": "INSUFFICIENT_EVIDENCE",
+      "seconds": 8.321
+    },
+    {
+      "mode": "diagnostics",
+      "question": "Interpret this runtime log; distinguish hypotheses from proven causes",
+      "outcome": "ANSWERED",
+      "seconds": 6.743
+    },
+    {
+      "mode": "diagnostics",
+      "question": "Interpret this imported CI/build log without executing commands",
+      "outcome": "INSUFFICIENT_EVIDENCE",
+      "seconds": 2.091
+    }
+  ],
+  "model": "qwen2.5-coder:7b",
+  "context": 8192,
+  "input_budget": 6144,
+  "output_budget": 1536,
+  "embedding": "jinaai/jina-embeddings-v2-base-code",
+  "limitations": [
+    "Fixed synthetic corpus only; not universal accuracy. Failed cases remain in denominators.",
+    "Detection mechanisms require inspection; location overlap alone is not a correct diagnosis."
+  ],
+  "performance": {
+    "total_review_seconds": 173.455,
+    "primary_calls": 31,
+    "verifier_calls": 0,
+    "mean_primary_seconds": 5.448264516129032,
+    "mean_verifier_seconds": null,
+    "mean_retrieval_seconds": 0.06759,
+    "total_input_tokens_all_calls": 57246,
+    "max_input_tokens_all_calls": 1688,
+    "functions_per_minute": 10.377331296301634
+  }
+}

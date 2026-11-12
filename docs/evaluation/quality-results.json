@@ -1,0 +1,1069 @@
+{
+  "date": "2026-10-04",
+  "decision": "KEEP_BASELINE_DEFAULT; ast/hybrid/verified experimental. Review-quality and additional diagnostic-capability gates failed.",
+  "models": {
+    "llm": "qwen2.5-coder:7b",
+    "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+    "quantization": "Q4_K_M",
+    "embeddings": "jinaai/jina-embeddings-v2-base-code",
+    "embedding_device": "CPU",
+    "context": 8192,
+    "input_budget": 6144,
+    "output_budget": 1536,
+    "reserve": 512
+  },
+  "recorded_operational_reference": {
+    "precision": 0.9375,
+    "recall": 0.75,
+    "safe_false_positive_rate": 0.1
+  },
+  "fresh_frozen_native_baseline": {
+    "defect_cases": 20,
+    "safe_cases": 10,
+    "true_positives": 17,
+    "false_positives": 1,
+    "false_negatives": 3,
+    "precision_on_labeled_functions": 0.9444444444444444,
+    "known_defect_recall": 0.85,
+    "safe_function_false_positive_rate": 0.1,
+    "validation_rejection_runs": 2,
+    "runs_with_rejected_attempts": 1,
+    "failed_runs": 1,
+    "mean_review_seconds": 5.0734,
+    "analyzer_supported_correct_findings": 9,
+    "ai_only_correct_findings": 8,
+    "malformed_output_runs": 0,
+    "analyzer_failed_runs": 0
+  },
+  "ablations": [
+    {
+      "mode": "baseline",
+      "metrics": {
+        "defect_cases": 20,
+        "safe_cases": 10,
+        "true_positives": 17,
+        "false_positives": 1,
+        "false_negatives": 3,
+        "precision_on_labeled_functions": 0.9444444444444444,
+        "known_defect_recall": 0.85,
+        "safe_function_false_positive_rate": 0.1,
+        "validation_rejection_runs": 2,
+        "runs_with_rejected_attempts": 1,
+        "failed_runs": 1,
+        "mean_review_seconds": 5.0734,
+        "analyzer_supported_correct_findings": 9,
+        "ai_only_correct_findings": 8,
+        "malformed_output_runs": 0,
+        "analyzer_failed_runs": 0
+      },
+      "strict_correct_category_recall": 0.85,
+      "effective_detection_recall": 0.85,
+      "detection_adjudication": "No extra wrong-category finding recognized a missed expected mechanism in these four final comparison runs. copyDiagnostic null-pointer finding does not recognize its expected boundary defect.",
+      "duration_30_functions_seconds": 152.202,
+      "primary_calls": 31,
+      "verifier_calls": 0,
+      "mean_primary_seconds": null,
+      "mean_verifier_seconds": null,
+      "mean_retrieval_seconds": null,
+      "input_tokens_exact_30_functions_all_attempts": 47310,
+      "max_input_tokens_30_functions": 1633,
+      "model_calls_30_functions": 31,
+      "capabilities": [
+        {
+          "mode": "explain_function",
+          "question": "Explain the function and its visible control flow",
+          "outcome": "INSUFFICIENT_EVIDENCE",
+          "seconds": 1.32
+        },
+        {
+          "mode": "explain_module",
+          "question": "Summarize this source module and visible dependencies; state what is unknown",
+          "outcome": "ANSWERED",
+          "seconds": 8.368
+        },
+        {
+          "mode": "qa",
+          "question": "Which calls are visible here? What possible root cause is supported?",
+          "outcome": "INSUFFICIENT_EVIDENCE",
+          "seconds": 1.095
+        },
+        {
+          "mode": "diagnostics",
+          "question": "Interpret this compiler warning and suggest remediation",
+          "outcome": "ANSWERED",
+          "seconds": 4.642
+        },
+        {
+          "mode": "diagnostics",
+          "question": "Interpret this runtime log; distinguish hypotheses from proven causes",
+          "outcome": "ANSWERED",
+          "seconds": 9.392
+        },
+        {
+          "mode": "diagnostics",
+          "question": "Interpret this imported CI/build log without executing commands",
+          "outcome": "INSUFFICIENT_EVIDENCE",
+          "seconds": 1.677
+        }
+      ]
+    },
+    {
+      "mode": "ast-corrected",
+      "metrics": {
+        "defect_cases": 20,
+        "safe_cases": 10,
+        "true_positives": 17,
+        "false_positives": 5,
+        "false_negatives": 3,
+        "precision_on_labeled_functions": 0.7727272727272727,
+        "known_defect_recall": 0.85,
+        "safe_function_false_positive_rate": 0.5,
+        "validation_rejection_runs": 1,
+        "runs_with_rejected_attempts": 1,
+        "failed_runs": 0,
+        "mean_review_seconds": 5.712766666666667,
+        "analyzer_supported_correct_findings": 10,
+        "ai_only_correct_findings": 7,
+        "malformed_output_runs": 0,
+        "analyzer_failed_runs": 0
+      },
+      "strict_correct_category_recall": 0.85,
+      "effective_detection_recall": 0.85,
+      "detection_adjudication": "No extra wrong-category finding recognized a missed expected mechanism in these four final comparison runs. copyDiagnostic null-pointer finding does not recognize its expected boundary defect.",
+      "duration_30_functions_seconds": 171.383,
+      "primary_calls": 31,
+      "verifier_calls": 0,
+      "mean_primary_seconds": 5.405245161290322,
+      "mean_verifier_seconds": null,
+      "mean_retrieval_seconds": 0.04383666666666667,
+      "input_tokens_exact_30_functions_all_attempts": 46470,
+      "max_input_tokens_30_functions": 1558,
+      "model_calls_30_functions": 31,
+      "capabilities": [
+        {
+          "mode": "explain_function",
+          "question": "Explain the function and its visible control flow",
+          "outcome": "INSUFFICIENT_EVIDENCE",
+          "seconds": 1.246
+        },
+        {
+          "mode": "explain_module",
+          "question": "Summarize this source module and visible dependencies; state what is unknown",
+          "outcome": "ANSWERED",
+          "seconds": 9.015
+        },
+        {
+          "mode": "qa",
+          "question": "Which calls are visible here? What possible root cause is supported?",
+          "outcome": "ANSWERED",
+          "seconds": 2.751
+        },
+        {
+          "mode": "diagnostics",
+          "question": "Interpret this compiler warning and suggest remediation",
+          "outcome": "INSUFFICIENT_EVIDENCE",
+          "seconds": 8.882
+        },
+        {
+          "mode": "diagnostics",
+          "question": "Interpret this runtime log; distinguish hypotheses from proven causes",
+          "outcome": "ANSWERED",
+          "seconds": 6.942
+        },
+        {
+          "mode": "diagnostics",
+          "question": "Interpret this imported CI/build log without executing commands",
+          "outcome": "INSUFFICIENT_EVIDENCE",
+          "seconds": 1.701
+        }
+      ]
+    },
+    {
+      "mode": "hybrid-corrected",
+      "metrics": {
+        "defect_cases": 20,
+        "safe_cases": 10,
+        "true_positives": 18,
+        "false_positives": 4,
+        "false_negatives": 2,
+        "precision_on_labeled_functions": 0.8181818181818182,
+        "known_defect_recall": 0.9,
+        "safe_function_false_positive_rate": 0.4,
+        "validation_rejection_runs": 1,
+        "runs_with_rejected_attempts": 1,
+        "failed_runs": 0,
+        "mean_review_seconds": 5.781833333333334,
+        "analyzer_supported_correct_findings": 10,
+        "ai_only_correct_findings": 8,
+        "malformed_output_runs": 0,
+        "analyzer_failed_runs": 0
+      },
+      "strict_correct_category_recall": 0.9,
+      "effective_detection_recall": 0.9,
+      "detection_adjudication": "No extra wrong-category finding recognized a missed expected mechanism in these four final comparison runs. copyDiagnostic null-pointer finding does not recognize its expected boundary defect.",
+      "duration_30_functions_seconds": 173.455,
+      "primary_calls": 31,
+      "verifier_calls": 0,
+      "mean_primary_seconds": 5.448264516129032,
+      "mean_verifier_seconds": null,
+      "mean_retrieval_seconds": 0.06759,
+      "input_tokens_exact_30_functions_all_attempts": 46905,
+      "max_input_tokens_30_functions": 1619,
+      "model_calls_30_functions": 31,
+      "capabilities": [
+        {
+          "mode": "explain_function",
+          "question": "Explain the function and its visible control flow",
+          "outcome": "ANSWERED",
+          "seconds": 4.906
+        },
+        {
+          "mode": "explain_module",
+          "question": "Summarize this source module and visible dependencies; state what is unknown",
+          "outcome": "ANSWERED",
+          "seconds": 7.99
+        },
+        {
+          "mode": "qa",
+          "question": "Which calls are visible here? What possible root cause is supported?",
+          "outcome": "ANSWERED",
+          "seconds": 2.935
+        },
+        {
+          "mode": "diagnostics",
+          "question": "Interpret this compiler warning and suggest remediation",
+          "outcome": "INSUFFICIENT_EVIDENCE",
+          "seconds": 8.321
+        },
+        {
+          "mode": "diagnostics",
+          "question": "Interpret this runtime log; distinguish hypotheses from proven causes",
+          "outcome": "ANSWERED",
+          "seconds": 6.743
+        },
+        {
+          "mode": "diagnostics",
+          "question": "Interpret this imported CI/build log without executing commands",
+          "outcome": "INSUFFICIENT_EVIDENCE",
+          "seconds": 2.091
+        }
+      ]
+    },
+    {
+      "mode": "verified-final",
+      "metrics": {
+        "defect_cases": 20,
+        "safe_cases": 10,
+        "true_positives": 16,
+        "false_positives": 3,
+        "false_negatives": 4,
+        "precision_on_labeled_functions": 0.8421052631578947,
+        "known_defect_recall": 0.8,
+        "safe_function_false_positive_rate": 0.3,
+        "validation_rejection_runs": 1,
+        "runs_with_rejected_attempts": 1,
+        "failed_runs": 0,
+        "mean_review_seconds": 7.0362,
+        "analyzer_supported_correct_findings": 10,
+        "ai_only_correct_findings": 6,
+        "malformed_output_runs": 0,
+        "analyzer_failed_runs": 0
+      },
+      "strict_correct_category_recall": 0.8,
+      "effective_detection_recall": 0.8,
+      "detection_adjudication": "No extra wrong-category finding recognized a missed expected mechanism in these four final comparison runs. copyDiagnostic null-pointer finding does not recognize its expected boundary defect.",
+      "duration_30_functions_seconds": 211.086,
+      "primary_calls": 31,
+      "verifier_calls": 28,
+      "mean_primary_seconds": 4.575625806451613,
+      "mean_verifier_seconds": 2.343882142857143,
+      "mean_retrieval_seconds": 0.04001333333333333,
+      "input_tokens_exact_30_functions_all_attempts": 73082,
+      "max_input_tokens_30_functions": 1619,
+      "model_calls_30_functions": 59,
+      "capabilities": [
+        {
+          "mode": "explain_function",
+          "question": "Explain the function and its visible control flow",
+          "outcome": "ANSWERED",
+          "seconds": 4.124
+        },
+        {
+          "mode": "explain_module",
+          "question": "Summarize this source module and visible dependencies; state what is unknown",
+          "outcome": "ANSWERED",
+          "seconds": 6.822
+        },
+        {
+          "mode": "qa",
+          "question": "Which calls are visible here? What possible root cause is supported?",
+          "outcome": "ANSWERED",
+          "seconds": 2.063
+        },
+        {
+          "mode": "diagnostics",
+          "question": "Interpret this compiler warning and suggest remediation",
+          "outcome": "INSUFFICIENT_EVIDENCE",
+          "seconds": 9.522
+        },
+        {
+          "mode": "diagnostics",
+          "question": "Interpret this runtime log; distinguish hypotheses from proven causes",
+          "outcome": "INSUFFICIENT_EVIDENCE",
+          "seconds": 1.719
+        },
+        {
+          "mode": "diagnostics",
+          "question": "Interpret this imported CI/build log without executing commands",
+          "outcome": "INSUFFICIENT_EVIDENCE",
+          "seconds": 1.731
+        }
+      ]
+    }
+  ],
+  "per_case": [
+    {
+      "function": "readSensor",
+      "expected": null,
+      "baseline_outcome": "CANDIDATES",
+      "enhanced_outcome": "INSUFFICIENT_EVIDENCE",
+      "baseline_strict_match": false,
+      "enhanced_strict_match": false,
+      "baseline_safe_false_positive": true,
+      "enhanced_safe_false_positive": false,
+      "change": "IMPROVED",
+      "failure_type": "INSUFFICIENT"
+    },
+    {
+      "function": "readSensorValue",
+      "expected": "null-pointer",
+      "baseline_outcome": "CANDIDATES",
+      "enhanced_outcome": "CANDIDATES",
+      "baseline_strict_match": true,
+      "enhanced_strict_match": true,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "UNCHANGED",
+      "failure_type": "MATCHED"
+    },
+    {
+      "function": "safeSensorValue",
+      "expected": null,
+      "baseline_outcome": "NO_SUPPORTED_FINDING",
+      "enhanced_outcome": "CANDIDATES",
+      "baseline_strict_match": false,
+      "enhanced_strict_match": false,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": true,
+      "change": "REGRESSED",
+      "failure_type": "FALSE_POSITIVE"
+    },
+    {
+      "function": "calculatePressure",
+      "expected": "null-pointer",
+      "baseline_outcome": "CANDIDATES",
+      "enhanced_outcome": "CANDIDATES",
+      "baseline_strict_match": true,
+      "enhanced_strict_match": true,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "UNCHANGED",
+      "failure_type": "MATCHED"
+    },
+    {
+      "function": "safePressure",
+      "expected": null,
+      "baseline_outcome": "NO_SUPPORTED_FINDING",
+      "enhanced_outcome": "NO_SUPPORTED_FINDING",
+      "baseline_strict_match": false,
+      "enhanced_strict_match": false,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "UNCHANGED",
+      "failure_type": "SAFE_NO_SUPPORTED_FINDING"
+    },
+    {
+      "function": "clampPressure",
+      "expected": null,
+      "baseline_outcome": "NO_SUPPORTED_FINDING",
+      "enhanced_outcome": "NO_SUPPORTED_FINDING",
+      "baseline_strict_match": false,
+      "enhanced_strict_match": false,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "UNCHANGED",
+      "failure_type": "SAFE_NO_SUPPORTED_FINDING"
+    },
+    {
+      "function": "readActivePressure",
+      "expected": "null-pointer",
+      "baseline_outcome": "NO_SUPPORTED_FINDING",
+      "enhanced_outcome": "INSUFFICIENT_EVIDENCE",
+      "baseline_strict_match": false,
+      "enhanced_strict_match": false,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "UNCHANGED",
+      "failure_type": "INSUFFICIENT"
+    },
+    {
+      "function": "copyDiagnostic",
+      "expected": "boundary",
+      "baseline_outcome": "CANDIDATES",
+      "enhanced_outcome": "CANDIDATES",
+      "baseline_strict_match": true,
+      "enhanced_strict_match": false,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "REGRESSED",
+      "failure_type": "WRONG_CATEGORY"
+    },
+    {
+      "function": "safeDiagnostic",
+      "expected": null,
+      "baseline_outcome": "NO_SUPPORTED_FINDING",
+      "enhanced_outcome": "NO_SUPPORTED_FINDING",
+      "baseline_strict_match": false,
+      "enhanced_strict_match": false,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "UNCHANGED",
+      "failure_type": "SAFE_NO_SUPPORTED_FINDING"
+    },
+    {
+      "function": "uncheckedRead",
+      "expected": "unchecked-return",
+      "baseline_outcome": "CANDIDATES",
+      "enhanced_outcome": "CANDIDATES",
+      "baseline_strict_match": true,
+      "enhanced_strict_match": true,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "UNCHANGED",
+      "failure_type": "MATCHED"
+    },
+    {
+      "function": "safeRead",
+      "expected": null,
+      "baseline_outcome": "NO_SUPPORTED_FINDING",
+      "enhanced_outcome": "CANDIDATES",
+      "baseline_strict_match": false,
+      "enhanced_strict_match": false,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": true,
+      "change": "REGRESSED",
+      "failure_type": "FALSE_POSITIVE"
+    },
+    {
+      "function": "uninitializedCounter",
+      "expected": "initialization",
+      "baseline_outcome": "CANDIDATES",
+      "enhanced_outcome": "CANDIDATES",
+      "baseline_strict_match": true,
+      "enhanced_strict_match": true,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "UNCHANGED",
+      "failure_type": "MATCHED"
+    },
+    {
+      "function": "safeCounter",
+      "expected": null,
+      "baseline_outcome": "NO_SUPPORTED_FINDING",
+      "enhanced_outcome": "NO_SUPPORTED_FINDING",
+      "baseline_strict_match": false,
+      "enhanced_strict_match": false,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "UNCHANGED",
+      "failure_type": "SAFE_NO_SUPPORTED_FINDING"
+    },
+    {
+      "function": "leakingSessionFile",
+      "expected": "resource",
+      "baseline_outcome": "CANDIDATES",
+      "enhanced_outcome": "CANDIDATES",
+      "baseline_strict_match": true,
+      "enhanced_strict_match": true,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "UNCHANGED",
+      "failure_type": "MATCHED"
+    },
+    {
+      "function": "safeSessionFile",
+      "expected": null,
+      "baseline_outcome": "NO_SUPPORTED_FINDING",
+      "enhanced_outcome": "CANDIDATES",
+      "baseline_strict_match": false,
+      "enhanced_strict_match": false,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": true,
+      "change": "REGRESSED",
+      "failure_type": "FALSE_POSITIVE"
+    },
+    {
+      "function": "activateSession",
+      "expected": "state",
+      "baseline_outcome": "NO_SUPPORTED_FINDING",
+      "enhanced_outcome": "NO_SUPPORTED_FINDING",
+      "baseline_strict_match": false,
+      "enhanced_strict_match": false,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "UNCHANGED",
+      "failure_type": "COMPLETE_MISS"
+    },
+    {
+      "function": "safeActivateSession",
+      "expected": null,
+      "baseline_outcome": "NO_SUPPORTED_FINDING",
+      "enhanced_outcome": "NO_SUPPORTED_FINDING",
+      "baseline_strict_match": false,
+      "enhanced_strict_match": false,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "UNCHANGED",
+      "failure_type": "SAFE_NO_SUPPORTED_FINDING"
+    },
+    {
+      "function": "boundaryRead",
+      "expected": "boundary",
+      "baseline_outcome": "CANDIDATES",
+      "enhanced_outcome": "CANDIDATES",
+      "baseline_strict_match": true,
+      "enhanced_strict_match": true,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "UNCHANGED",
+      "failure_type": "MATCHED"
+    },
+    {
+      "function": "safeBoundaryRead",
+      "expected": null,
+      "baseline_outcome": "NO_SUPPORTED_FINDING",
+      "enhanced_outcome": "NO_SUPPORTED_FINDING",
+      "baseline_strict_match": false,
+      "enhanced_strict_match": false,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "UNCHANGED",
+      "failure_type": "SAFE_NO_SUPPORTED_FINDING"
+    },
+    {
+      "function": "definiteNull",
+      "expected": "null-pointer",
+      "baseline_outcome": "CANDIDATES",
+      "enhanced_outcome": "CANDIDATES",
+      "baseline_strict_match": true,
+      "enhanced_strict_match": true,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "UNCHANGED",
+      "failure_type": "MATCHED"
+    },
+    {
+      "function": "fixedBoundaryRead",
+      "expected": "boundary",
+      "baseline_outcome": "CANDIDATES",
+      "enhanced_outcome": "CANDIDATES",
+      "baseline_strict_match": true,
+      "enhanced_strict_match": true,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "UNCHANGED",
+      "failure_type": "MATCHED"
+    },
+    {
+      "function": "copySmallBuffer",
+      "expected": "boundary",
+      "baseline_outcome": "CANDIDATES",
+      "enhanced_outcome": "CANDIDATES",
+      "baseline_strict_match": true,
+      "enhanced_strict_match": true,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "UNCHANGED",
+      "failure_type": "MATCHED"
+    },
+    {
+      "function": "allocateWithoutRelease",
+      "expected": "resource",
+      "baseline_outcome": "CANDIDATES",
+      "enhanced_outcome": "CANDIDATES",
+      "baseline_strict_match": true,
+      "enhanced_strict_match": true,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "UNCHANGED",
+      "failure_type": "MATCHED"
+    },
+    {
+      "function": "useFreedSample",
+      "expected": "resource",
+      "baseline_outcome": "CANDIDATES",
+      "enhanced_outcome": "CANDIDATES",
+      "baseline_strict_match": true,
+      "enhanced_strict_match": true,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "UNCHANGED",
+      "failure_type": "MATCHED"
+    },
+    {
+      "function": "doubleFreeSample",
+      "expected": "resource",
+      "baseline_outcome": "FAILED",
+      "enhanced_outcome": "CANDIDATES",
+      "baseline_strict_match": false,
+      "enhanced_strict_match": true,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "IMPROVED",
+      "failure_type": "MATCHED"
+    },
+    {
+      "function": "forbiddenStateTransition",
+      "expected": "state",
+      "baseline_outcome": "CANDIDATES",
+      "enhanced_outcome": "NO_SUPPORTED_FINDING",
+      "baseline_strict_match": true,
+      "enhanced_strict_match": false,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "REGRESSED",
+      "failure_type": "COMPLETE_MISS"
+    },
+    {
+      "function": "uninitializedVoltage",
+      "expected": "initialization",
+      "baseline_outcome": "CANDIDATES",
+      "enhanced_outcome": "CANDIDATES",
+      "baseline_strict_match": true,
+      "enhanced_strict_match": true,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "UNCHANGED",
+      "failure_type": "MATCHED"
+    },
+    {
+      "function": "uncheckedInput",
+      "expected": "unchecked-return",
+      "baseline_outcome": "CANDIDATES",
+      "enhanced_outcome": "CANDIDATES",
+      "baseline_strict_match": true,
+      "enhanced_strict_match": true,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "UNCHANGED",
+      "failure_type": "MATCHED"
+    },
+    {
+      "function": "insecureFormat",
+      "expected": "security",
+      "baseline_outcome": "CANDIDATES",
+      "enhanced_outcome": "CANDIDATES",
+      "baseline_strict_match": true,
+      "enhanced_strict_match": true,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "UNCHANGED",
+      "failure_type": "MATCHED"
+    },
+    {
+      "function": "injectedNull",
+      "expected": "null-pointer",
+      "baseline_outcome": "CANDIDATES",
+      "enhanced_outcome": "CANDIDATES",
+      "baseline_strict_match": true,
+      "enhanced_strict_match": true,
+      "baseline_safe_false_positive": false,
+      "enhanced_safe_false_positive": false,
+      "change": "UNCHANGED",
+      "failure_type": "MATCHED"
+    }
+  ],
+  "changed_groups": {
+    "IMPROVED": [
+      "readSensor",
+      "doubleFreeSample"
+    ],
+    "REGRESSED": [
+      "safeSensorValue",
+      "copyDiagnostic",
+      "safeRead",
+      "safeSessionFile",
+      "forbiddenStateTransition"
+    ],
+    "UNCHANGED": [
+      "readSensorValue",
+      "calculatePressure",
+      "safePressure",
+      "clampPressure",
+      "readActivePressure",
+      "safeDiagnostic",
+      "uncheckedRead",
+      "uninitializedCounter",
+      "safeCounter",
+      "leakingSessionFile",
+      "activateSession",
+      "safeActivateSession",
+      "boundaryRead",
+      "safeBoundaryRead",
+      "definiteNull",
+      "fixedBoundaryRead",
+      "copySmallBuffer",
+      "allocateWithoutRelease",
+      "useFreedSample",
+      "uninitializedVoltage",
+      "uncheckedInput",
+      "insecureFormat",
+      "injectedNull"
+    ]
+  },
+  "verification": {
+    "decisions": {
+      "INSUFFICIENT": 3,
+      "CONFIRM": 24,
+      "REJECT": 1
+    },
+    "reclassified_cases": [],
+    "rejected_candidates": [
+      {
+        "function": "copyDiagnostic",
+        "issue": "Potential buffer overflow",
+        "reason": "The candidate code uses `std::strcpy` without checking if the `destination` buffer is large enough to hold the `message`, which can lead to a buffer overflow. This is supported by evidence S1 and contradicts rule BND-001."
+      }
+    ],
+    "insufficient_candidates": [
+      {
+        "function": "readSensor",
+        "issue": "Potential null pointer dereference",
+        "reason": "The candidate code does not provide evidence that the returned pointer is dereferenced without a null check. The evidence only shows the return statement and a rule that suggests validating nullable pointers. There is no evidence of dereferencing the pointer."
+      },
+      {
+        "function": "readActivePressure",
+        "issue": "Potential null pointer dereference",
+        "reason": "The candidate code does not provide evidence that `readSensor()` can return `nullptr` or that there is a preceding guard to check for this condition. The evidence only shows the function call and return statement without any context about the possible return value of `readSensor()`."
+      },
+      {
+        "function": "boundaryRead",
+        "issue": "Potential null pointer dereference",
+        "reason": "The candidate code does not provide sufficient evidence to confirm or contradict the null-pointer dereference issue. The evidence shows that the function `boundaryRead` dereferences the `samples` pointer without checking if it is null, but it does not provide any information about the source of the `samples` pointer or whether it could be null. The rule PTR-001 is applicable, but it does not help,"
+      }
+    ]
+  },
+  "wrong_category_adjudication": {
+    "automatic_nonmatching_category_cases": [
+      "copyDiagnostic"
+    ],
+    "expected_mechanism_recognized_in_wrong_category": [],
+    "note": "Expected boundary finding was rejected; an additional null-pointer observation is not detection of that boundary mechanism. Effective detection recall remains 16/20. Detector before verification recognized 18/20."
+  },
+  "retrieval": [
+    {
+      "mode": "VECTOR_RELATED",
+      "ranking": null,
+      "exact_target_recall": 1.0,
+      "relevant_top_k": 1.0,
+      "deterministic_symbol_context_recall": 0.5,
+      "mean_retrieval_seconds": 0.04840897999965819,
+      "duplicates": 0,
+      "stale": 0
+    },
+    {
+      "mode": "HYBRID_1_1",
+      "ranking": {
+        "lexical_weight": 1,
+        "vector_weight": 1,
+        "rrf_constant": 20
+      },
+      "exact_target_recall": 1.0,
+      "relevant_top_k": 1.0,
+      "deterministic_symbol_context_recall": 1.0,
+      "mean_retrieval_seconds": 0.0822430149957654,
+      "duplicates": 0,
+      "stale": 0
+    },
+    {
+      "mode": "HYBRID_2_1",
+      "ranking": {
+        "lexical_weight": 2,
+        "vector_weight": 1,
+        "rrf_constant": 20
+      },
+      "exact_target_recall": 1.0,
+      "relevant_top_k": 1.0,
+      "deterministic_symbol_context_recall": 1.0,
+      "mean_retrieval_seconds": 0.07643492500355933,
+      "duplicates": 0,
+      "stale": 0
+    },
+    {
+      "mode": "HYBRID_3_1",
+      "ranking": {
+        "lexical_weight": 3,
+        "vector_weight": 1,
+        "rrf_constant": 20
+      },
+      "exact_target_recall": 1.0,
+      "relevant_top_k": 1.0,
+      "deterministic_symbol_context_recall": 1.0,
+      "mean_retrieval_seconds": 0.0725436049993732,
+      "duplicates": 0,
+      "stale": 0
+    }
+  ],
+  "retrieval_limitations": [
+    "Same 20 fixed questions. VECTOR_RELATED retains mandatory exact target, not a pure vector-only target selector.",
+    "Direct syntactic symbol-context score has only two expected call relationships on this corpus; does not establish general binding accuracy.",
+    "All three hybrid weights pass equally; 2:1 is a conservative tested middle setting, not an optimum."
+  ],
+  "indexing": {
+    "cold": {
+      "seconds": 8.759,
+      "ast_seconds": 0.0093,
+      "embeddings": {
+        "computed": 44,
+        "reused": 0,
+        "seconds": 8.1863
+      }
+    },
+    "unchanged": {
+      "seconds": 0.015,
+      "ast_seconds": 0,
+      "embeddings": {
+        "computed": 0,
+        "reused": 44,
+        "seconds": 0
+      }
+    },
+    "changed": {
+      "seconds": 0.559,
+      "ast_seconds": 0.0046,
+      "embeddings": {
+        "computed": 5,
+        "reused": 39,
+        "seconds": 0.3933
+      }
+    },
+    "deleted": {
+      "seconds": 0.157,
+      "ast_seconds": 0.0022,
+      "embeddings": {
+        "computed": 0,
+        "reused": 37,
+        "seconds": 0.0088
+      }
+    }
+  },
+  "repository_review": {
+    "before": {
+      "seconds": 144.728,
+      "functions": 31,
+      "metrics": {
+        "defective_functions": 20,
+        "safe_functions": 10,
+        "true_positives": 15,
+        "false_negatives": 5,
+        "false_positives": 1,
+        "precision_per_labeled_function": 0.9375,
+        "recall": 0.75,
+        "safe_false_positive_rate": 0.1,
+        "remaining_misses": [
+          "calculatePressure",
+          "readActivePressure",
+          "activateSession",
+          "useFreedSample",
+          "doubleFreeSample"
+        ],
+        "safe_false_positives": [
+          "readSensor"
+        ],
+        "auxiliary_functions": [
+          "sensorConnected"
+        ],
+        "auxiliary_safe_false_positives": []
+      },
+      "environment": "Earlier Docker baseline; not a contemporaneous same-environment speed comparison"
+    },
+    "after": {
+      "seconds": 215.287,
+      "functions": 31,
+      "metrics": {
+        "defective_functions": 20,
+        "safe_functions": 10,
+        "true_positives": 16,
+        "false_negatives": 4,
+        "false_positives": 4,
+        "precision_per_labeled_function": 0.8,
+        "recall": 0.8,
+        "safe_false_positive_rate": 0.4,
+        "remaining_misses": [
+          "readActivePressure",
+          "copyDiagnostic",
+          "activateSession",
+          "forbiddenStateTransition"
+        ],
+        "safe_false_positives": [
+          "readSensor",
+          "safeSensorValue",
+          "safeRead",
+          "safeSessionFile"
+        ],
+        "auxiliary_functions": [
+          "sensorConnected"
+        ],
+        "auxiliary_safe_false_positives": []
+      },
+      "primary_calls": 32,
+      "verifier_calls": 28,
+      "mean_primary_seconds": 4.503490625,
+      "mean_verifier_seconds": 2.3108285714285715,
+      "mean_retrieval_seconds": 0.15538387096774195,
+      "functions_per_minute": 8.639629889403448,
+      "input_tokens_recorded_lower_bound": 73057,
+      "max_recorded_input_tokens": 1619,
+      "token_limitation": "All verifier inputs and last detector input per function recorded; initial input of one corrective detector retry unavailable for this 31-function run. Exact all-attempt tokens available for fixed-30 experiment.",
+      "provenance": {
+        "VALID_PROVENANCE": 25
+      },
+      "source_quotes_checked": 35,
+      "analyzer_invocations": 1,
+      "storage": "Separate persistent evaluation catalog; no operational findings/reviewer changes"
+    }
+  },
+  "verification_checks": {
+    "regression": {
+      "before_tests": 108,
+      "before_seconds": 54.125,
+      "after_tests": 130,
+      "after_seconds": 27.301,
+      "passed": true,
+      "new_deterministic_tests": 22
+    },
+    "ui": {
+      "signed_in": true,
+      "Overview": true,
+      "Repository Review": true,
+      "Analyze Source": true,
+      "Diagnostics": true,
+      "Findings": true,
+      "History & Reports": true,
+      "sign_out_clears_auth": true
+    },
+    "api_denials": {
+      "invalid_credential": {
+        "status": 401,
+        "denied": true
+      },
+      "unauthorized_repository": {
+        "status": 403,
+        "denied": true
+      },
+      "path_escape": {
+        "status": 404,
+        "denied": true
+      },
+      "missing_snapshot": {
+        "status": 409,
+        "denied": true
+      }
+    },
+    "protected_artifacts": {
+      "checked": 30,
+      "unchanged": true
+    },
+    "operational_history": {
+      "unchanged": true,
+      "rows": {
+        "analysis_runs": 226,
+        "findings": 110,
+        "reviews": 0
+      }
+    },
+    "original_source_previews": {
+      "files": 7,
+      "functions": 31,
+      "matched": true
+    },
+    "deployment": "All three Docker services healthy; ANALYSIS_QUALITY=baseline",
+    "artifact_checks": {
+      "deployed_files_match": 43,
+      "html_no_scripts": true,
+      "html_no_external_resources": true,
+      "html_no_credentials": true,
+      "html_preserves_verification_audit": true,
+      "repository_driver_completion_assertion_on_saved_report": true,
+      "driver_note": "Review and reports completed; original post-run harness checked a summary object for results and raised KeyError. Corrected to use the full report; assertion verified against saved original-repository output without rerunning inference."
+    }
+  },
+  "changed_files": [
+    "app/ingestion/chunker.py",
+    "app/ingestion/indexer.py",
+    "app/retrieval/retriever.py",
+    "app/llm/context.py",
+    "app/review_service.py",
+    "app/analysis/cppcheck.py",
+    "app/main.py",
+    "ui/reports.py",
+    "ui/components.py",
+    "README.md",
+    ".env.example",
+    "compose.yaml"
+  ],
+  "added_files": [
+    "app/ingestion/code_facts.py",
+    "app/retrieval/code_retrieval.py",
+    "app/retrieval/embedding_cache.py",
+    "app/analysis/configuration.py",
+    "app/analysis/candidate_verifier.py",
+    "tests/test_code_quality.py",
+    "scripts/evaluate_code_quality.py",
+    "scripts/evaluate_code_retrieval.py",
+    "scripts/demonstrate_code_quality.py",
+    "docs/code-aware-analysis.md",
+    "docs/analysis-quality-results.md",
+    "docs/evaluation/quality-results.json"
+  ],
+  "artifacts": [
+    "docs/evaluation/quality-ast-corrected.json",
+    "docs/evaluation/quality-ast.json",
+    "docs/evaluation/quality-baseline.json",
+    "docs/evaluation/quality-hybrid-corrected.json",
+    "docs/evaluation/quality-hybrid.json",
+    "docs/evaluation/quality-repository-final.json",
+    "docs/evaluation/quality-repository.json",
+    "docs/evaluation/quality-results.json",
+    "docs/evaluation/quality-retrieval-corrected.json",
+    "docs/evaluation/quality-retrieval-initial.json",
+    "docs/evaluation/quality-retrieval.json",
+    "docs/evaluation/quality-verified-corrected.json",
+    "docs/evaluation/quality-verified-final.json",
+    "docs/evaluation/quality-verified-ordered.json",
+    "docs/evaluation/quality-verified.json",
+    "docs/demonstrations/quality-repository-final-report.html",
+    "docs/demonstrations/quality-repository-report.html"
+  ],
+  "constraints": {
+    "same_qwen": true,
+    "same_jina_code_embeddings": true,
+    "cloud_inference": false,
+    "labels_changed": false,
+    "original_source_changed": false,
+    "automatic_fixes": false,
+    "git_ci_automation": false,
+    "formal_misra_compliance_claim": false
+  },
+  "remaining_limitations": [
+    "Review quality regressed; all nonbaseline modes experimental.",
+    "Verifier confuses rule violations with source contradiction in copyDiagnostic, overlooks explicit guards in safe functions, and lacks callee source for readActivePressure.",
+    "State cases activateSession and forbiddenStateTransition remain missed.",
+    "Experimental compiler/runtime/CI-log demonstrations produce INSUFFICIENT_EVIDENCE; baseline diagnostic behavior retained.",
+    "Syntactic observations do not establish overload/receiver bindings, alias analysis or whole-program semantics.",
+    "Verifier citation ranges over 1800 characters fail explicitly; no silent truncation.",
+    "Default Cppcheck is degraded without build configuration; project options do not guarantee complete SDK/build coverage.",
+    "Precision is per labeled function, not exhaustive adjudication of all additional diagnoses.",
+    "Single measurements include cache/startup/environment effects; timing differences are not universal performance claims."
+  ]
+}

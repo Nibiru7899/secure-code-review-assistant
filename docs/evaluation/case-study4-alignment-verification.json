@@ -1,0 +1,390 @@
+{
+  "date_local": "2026-10-04",
+  "timezone": "Asia/Calcutta",
+  "scope": "User-requested Case Study 4 alignment; no new delivery phase",
+  "final_regressions": {
+    "tests": 89,
+    "passed": 89,
+    "seconds": 19.143,
+    "private_log": ".local/alignment-final-regressions.txt"
+  },
+  "postgres_migration_checks": {
+    "created": "2026-10-03T18:57:56.522396+00:00",
+    "checks": {
+      "copy_exact_all_tables": true,
+      "representative_queries_equal": true,
+      "sqlite_retained_for_rollback": true,
+      "postgres_restart_persistence": true,
+      "nonempty_target_refused": true,
+      "interrupted_copy_rolled_back": true,
+      "rejected_revision_removed_from_approved": true,
+      "revision_conflict_refused": true,
+      "originals_immutable": true
+    },
+    "server_version": "PostgreSQL 16.13 (Debian 16.13-1.pgdg12+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+    "counts": {
+      "repositories": 1,
+      "users": 1,
+      "repository_permissions": 1,
+      "snapshots": 1,
+      "active": 1,
+      "analysis_runs": 1,
+      "findings": 1,
+      "reviews": 1,
+      "repository_runs": 0,
+      "index_events": 0
+    },
+    "status": "passed"
+  },
+  "authenticated_ui_checks": {
+    "authenticated_overview": true,
+    "Repository Review": true,
+    "Analyze Source": true,
+    "Diagnostics": true,
+    "Findings": true,
+    "History & Reports": true,
+    "no_reviewer_action_performed": true
+  },
+  "delivery_checks": {
+    "checks": {
+      "repository_report_exact_after_api_restart": true,
+      "snapshot_retained": true,
+      "imported_log_source_mapping": true,
+      "imported_log_answered": true,
+      "no_reviewer_decisions_submitted": true,
+      "source_and_models_read_only": true
+    },
+    "mounts": [
+      {
+        "service": "api",
+        "destination": "/repositories/demo_ecu",
+        "writable": false
+      },
+      {
+        "service": "api",
+        "destination": "/data/models",
+        "writable": false
+      }
+    ],
+    "services": [
+      {
+        "service": "api",
+        "state": "running",
+        "health": "healthy"
+      },
+      {
+        "service": "postgres",
+        "state": "running",
+        "health": "healthy"
+      },
+      {
+        "service": "ui",
+        "state": "running",
+        "health": "healthy"
+      }
+    ]
+  },
+  "retrieval": {
+    "embedding": "jina-code/516f4baf13dec4ddddda8631e019b5737c8bc250/3baf9e3ac750e76e8edd3019170176884695fb94/mean-normalized-cpu-v1",
+    "top_k": 3,
+    "checks": {
+      "idempotency": true,
+      "changed_source_replaced": true,
+      "deleted_source_removed": true,
+      "persistence_reopen": true,
+      "unauthorized_denied": true,
+      "offline_runtime": true
+    },
+    "index_seconds": 15.975,
+    "duplicate_rate": 0.0,
+    "stale_active_chunk_rate": 0.0,
+    "exact_lookup_accuracy": 1.0,
+    "relevant_top_k": 1.0,
+    "status": "passed"
+  },
+  "retrieval_query_count": 20,
+  "baseline": {
+    "sha256": "ce18932b5d53da8b3b1c61f3fbec4953063e5958566aa0186c54be9560ce0ada",
+    "prompt_version": "case4-v13",
+    "metrics": {
+      "defect_cases": 20,
+      "safe_cases": 10,
+      "true_positives": 16,
+      "false_positives": 1,
+      "false_negatives": 4,
+      "precision_on_labeled_functions": 0.9411764705882353,
+      "known_defect_recall": 0.8,
+      "safe_function_false_positive_rate": 0.1,
+      "validation_rejection_runs": 2,
+      "runs_with_rejected_attempts": 2,
+      "failed_runs": 1,
+      "mean_review_seconds": 4.133233333333333,
+      "analyzer_supported_correct_findings": 9,
+      "ai_only_correct_findings": 7,
+      "malformed_output_runs": 0,
+      "analyzer_failed_runs": 0
+    },
+    "recorded_misses": [
+      "calculatePressure",
+      "readActivePressure",
+      "activateSession",
+      "doubleFreeSample"
+    ],
+    "safe_false_positives": [
+      "readSensor"
+    ],
+    "limitation": "94.12% precision and 80% recall apply only to this fixed synthetic corpus; not universal model accuracy"
+  },
+  "previous_native_fixed_metrics": {
+    "defect_cases": 20,
+    "safe_cases": 10,
+    "true_positives": 17,
+    "false_positives": 1,
+    "false_negatives": 3,
+    "precision_on_labeled_functions": 0.9444444444444444,
+    "known_defect_recall": 0.85,
+    "safe_function_false_positive_rate": 0.1,
+    "validation_rejection_runs": 2,
+    "runs_with_rejected_attempts": 2,
+    "failed_runs": 0,
+    "mean_review_seconds": 5.0458,
+    "analyzer_supported_correct_findings": 10,
+    "ai_only_correct_findings": 7,
+    "malformed_output_runs": 0,
+    "analyzer_failed_runs": 0,
+    "model_failed_runs": 0,
+    "analyzer_degraded_runs": 30,
+    "validated_candidate_count": 22,
+    "model_failure_rate": 0.0,
+    "malformed_output_rate": 0.0,
+    "analyzer_failure_rate": 0.0
+  },
+  "v15_repository_run": {
+    "repository_run_id": "4a8288fa-c0a2-4469-8e13-e72d89dd38ad",
+    "prompt_version": "case4-v15",
+    "summary": {
+      "files_scanned": 8,
+      "files_indexed": 7,
+      "functions_discovered": 31,
+      "functions_reviewed": 31,
+      "candidate_findings": 20,
+      "functions_with_candidates": 17,
+      "severity": {
+        "critical": 0,
+        "high": 17,
+        "medium": 3,
+        "low": 0,
+        "information": 0
+      },
+      "category": {
+        "null-pointer": 11,
+        "boundary": 4,
+        "resource": 0,
+        "state": 0,
+        "initialization": 2,
+        "unchecked-return": 2,
+        "security": 1,
+        "performance": 0,
+        "control-flow": 0
+      },
+      "outcomes": {
+        "CANDIDATES": 17,
+        "NO_SUPPORTED_FINDING": 13,
+        "INSUFFICIENT_EVIDENCE": 0,
+        "FAILED": 1
+      },
+      "analyzer_supported": 6,
+      "ai_only_candidates": 14,
+      "evidence_support": {
+        "SUPPORTED": 13,
+        "STRONG": 6,
+        "AI-ONLY CANDIDATE": 1
+      },
+      "reviewer_dispositions": {
+        "PENDING": 20
+      },
+      "total_seconds": 151.961,
+      "mean_function_seconds": 4.872129032258065,
+      "functions_per_minute": 12.239982627121432,
+      "insufficient_evidence_rate": 0.0,
+      "failed_review_rate": 0.03225806451612903,
+      "processed_inside_approved_scope_percent": 100,
+      "debug_resolution_time": "NOT MEASURED",
+      "defect_leakage": "NOT MEASURED"
+    },
+    "fixed_fixture_comparison": {
+      "defective_functions": 20,
+      "safe_functions": 10,
+      "true_positives": 12,
+      "false_negatives": 8,
+      "false_positives": 1,
+      "precision_per_labeled_function": 0.9230769230769231,
+      "recall": 0.6,
+      "safe_false_positive_rate": 0.1,
+      "remaining_misses": [
+        "calculatePressure",
+        "readActivePressure",
+        "leakingSessionFile",
+        "activateSession",
+        "allocateWithoutRelease",
+        "useFreedSample",
+        "doubleFreeSample",
+        "forbiddenStateTransition"
+      ],
+      "safe_false_positives": [
+        "readSensor"
+      ]
+    }
+  },
+  "v16_repository_run": {
+    "repository_run_id": "b436f20a-28d4-46a8-8340-630e49620692",
+    "prompt_version": "case4-v16",
+    "summary": {
+      "files_scanned": 8,
+      "files_indexed": 7,
+      "functions_discovered": 31,
+      "functions_reviewed": 31,
+      "candidate_findings": 21,
+      "functions_with_candidates": 18,
+      "severity": {
+        "critical": 0,
+        "high": 17,
+        "medium": 4,
+        "low": 0,
+        "information": 0
+      },
+      "category": {
+        "null-pointer": 9,
+        "boundary": 4,
+        "resource": 2,
+        "state": 1,
+        "initialization": 2,
+        "unchecked-return": 2,
+        "security": 1,
+        "performance": 0,
+        "control-flow": 0
+      },
+      "outcomes": {
+        "CANDIDATES": 18,
+        "NO_SUPPORTED_FINDING": 13,
+        "INSUFFICIENT_EVIDENCE": 0,
+        "FAILED": 0
+      },
+      "analyzer_supported": 6,
+      "ai_only_candidates": 15,
+      "evidence_support": {
+        "SUPPORTED": 14,
+        "STRONG": 6,
+        "AI-ONLY CANDIDATE": 1
+      },
+      "reviewer_dispositions": {
+        "PENDING": 21
+      },
+      "total_seconds": 138.431,
+      "mean_function_seconds": 4.436064516129032,
+      "functions_per_minute": 13.436296783234967,
+      "insufficient_evidence_rate": 0.0,
+      "failed_review_rate": 0.0,
+      "processed_inside_approved_scope_percent": 100,
+      "debug_resolution_time": "NOT MEASURED",
+      "defect_leakage": "NOT MEASURED"
+    },
+    "fixed_fixture_comparison": {
+      "defective_functions": 20,
+      "safe_functions": 10,
+      "true_positives": 15,
+      "false_negatives": 5,
+      "false_positives": 1,
+      "precision_per_labeled_function": 0.9375,
+      "recall": 0.75,
+      "safe_false_positive_rate": 0.1,
+      "remaining_misses": [
+        "calculatePressure",
+        "readActivePressure",
+        "activateSession",
+        "useFreedSample",
+        "doubleFreeSample"
+      ],
+      "safe_false_positives": [
+        "readSensor"
+      ]
+    },
+    "analyzer_status": "degraded",
+    "analyzer_version": "Cppcheck 2.10",
+    "scan_seconds": 0.05,
+    "index_seconds": 0.367
+  },
+  "evidence": {
+    "validated_findings": 21,
+    "current_provenance_rejections": 0,
+    "model_validation_rejections": 0,
+    "max_reported_model_input_tokens": 1640,
+    "historical_evidence_used": 0,
+    "limitation": "Citation validity is provenance, not semantic correctness; no operational reviewer decisions were submitted."
+  },
+  "preserved_artifact_hashes": {
+    "D:\\TataTech\\tests\\fixtures\\expected_defects.json": "45326c76ef47c59314761498096d4d553953cabc65b9dfbaf2643c01ade24df4",
+    "D:\\TataTech\\rules\\coding_rules.md": "2675b8fa41cf2c693e4b9c64e403d4593daffd2ef17e84fb790657b8b7077a56",
+    "D:\\TataTech\\.local\\review-evaluation.json": "ce18932b5d53da8b3b1c61f3fbec4953063e5958566aa0186c54be9560ce0ada",
+    "D:\\TataTech\\.local\\final-evaluation.json": "ff1454096c87569072a06480f398eaee3390a5ff1860d51d83cdc1951af41a83"
+  },
+  "imported_build_demonstration": {
+    "run_id": "49c45691-204a-484e-acd5-7e63bce35e0f",
+    "outcome": "ANSWERED",
+    "seconds": 13.984,
+    "claims": [
+      {
+        "text": "The reported warning indicates that the variable `count` may be used uninitialized in the function `uninitializedCounter`. This occurs because `count` is declared but not initialized before it is returned. If `enabled` is false, `count` remains uninitialized and could lead to undefined behavior when returned.",
+        "kind": "hypothesis",
+        "evidence": [
+          {
+            "id": "Daea3e2b71d9e75d6",
+            "start_line": 2,
+            "end_line": 2,
+            "quote": "src/diagnostics.cpp:29: warning: count may be used uninitialized in uninitializedCounter"
+          }
+        ]
+      },
+      {
+        "text": "The build policy specifies that warnings are treated as errors, causing the compile step to fail with an exit code of 1. This means that the build process halted due to the uninitialized variable warning, preventing further steps like linking and testing from occurring.",
+        "kind": "hypothesis",
+        "evidence": [
+          {
+            "id": "Daea3e2b71d9e75d6",
+            "start_line": 3,
+            "end_line": 3,
+            "quote": "Build policy: warnings are errors. Compile step failed with exit code 1."
+          }
+        ]
+      }
+    ],
+    "source_mapping": [
+      {
+        "file": "src/diagnostics.cpp",
+        "line": 29,
+        "functions": [
+          "uninitializedCounter"
+        ],
+        "status": "location_exists_in_captured_source"
+      }
+    ],
+    "limitations": [
+      "Explanation/diagnostic task; static analysis was not requested",
+      "Diagnostic origin and snapshot association are user-declared, not independently verified",
+      "Model-reported limitations are unverified interpretations; see model_limitations",
+      "Citation validity establishes provenance; human review must assess diagnosis and remediation"
+    ],
+    "model_limitations": [
+      "The explanation is based on user-declared evidence and may not reflect the actual runtime behavior or root cause of the issue.",
+      "The diagnostic origin and snapshot association are not independently verified, which limits the reliability of the reported warning."
+    ],
+    "no_build_or_ci_executed": true
+  },
+  "not_measured": [
+    "real debug resolution time",
+    "real defect leakage",
+    "engineering productivity improvement",
+    "runtime profiling"
+  ],
+  "excluded_features_added": []
+}
